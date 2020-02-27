@@ -1,0 +1,51 @@
+/*
+ *****************************************************************************
+
+ *****************************************************************************
+ */
+
+#include<stdio.h>
+typedef struct {
+	int R;
+	int G;
+	int B;
+} RGB;
+
+
+
+void SetLedColor(RGB tabline[], int tabsize) {
+	int j;
+	for (j = 0; j < tabsize; j++) {
+		if (tabline[j].color.R != 0 && tabline[j].color.G == 0 && tabline[j].color.B == 0) {
+			printf("couleur %d = RED %d\n",j +1, tabline[j].color.R);
+		} else if (tabline[j].color.R == 0 && tabline[j].color.G != 0 && tabline[j].color.B == 0) {
+			printf("couleur %d = Green %d, ",LEDNum, tabline[j].color.G);
+		} else if (tabline[j].color.R == 0 && tabline[j].color.G == 0 && tabline[j].color.B != 0) {
+			printf("couleur %d = Blue %d, ",LEDNum, tabline[j].color.B);
+		} else if (tabline[j].color.R == tabline[j].color.G && tabline[j].color.G == tabline[j].color.B && tabline[j].color.R != 0) {
+			printf("couleur %d = White %d, ",LEDNum, tabline[j].color.R);
+		} else if (tabline[j].color.R !=0 && tabline[j].color.G == 0 && tabline[j].color.B !=0 ) {
+			printf("couleur %d = Purple %d %d, ",LEDNum, tabline[j].color.R, tabline[j].color.B);
+		} else if (tabline[j].color.R == tabline[j].color.G && tabline[j].color.B ==0 ) {
+			printf("couleur %d = Yellow %d ",LEDNum, tabline[j].color.R);
+		}
+	}
+}
+
+
+int main(void){
+
+	RGB green = {0,255,0};
+	RGB white = {255,255,255};
+	RGB blue = {0,0,255};
+	RGB red = {255,0,0};
+	RGB purple = {255,0,255};
+	RGB yellow = {255,255,0};
+	RGB none = {0,0,0};
+
+	RGB tabline[7] = {green, white, blue, red, purple, yellow, none};
+
+	SetLedColor(tabline[], 7);
+
+	return 0;
+}

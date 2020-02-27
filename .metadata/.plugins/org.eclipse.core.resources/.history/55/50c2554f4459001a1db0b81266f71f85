@@ -1,0 +1,31 @@
+/*
+ *****************************************************************************
+
+ *****************************************************************************
+ */
+
+#include<stdio.h>
+
+void SetLedColor( int RValue, int GValue, int BValue) {
+	if (RValue != 0 && GValue == 0 && BValue == 0) {
+		printf("RED %d",RValue);
+	} else if (RValue == 0 && GValue != 0 && BValue == 0)	{
+		printf("Green %d",GValue);
+	} else if (RValue == 0 && GValue != 0 && BValue == 0) {
+		printf("Blue %d",BValue);
+	} else if (RValue == GValue == BValue ) {
+		printf("White %d",RValue);
+	} else if (RValue !=0 && GValue == 0 && BValue !=0 ) {
+		printf("Purple %d",RValue);
+	} else if (RValue == GValue && BValue ==0 ) {
+		printf("yellow %d",RValue);
+	}
+}
+
+
+int main(void){
+
+
+
+	return 0;
+}

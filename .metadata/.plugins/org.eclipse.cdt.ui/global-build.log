@@ -1,6 +1,156 @@
-11:29:21 **** Incremental Build of configuration Debug for project 74_translate_point ****
+14:33:17 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘SetLedColor’:
+../src/main.c:38:9: warning: ‘return’ with a value, in function returning void
+  return 0;
+         ^
+../src/main.c:19:6: note: declared here
+ void SetLedColor(int Numlignes, RGB tabline[], int tabsize) {
+      ^~~~~~~~~~~
+../src/main.c: In function ‘main’:
+../src/main.c:80:24: error: subscripted value is neither array nor pointer nor vector
+    tabline[i]= it4_grid[h][i];
+                        ^
+../src/main.c:75:7: warning: variable ‘it4_grid’ set but not used [-Wunused-but-set-variable]
+  GRID it4_grid;
+       ^~~~~~~~
+../src/main.c:70:6: warning: unused variable ‘purple’ [-Wunused-variable]
+  RGB purple = {255,0,255};
+      ^~~~~~
+../src/main.c:68:6: warning: unused variable ‘blue’ [-Wunused-variable]
+  RGB blue = {0,0,255};
+      ^~~~
+../src/main.c:67:6: warning: unused variable ‘white’ [-Wunused-variable]
+  RGB white = {255,255,255};
+      ^~~~~
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+14:38:54 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘SetLedColor’:
+../src/main.c:38:9: warning: ‘return’ with a value, in function returning void
+  return 0;
+         ^
+../src/main.c:19:6: note: declared here
+ void SetLedColor(int Numlignes, RGB tabline[], int tabsize) {
+      ^~~~~~~~~~~
+../src/main.c: In function ‘main’:
+../src/main.c:70:6: warning: unused variable ‘purple’ [-Wunused-variable]
+  RGB purple = {255,0,255};
+      ^~~~~~
+../src/main.c:68:6: warning: unused variable ‘blue’ [-Wunused-variable]
+  RGB blue = {0,0,255};
+      ^~~~
+../src/main.c:67:6: warning: unused variable ‘white’ [-Wunused-variable]
+  RGB white = {255,255,255};
+      ^~~~~
+gcc  -o "leds_02"  ./src/main.o   
+14:42:01 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:69:6: warning: unused variable ‘purple’ [-Wunused-variable]
+  RGB purple = {255,0,255};
+      ^~~~~~
+../src/main.c:67:6: warning: unused variable ‘blue’ [-Wunused-variable]
+  RGB blue = {0,0,255};
+      ^~~~
+../src/main.c:66:6: warning: unused variable ‘white’ [-Wunused-variable]
+  RGB white = {255,255,255};
+      ^~~~~
+gcc  -o "leds_02"  ./src/main.o   
+14:42:31 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "leds_02"  ./src/main.o   
+14:44:30 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "leds_02"  ./src/main.o   
+14:44:49 **** Incremental Build of configuration Debug for project leds_02 ****
 make -j4 all 
 make: Nothing to be done for 'all'.
-11:29:53 **** Incremental Build of configuration Debug for project 74_translate_point ****
+14:46:28 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "leds_02"  ./src/main.o   
+14:48:56 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:68:22: error: expected expression before ‘/’ token
+  RGB red = {255,0,0};/ RGB purple = {255,0,255};
+                      ^
+../src/main.c:74:29: error: ‘purple’ undeclared (first use in this function)
+  it4_grid = iteration4(red, purple, green, yellow);
+                             ^~~~~~
+../src/main.c:74:29: note: each undeclared identifier is reported only once for each function it appears in
+src/subdir.mk:18: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+14:49:12 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "leds_02"  ./src/main.o   
+14:49:35 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:69:6: warning: unused variable ‘purple’ [-Wunused-variable]
+  RGB purple = {255,0,255};
+      ^~~~~~
+gcc  -o "leds_02"  ./src/main.o   
+14:51:42 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:72:6: warning: unused variable ‘purple’ [-Wunused-variable]
+  RGB purple = {255,0,255};
+      ^~~~~~
+gcc  -o "leds_02"  ./src/main.o   
+14:52:48 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:71:6: warning: unused variable ‘purple’ [-Wunused-variable]
+  RGB purple = {255,0,255};
+      ^~~~~~
+gcc  -o "leds_02"  ./src/main.o   
+15:14:23 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/leds_control.d" -MT"src/leds_control.o" -o "src/leds_control.o" "../src/leds_control.c"
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:76:6: warning: unused variable ‘tabline’ [-Wunused-variable]
+  RGB tabline[7] = {black, black, black, black, black, black, black};
+      ^~~~~~~
+gcc  -o "leds_02"  ./src/leds_control.o ./src/main.o   
+15:14:40 **** Incremental Build of configuration Debug for project leds_02 ****
 make -j4 all 
 make: Nothing to be done for 'all'.
+15:17:33 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:83:4: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
+    sleep(1);
+    ^~~~~
+../src/main.c:76:6: warning: unused variable ‘tabline’ [-Wunused-variable]
+  RGB tabline[7] = {black, black, black, black, black, black, black};
+      ^~~~~~~
+gcc  -o "leds_02"  ./src/leds_control.o ./src/main.o   
+15:17:43 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+make: Nothing to be done for 'all'.
+15:18:47 **** Incremental Build of configuration Debug for project leds_02 ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘main’:
+../src/main.c:83:4: warning: implicit declaration of function ‘sleep’ [-Wimplicit-function-declaration]
+    sleep(1);
+    ^~~~~
+../src/main.c:76:6: warning: unused variable ‘tabline’ [-Wunused-variable]
+  RGB tabline[7] = {black, black, black, black, black, black, black};
+      ^~~~~~~
+gcc  -o "leds_02"  ./src/leds_control.o ./src/main.o   
