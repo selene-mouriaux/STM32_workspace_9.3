@@ -1,6 +1,6 @@
-11:50:59 **** Incremental Build of configuration Debug for project 310_socket_client ****
-make -j12 all 
-make: Nothing to be done for 'all'.
 11:52:17 **** Incremental Build of configuration Debug for project 310_socket_client ****
 make -j12 all 
 make: Nothing to be done for 'all'.
+
+11:52:18 Build Finished (took 175ms)
+
