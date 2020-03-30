@@ -1,0 +1,39 @@
+/*
+*****************************************************************************
+
+*****************************************************************************
+*/
+
+#include<stdio.h>
+#include<string.h>	//strlen
+#include<sys/socket.h>
+#include<arpa/inet.h>
+#include<unistd.h>
+#include"debug.h"
+#include<errno.h>
+#include"client.h"
+int main(int argc, char *argv[]) {
+	int socket_desc;
+	char *message;
+	while (1) {
+		socket_desc = establish_client_connection();
+		message = "Sweet !\n";
+		int message_sending_tries = 3;
+		while (socket_desc != -1) {
+			int message_sending_status = send_client_message(socket_desc,
+					message);
+			if (message_sending_status == -1) {
+				message_sending_tries -= 1;
+				sleep(2);
+				if (message_sending_tries <= 0){
+					close(socket_desc);
+					printf("Reset socket.\n");
+					socket_desc = -1;
+				}
+				continue;
+			}
+			sleep(2);
+		}
+	}
+	return 0;
+}

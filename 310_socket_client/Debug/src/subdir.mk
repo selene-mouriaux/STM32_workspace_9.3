@@ -4,14 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/client.c \
 ../src/debug.c \
 ../src/main.c 
 
 OBJS += \
+./src/client.o \
 ./src/debug.o \
 ./src/main.o 
 
 C_DEPS += \
+./src/client.d \
 ./src/debug.d \
 ./src/main.d 
 
