@@ -1,0 +1,125 @@
+/*
+ *****************************************************************************
+
+ *****************************************************************************
+ */
+
+#include "debug.h"
+#include "fifo.h"
+#include "game_p4.h"
+#include<stdio.h>
+#include<stdint.h>
+
+
+
+int main(void){
+
+	debug_setlevel(1);
+
+	Pile *maPile = initialiser();
+
+	empiler(maPile, 4);
+	empiler(maPile, 8);
+	empiler(maPile, 15);
+	empiler(maPile, 16);
+	empiler(maPile, 23);
+	empiler(maPile, 42);
+
+	printf("\nEtat de la pile :\n");
+	afficherPile(maPile);
+
+	printf("Je depile %d\n", depiler(maPile));
+	printf("Je depile %d\n", depiler(maPile));
+
+	printf("\nEtat de la pile :\n");
+	afficherPile(maPile);
+
+	gp4_display();
+	gp4_init();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_left();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+	gp4_display();
+	gp4_top_move_token_right();
+	gp4_set_player();
+
+	return 0;
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;100_coeur_de_jeu/src/game_pc4.c&apos; to &apos;game_p4.c&apos;" description="Rename resource &apos;game_pc4.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/game_pc4.c" name="game_p4.c" stamp="1585575344786" updateReferences="true"/>
+</session>

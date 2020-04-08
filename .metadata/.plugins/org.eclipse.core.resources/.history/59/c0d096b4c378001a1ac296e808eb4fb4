@@ -1,0 +1,13 @@
+/*
+ * fifo.h
+ *
+ *  Created on: Apr 7, 2020
+ *      Author: s_il_vanas
+ */
+
+#ifndef FIFO_H_
+#define FIFO_H_
+
+int depiler(Pile *pile);
+
+#endif /* FIFO_H_ */

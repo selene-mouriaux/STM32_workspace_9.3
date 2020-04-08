@@ -1,0 +1,90 @@
+/*
+ *****************************************************************************
+
+ *****************************************************************************
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+static pthread_mutex_t my_mutex;
+static int mon_tableau_de_globales[5];
+
+//void *my_thread_process1 (void * arg)
+//{
+//	int i;
+//
+//	for (i = 0 ; i < 5 ; i++) {
+//		sleep (1);
+//		printf ("Hello world !\n");
+//	}
+//	pthread_exit (0);
+//}
+//
+//void *my_thread_process2 (void * arg)
+//{
+//	int i;
+//
+//	for (i = 0 ; i < 5 ; i++) {
+//		sleep (2);
+//		printf ("The world is mine !\n");
+//	}
+//	pthread_exit (0);
+//}
+
+void *my_thread_process3 (void * arg)
+{
+	int i;
+	pthread_mutex_lock (&my_mutex);
+	for (i = 0 ; i < 5 ; i++) {
+		mon_tableau_de_globales[i] = i*10+10;
+		printf("écriture de %d dans MON_TABLEAU_DE_GLOBALES[%d]\n", mon_tableau_de_globales[i], i);
+	}
+	pthread_mutex_unlock (&my_mutex);
+	pthread_exit (0);
+}
+
+void *my_thread_process4 (void * arg)
+{
+	int i;
+	pthread_mutex_lock (&my_mutex);
+	for (i = 0 ; i < 5 ; i++) {
+		printf ("lecture de MON_TABLEAU_DE_GLOBALES[%d] = %d\n", i,mon_tableau_de_globales[i]);
+	}
+	pthread_mutex_unlock (&my_mutex);
+	pthread_exit (0);
+}
+
+main (int ac, char **av)
+{
+//	pthread_t th1, th2;
+	pthread_t th3, th4;
+	void *ret;
+
+	pthread_mutex_init (&my_mutex, NULL);
+
+//	if (pthread_create (&th1, NULL, my_thread_process1, "1") < 0) {
+//		fprintf (stderr, "pthread_create error for thread 1\n");
+//		exit (1);
+//	}
+//
+//	if (pthread_create (&th2, NULL, my_thread_process2, "2") < 0) {
+//		fprintf (stderr, "pthread_create error for thread 2\n");
+//		exit (1);
+//	}
+
+	if (pthread_create (&th3, NULL, my_thread_process3, "3") < 0) {
+		fprintf (stderr, "pthread_create error for thread 3\n");
+		exit (1);
+	}
+
+	if (pthread_create (&th4, NULL, my_thread_process4, "4") < 0) {
+		fprintf (stderr, "pthread_create error for thread 4\n");
+		exit (1);
+	}
+
+//	(void)pthread_join (th1, &ret);
+//	(void)pthread_join (th2, &ret);
+	(void)pthread_join (th3, &ret);
+	(void)pthread_join (th4, &ret);
+}

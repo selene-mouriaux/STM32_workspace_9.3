@@ -1,0 +1,32 @@
+/*
+ * fifo.h
+ *
+ *  Created on: Apr 7, 2020
+ *      Author: s_il_vanas
+ */
+
+#ifndef FIFO_H_
+#define FIFO_H_
+
+
+typedef struct Element Element;
+struct Element {
+	int nombre;
+	Element *suivant;
+};
+
+
+typedef struct File Pile;
+struct File {
+	Element *premier;
+};
+
+void empiler(Pile *file, int nvNombre);
+
+int depiler(Pile *file);
+
+void afficherPile(Pile *file);
+
+Pile* initialiser();
+
+#endif /* FIFO_H_ */
