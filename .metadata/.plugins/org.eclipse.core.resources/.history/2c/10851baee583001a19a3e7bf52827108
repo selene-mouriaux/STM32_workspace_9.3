@@ -1,0 +1,14 @@
+/*
+ * queue.c
+ *
+ *  Created on: Apr 21, 2020
+ *      Author: s_il_vanas
+ */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include"queue.h"
+
+Element* create_queue_element(int valeur) {
+
+}

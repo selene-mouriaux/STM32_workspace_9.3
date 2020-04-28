@@ -1,4 +1,175 @@
-15:41:38 **** Incremental Build of configuration Debug for project 100_coeur_de_jeu ****
+10:08:00 **** Incremental Build of configuration Debug for project Photon_man ****
 make -j12 all 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
-gcc  -o "100_coeur_de_jeu"  ./src/debug.o ./src/fifo.o ./src/game_p4.o ./src/main.o   
+make: Nothing to be done for 'all'.
+10:09:39 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:40:31 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c:356:17: error: expected declaration specifiers or ‘...’ before ‘pthread_self’
+  pthread_detach(pthread_self());
+                 ^~~~~~~~~~~~
+In file included from /usr/include/string.h:33:0,
+                 from ../src/main.c:40:
+../src/main.c:357:15: error: expected declaration specifiers or ‘...’ before ‘(’ token
+  pthread_exit(NULL);
+               ^
+../src/main.c:358:2: error: expected identifier or ‘(’ before ‘return’
+  return 0;
+  ^~~~~~
+../src/main.c: In function ‘thread_handler_app’:
+../src/main.c:355:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [src/main.o] Error 1
+src/subdir.mk:33: recipe for target 'src/main.o' failed
+10:41:17 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:41:20 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:44:21 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:46:42 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:48:47 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:53:59 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:56:45 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:56:49 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:57:19 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:57:20 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:57:57 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:57:58 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:58:33 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:58:44 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+10:59:26 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+10:59:27 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:00:55 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:05:41 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:08:23 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:08:28 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:12:38 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:12:42 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:14:47 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:14:51 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:16:13 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:16:15 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:16:33 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:17:38 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:17:59 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:18:01 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:21:39 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:22:17 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:22:21 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:26:44 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:26:45 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+11:59:16 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+11:59:19 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+12:02:50 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+13:29:09 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+13:29:09 **** Build of configuration Debug for project megazorg ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+13:29:33 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+13:32:28 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+13:32:28 **** Incremental Build of configuration Debug for project megazorg ****
+make -j12 all 
+make: Nothing to be done for 'all'.

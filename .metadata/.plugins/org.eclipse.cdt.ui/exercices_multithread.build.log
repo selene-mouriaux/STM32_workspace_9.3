@@ -1,0 +1,7 @@
+11:15:11 **** Clean-only build of configuration Debug for project exercices_multithread ****
+make -j12 clean 
+rm -rf  ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o  ./src/leds_control.d ./src/main.d ./src/numbers_module.d ./src/queue.d  exercices_multithread
+ 
+
+11:15:11 Build Finished (took 166ms)
+

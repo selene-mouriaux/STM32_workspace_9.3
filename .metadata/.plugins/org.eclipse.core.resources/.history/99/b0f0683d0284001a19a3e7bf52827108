@@ -1,0 +1,44 @@
+/*
+ * queue.c
+ *
+ *  Created on: Apr 21, 2020
+ *      Author: s_il_vanas
+ */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include"queue.h"
+
+Element* create_queue_element(int value) {
+	Element* nouvel_element = (Element*) malloc(sizeof(Element));
+	nouvel_element->contenu = value;
+	nouvel_element->suivant = NULL;
+//	nouvel_element->precedent = NULL;
+	return nouvel_element;
+}
+
+Queue* create_empty_queue(void) {
+	Queue* nouvelle_queue = (Queue*) malloc(sizeof(Queue));
+	nouvelle_queue->premier = NULL;
+//	nouvelle_queue->dernier = NULL;
+	return nouvelle_queue;
+}
+
+void add_to_queue_top(Queue* queue, int value) {
+	Element* element_a_ajouter = create_queue_element(value);
+	element_a_ajouter->contenu = value;
+	element_a_ajouter->suivant = queue->premier;
+}
+
+void add_to_queue_bottom(Queue* queue, int value) {
+	Element* curseur;
+	Element* element_a_ajouter = create_queue_element(value);
+	element_a_ajouter->contenu = value;
+	element_a_ajouter->suivant = queue;
+}
+
+
+
+
+
+

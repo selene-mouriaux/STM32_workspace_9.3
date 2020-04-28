@@ -1,0 +1,7 @@
+13:40:17 **** Incremental Build of configuration Debug for project 000_reconstruction_des_bases_des_semaphores ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "000_reconstruction_des_bases_des_semaphores"  ./src/main.o   -lpthread
+
+13:40:18 Build Finished (took 214ms)
+

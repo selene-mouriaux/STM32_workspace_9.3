@@ -1,0 +1,7 @@
+13:32:28 **** Incremental Build of configuration Debug for project Photon_man ****
+make -j12 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+gcc  -o "Photon_man"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/numbers_module.o ./src/queue.o   -lpthread
+
+13:32:28 Build Finished (took 222ms)
+

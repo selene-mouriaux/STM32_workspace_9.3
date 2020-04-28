@@ -1,6 +1,6 @@
-11:09:55 **** Incremental Build of configuration Debug for project test_sizeof_vartypes ****
+14:39:12 **** Incremental Build of configuration Debug for project test_sizeof_vartypes ****
 make -j12 all 
 make: Nothing to be done for 'all'.
 
-11:09:55 Build Finished (took 115ms)
+14:39:13 Build Finished (took 121ms)
 

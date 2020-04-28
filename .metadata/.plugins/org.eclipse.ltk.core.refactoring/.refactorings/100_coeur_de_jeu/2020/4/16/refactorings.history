@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;100_coeur_de_jeu/src/numbers_module.c&apos; to &apos;grid.c&apos;" description="Rename resource &apos;numbers_module.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/numbers_module.c" name="grid.c" stamp="1586941148359" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;100_coeur_de_jeu/src/numbers_module.h&apos; to &apos;grid.h&apos;" description="Rename resource &apos;numbers_module.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/numbers_module.h" name="grid.h" stamp="1586941156263" updateReferences="true"/>
+</session>

@@ -1,0 +1,24 @@
+/*
+*****************************************************************************
+
+
+
+*****************************************************************************
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include "queue.h"
+
+int main(int argc, char *argv[]) {
+
+
+	Element* elem1 = create_queue_element(1);
+	Queue* queue_principale = create_empty_queue();
+
+
+
+
+
+	return 0;
+}

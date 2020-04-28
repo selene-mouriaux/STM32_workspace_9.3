@@ -1,7 +1,44 @@
-15:41:38 **** Incremental Build of configuration Debug for project 100_coeur_de_jeu ****
+14:14:28 **** Incremental Build of configuration Debug for project 100_coeur_de_jeu ****
 make -j12 all 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/fifo.d" -MT"src/fifo.o" -o "src/fifo.o" "../src/fifo.c"
-gcc  -o "100_coeur_de_jeu"  ./src/debug.o ./src/fifo.o ./src/game_p4.o ./src/main.o   
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function ‘thread_handler_read’:
+../src/main.c:92:18: warning: ‘button_read[3]’ is used uninitialized in this function [-Wuninitialized]
+   if (button_read[3] == DOWN_PAD && button_read[2] == DOWN_PAD) {
+       ~~~~~~~~~~~^~~
+../src/main.c:92:48: warning: ‘button_read[2]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+   if (button_read[3] == DOWN_PAD && button_read[2] == DOWN_PAD) {
+                                     ~~~~~~~~~~~^~~
+../src/main.c:93:21: warning: ‘button_read[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (button_read[1] == PAD_1) {
+          ~~~~~~~~~~~^~~
+../src/main.c:96:28: warning: ‘button_read[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+      } else if (button_read[1] == PAD_2) {
+                 ~~~~~~~~~~~^~~
+../src/main.c:100:27: warning: ‘button_read[3]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     } else if (button_read[3] == DOWN_PAD && button_read[2] == LEFT_PAD) {
+                ~~~~~~~~~~~^~~
+../src/main.c:100:57: warning: ‘button_read[2]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     } else if (button_read[3] == DOWN_PAD && button_read[2] == LEFT_PAD) {
+                                              ~~~~~~~~~~~^~~
+../src/main.c:101:21: warning: ‘button_read[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (button_read[1] == PAD_1) {
+          ~~~~~~~~~~~^~~
+../src/main.c:104:28: warning: ‘button_read[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+      } else if (button_read[1] == PAD_2) {
+                 ~~~~~~~~~~~^~~
+../src/main.c:108:27: warning: ‘button_read[3]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     } else if (button_read[3] == DOWN_PAD && button_read[2] == RIGHT_PAD) {
+                ~~~~~~~~~~~^~~
+../src/main.c:108:57: warning: ‘button_read[2]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+     } else if (button_read[3] == DOWN_PAD && button_read[2] == RIGHT_PAD) {
+                                              ~~~~~~~~~~~^~~
+../src/main.c:109:21: warning: ‘button_read[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+      if (button_read[1] == PAD_1) {
+          ~~~~~~~~~~~^~~
+../src/main.c:112:28: warning: ‘button_read[1]’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+      } else if (button_read[1] == PAD_2) {
+                 ~~~~~~~~~~~^~~
+gcc  -o "100_coeur_de_jeu"  ./src/debug.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/queue.o   -lpthread
 
-15:41:39 Build Finished (took 223ms)
+14:14:28 Build Finished (took 218ms)
 

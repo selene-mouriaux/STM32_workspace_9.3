@@ -1,0 +1,17 @@
+/*
+ * queue.c
+ *
+ *  Created on: Apr 21, 2020
+ *      Author: s_il_vanas
+ */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include"queue.h"
+
+struct Element* create_queue_element(int valeur) {
+	Element* nouvel_element = Element* malloc(sizeof(Element));
+	nouvel_element->contenu = valeur;
+	nouvel_element->suivant = NULL;
+	return nouvel_element;
+}

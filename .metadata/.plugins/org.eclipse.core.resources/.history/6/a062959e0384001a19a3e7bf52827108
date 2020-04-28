@@ -1,0 +1,26 @@
+/*
+*****************************************************************************
+
+
+
+*****************************************************************************
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include "queue.h"
+
+int main(int argc, char *argv[]) {
+
+
+	Queue* queue_principale = create_empty_queue();
+	add_to_queue_top(1);
+	add_to_queue_top(2);
+	add_to_queue_top(3);
+	add_to_queue_top(4);
+	add_to_queue_bottom(5);
+	add_to_queue_bottom(5);
+
+
+	return 0;
+}

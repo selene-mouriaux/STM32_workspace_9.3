@@ -1,0 +1,6 @@
+13:40:18 **** Incremental Build of configuration Debug for project 000reconstruction_des_bases_de listes_chainees ****
+make -j12 all 
+make: Nothing to be done for 'all'.
+
+13:40:18 Build Finished (took 114ms)
+

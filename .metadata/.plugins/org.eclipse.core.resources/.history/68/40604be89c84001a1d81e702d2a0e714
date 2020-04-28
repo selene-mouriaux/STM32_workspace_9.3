@@ -1,0 +1,193 @@
+/*
+ * queue.c
+ *
+ *  Created on: Apr 21, 2020
+ *      Author: s_il_vanas
+ */
+
+#include<stdio.h>
+#include<stdlib.h>
+#include"queue.h"
+
+Element* create_queue_element(int value) {
+	Element* nouvel_element = malloc(sizeof(Element));
+	nouvel_element->contenu = value;
+	nouvel_element->suivant = NULL;
+	//	nouvel_element->precedent = NULL;
+	return nouvel_element;
+}
+
+Queue* create_empty_queue(void) {
+	Queue* nouvelle_queue = malloc(sizeof(Queue));
+	nouvelle_queue->premier = NULL;
+	//	nouvelle_queue->dernier = NULL;
+	return nouvelle_queue;
+}
+
+void add_to_queue_top(Queue* queue, int value) {
+	Element* element_a_ajouter = create_queue_element(value);
+	element_a_ajouter->contenu = value;
+	element_a_ajouter->suivant = queue->premier;
+	queue->premier = element_a_ajouter;
+}
+
+void add_to_queue_bottom(Queue* queue, int value) {
+	Element* curseur = queue->premier;
+	Element* element_a_ajouter = create_queue_element(value);
+	while (curseur != NULL && curseur->suivant != NULL) {
+		curseur = curseur->suivant;
+	}
+	element_a_ajouter->contenu = value;
+	element_a_ajouter->suivant = NULL;
+	if (curseur != NULL) {
+		element_a_ajouter->suivant = curseur->suivant;
+		curseur->suivant = element_a_ajouter;
+	} else {
+		queue->premier = element_a_ajouter;
+		element_a_ajouter->suivant = NULL;
+	}
+}
+
+void display_queue(Queue* queue) {
+	Element* curseur = queue->premier;
+	printf("Elements dans la liste : ");
+	while (curseur != NULL) {
+		printf("%d ", curseur->contenu);
+		curseur = curseur->suivant;
+	}
+	printf("\n");
+}
+
+void insert_in_queue_before(Queue* queue, int value, int balise) {
+	Element* curseur = queue->premier;
+	Element* element_a_ajouter = create_queue_element(value);
+	while (curseur != NULL && curseur->suivant->contenu != balise) {
+		curseur = curseur->suivant;
+	}
+	element_a_ajouter->contenu = value;
+	if (curseur != NULL) {
+		element_a_ajouter->suivant = curseur->suivant;
+		curseur->suivant = element_a_ajouter;
+	} else {
+		queue->premier = element_a_ajouter;
+		element_a_ajouter->suivant = NULL;
+	}
+}
+
+void insert_in_queue_after(Queue* queue, int value, int balise) {
+	Element* curseur = queue->premier;
+	Element* element_a_ajouter = create_queue_element(value);
+	while (curseur != NULL && curseur->contenu != balise) {
+		curseur = curseur->suivant;
+	}
+	element_a_ajouter->contenu = value;
+	if (curseur != NULL) {
+		element_a_ajouter->suivant = curseur->suivant;
+		curseur->suivant = element_a_ajouter;
+	} else {
+		queue->premier = element_a_ajouter;
+		element_a_ajouter->suivant = NULL;
+	}
+}
+
+int nombre_d_elements(Queue* queue) {
+	Element* curseur = queue->premier;
+	int total = 0;
+	while (curseur != NULL) {
+		curseur = curseur->suivant;
+		total += 1;
+	}
+	return total;
+}
+
+int is_list_empty(Queue* queue) {
+	if (queue->premier == NULL)
+		return -1;
+	return 0;
+}
+
+int return_element_index(Queue* queue, int balise) {
+	Element* curseur = queue->premier;
+	int index = 0;
+	while (curseur != NULL && curseur->contenu != balise) {
+		curseur = curseur->suivant;
+		index += 1;
+	}
+	return index;
+}
+
+int pop_top_in_queue(Queue* queue) {
+	int element_a_depop = queue->premier->contenu;
+	Element* element_a_pop = queue->premier;
+	queue->premier = queue->premier->suivant;
+	free(element_a_pop);
+	return element_a_depop;
+}
+
+int pop_bottom_in_queue(Queue* queue) {
+	int element_a_depop;
+	Element* avant_dernier;
+	Element* element_a_pop = queue->premier;
+	while (element_a_pop->suivant != NULL) {
+		avant_dernier = element_a_pop;
+		element_a_pop = element_a_pop->suivant;
+	}
+	element_a_depop = element_a_pop->contenu;
+	avant_dernier->suivant = NULL;
+	free(element_a_pop);
+	return element_a_depop;
+}
+
+void insert_at_N(Queue* queue, int value, int N) {
+	Element* element_a_ajouter = create_queue_element(value);
+	Element* curseur = queue->premier;
+	for (int i = 0 ; curseur != NULL && i < N-1 ; i++) {
+		curseur = curseur->suivant;
+	}
+	element_a_ajouter->contenu = value;
+	if (curseur != NULL) {
+		element_a_ajouter->suivant = curseur->suivant;
+		curseur->suivant = element_a_ajouter;
+	} else {
+		queue->premier = element_a_ajouter;
+		element_a_ajouter->suivant = NULL;
+	}
+}
+
+/************ PAS COMPRIS LA SIGNATURE ***************/
+//		remettre la valeur en bout de liste ?!
+int pop_at_N(Queue* queue, int N) {
+	int element_a_depop;
+	Element* avant_dernier;
+	Element* element_a_pop = queue->premier;
+	while (N > 0 && element_a_pop != NULL) {
+		avant_dernier = element_a_pop;
+		element_a_pop = element_a_pop->suivant;
+		N -= 1;
+	}
+	element_a_depop = element_a_pop->contenu;
+	avant_dernier->suivant = element_a_pop->suivant;
+	free(element_a_pop);
+	return element_a_depop;
+}/****************************************************/
+
+void sort_queue(Queue* queue) {
+	Element* curseur = queue->premier;
+	Element* tampon;
+	Element* prochain_a_trier = curseur->suivant;
+	if (curseur == NULL) {
+		printf("! Erreur : liste vide !\n");
+	} else if (curseur != NULL && curseur->suivant == NULL) {
+		printf("un seul élément dans la liste => déjà triée.\n");
+	} else {
+		while (curseur != NULL && curseur->suivant != NULL) {
+			Element* tampon = curseur
+			if (curseur->contenu > curseur->suivant->contenu) {
+				curseur = curseur->suivant
+				curseur->suivant = curseur;
+			}
+		}
+	}
+}
+
+

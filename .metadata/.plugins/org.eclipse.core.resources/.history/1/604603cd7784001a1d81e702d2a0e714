@@ -1,0 +1,31 @@
+/*
+*****************************************************************************
+
+
+
+*****************************************************************************
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+#include "queue.h"
+
+int main(int argc, char *argv[]) {
+
+
+	Queue* queue_principale = create_empty_queue();
+	add_to_queue_top(queue_principale, 1);
+	add_to_queue_top(queue_principale, 2);
+	add_to_queue_top(queue_principale, 3);
+	add_to_queue_top(queue_principale, 4);
+	add_to_queue_bottom(queue_principale, 5);
+	add_to_queue_bottom(queue_principale, 6);
+	add_to_queue_bottom(queue_principale, 7);
+	display_queue(queue_principale);
+	insert_in_queue_before(queue_principale, 8, 3);
+	display_queue(queue_principale);
+	insert_in_queue_after(queue_principale, 9, 6);
+	display_queue(queue_principale);
+	printf("Nombre d'éléments dans la queue : %d.\n", nombre_d_elements(queue_principale));
+	return 0;
+}

@@ -1,0 +1,15 @@
+/*
+ * threads.h
+ *
+ *  Created on: Apr 24, 2020
+ *      Author: s_il_vanas
+ */
+
+#ifndef INC_THREADS_H_
+#define INC_THREADS_H_
+
+void thread_red_led(void * arg);
+void thread_blue_led(void * arg);
+void thread_green_led(void * arg);
+
+#endif /* INC_THREADS_H_ */
