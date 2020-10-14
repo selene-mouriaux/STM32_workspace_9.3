@@ -16,7 +16,7 @@ sem_t sem_app;
 
 
 int main(int argc, char *argv[]) {
-//	init_matrix();
+	init_matrix();
 	init_liste(&liste_app);
 	init_liste(&liste_send);
 	sem_init(&sem_read, 0, 0);

@@ -24,18 +24,15 @@ void *thread_display(void *arg);
 void *thread_read(void *arg);
 void *thread_app(void *arg);
 void *thread_timer(void *arg);
-
+void init_matrix(void);
+void set_all_black(void);
 void compute_message(struct Element* message, pos_token_played_t* data);
 void setledmatrix(struct Element *message);
-typedef enum{
-	input_key,
-	trigger_timer,
 
-}t_cmd;
 
 typedef enum{
-	START,
-	STOP,
+	START = 3,
+	STOP = 4 ,
 }Status;
 
 typedef enum{
@@ -57,4 +54,5 @@ typedef struct {
 //}token_mod_t;
 
 void start_timer(int8_t timer_id,int8_t countdown,Owner owner);
+void stop_timer(int8_t timer_id);
 #endif /* THREAD_H_ */

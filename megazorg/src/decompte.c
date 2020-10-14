@@ -24,25 +24,8 @@
 //const Color black = { 0, 0, 0 };
 //#pragma GCC diagnostic warning "-Wunused-variable"
 //
-//void init_matrix(void) {
-//	for (int row = 0; row < TAB_SIZE; row++) {
-//		for (int col = 0; col < TAB_SIZE; col++) {
-//			matrix[row][col].RValue = black.RValue;
-//			matrix[row][col].GValue = black.GValue;
-//			matrix[row][col].BValue = black.BValue;
-//			actual_display[row][col].RValue = black.RValue;
-//			actual_display[row][col].GValue = black.GValue;
-//			actual_display[row][col].BValue = black.BValue;
-//		}
-//	}
-//}
-//void set_all_black(void) {
-//	for (int row = 0; row < 7; row++) {
-//		for (int col = 0; col < 7; col++) {
-//			setLedColor((row + 1), (col + 1), 0, 0, 0);
-//		}
-//	}
-//}
+
+
 ////void decompte(struct Element* receive_value, struct Element* nb_value) {
 ////	if (receive_message(QUEUE_READ, receive_value, SIZEOFMESSAGE)) {
 ////		if (receive_value->data.value[1] == UP) {

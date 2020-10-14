@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
-		<item value="/home/s_il_vanas/Atollic/TrueSTUDIO/STM32_workspace_9.3/K2000/K2000/K2000"/>
+		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3/megazorg"/>
 		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3"/>
 	</list>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">
 		</list>
-	</section>
-	<section name="org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea">
-		<item value="/home/s_il_vanas/Atollic/TrueSTUDIO/STM32_workspace_9.3/100_coeur_de_jeu" key="OUTSIDE_LOCATION"/>
 	</section>
 	<section name="ChooseWorkspaceDialogSettings">
 		<item value="584" key="DIALOG_X_ORIGIN"/>

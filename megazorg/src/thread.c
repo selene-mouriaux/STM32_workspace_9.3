@@ -35,6 +35,25 @@ const Color yellow = { 255, 255, 0 };
 const Color black = { 0, 0, 0 };
 #pragma GCC diagnostic warning "-Wunused-variable"
 
+void init_matrix(void) {
+	for (int row = 0; row < 7; row++) {
+		for (int col = 0; col < 7; col++) {
+			matrix_led[row][col].RValue = black.RValue;
+			matrix_led[row][col].GValue = black.GValue;
+			matrix_led[row][col].BValue = black.BValue;
+			actual_display[row][col].RValue = black.RValue;
+			actual_display[row][col].GValue = black.GValue;
+			actual_display[row][col].BValue = black.BValue;
+		}
+	}
+}
+void set_all_black(void) {
+	for (int row = 0; row < 7; row++) {
+		for (int col = 0; col < 7; col++) {
+			setLedColor((row + 1), (col + 1), 0, 0, 0);
+		}
+	}
+}
 void *thread_read(void *arg) {
 
 	while (1) {
@@ -74,47 +93,107 @@ void *thread_read(void *arg) {
 
 }
 
+void check_win(const winner_t* winner_status, struct Element* send_value) {
+	if (winner_status->win_type == horiz) {
+		printf("player win horiz\n");
+		active_player = NO_PLAYER;
+	} else if (winner_status->win_type == vert) {
+		printf("player win vert\n");
+		active_player = NO_PLAYER;
+	} else if (winner_status->win_type == right_diag) {
+		printf("player win right diag\n");
+		active_player = NO_PLAYER;
+	} else if (winner_status->win_type == left_diag) {
+		printf("player win left diag\n");
+		active_player = NO_PLAYER;
+	}
+
+	if (active_player == PLAYER_1) {
+		send_value->data.token.color = PLAYER_COLOR_1;
+	} else if (active_player == PLAYER_2) {
+		send_value->data.token.color = PLAYER_COLOR_2;
+	}
+}
+
 void *thread_app(void *arg) {
 	//	struct Element nb_value;
 	//	nb_value.data.value[1]=0;
 	active_player = 0;
+	winner_t winner_status;
 	struct Element receive_value;
 	struct Element send_value;
 	pos_token_played_t played_token;
 	while (1) {
-
+		//		iddle 5
+		//		round 15
 		if (receive_message(QUEUE_READ, &receive_value, SIZEOFMESSAGE)) {
 			//			printf("app %d %d \n", receive_value.data.value[0],
 			//					receive_value.data.value[1]);
-			if(receive_value.msg==msg_player){
-				if (receive_value.data.player.player == active_player) {
+			if (receive_value.msg==msg_timer){
+				if (receive_value.data.timer_id == ROUND_TIMER || receive_value.data.timer_id == IDLE_TIMER) {
+					played_token = gp4_play_token();
+					compute_message(&send_value, &played_token);
+					send_message(QUEUE_SEND, &send_value, SIZEOFMESSAGE);
+					played_token = gp4_next_player();
+					winner_status=gp4_check_winner();
+					check_win(&winner_status, &send_value);
+					//decompte(&receive_value, &nb_value);
+				}
 
+			}
+			else if(receive_value.msg==msg_player){
+				stop_timer(IDLE_TIMER);
+				if (receive_value.data.player.player == active_player) {
 					if (receive_value.data.player.direction == DOWN) {
 						played_token = gp4_play_token();
 						compute_message(&send_value, &played_token);
 						send_message(QUEUE_SEND, &send_value, SIZEOFMESSAGE);
 						played_token=gp4_next_player();
-						if (active_player == PLAYER_1) {
-							send_value.data.token.color = PLAYER_COLOR_1;
-						}
-						else if (active_player == PLAYER_2) {
-							send_value.data.token.color = PLAYER_COLOR_2;
-						}
-					}
+						winner_status=gp4_check_winner();
+						check_win(&winner_status, &send_value);
+//						if(winner_status.win_type == horiz){
+//							printf("player win horiz\n");
+//							active_player = NO_PLAYER;
+//
+//						}
+//						else if(winner_status.win_type == vert){
+//							printf("player win vert\n");
+//							active_player = NO_PLAYER;
+//
+//						}
+//						else if (winner_status.win_type == right_diag){
+//							printf("player win right diag\n");
+//							active_player =NO_PLAYER;
+//						}
+//						else if (winner_status.win_type == left_diag){
+//							printf("player win left diag\n");
+//							active_player = NO_PLAYER;
+//						}
+//
+//						if (active_player == PLAYER_1) {
+//							send_value.data.token.color = PLAYER_COLOR_1;
+//						}
+//						else if (active_player == PLAYER_2) {
+//							send_value.data.token.color = PLAYER_COLOR_2;
+//						}
 
-					if (receive_value.data.player.direction== RIGHT) {
+
+					}
+					if (receive_value.data.player.direction == RIGHT) {
+
 						played_token = gp4_move_right();
 
 					}
 					if (receive_value.data.player.direction == LEFT) {
+
 						played_token = gp4_move_left();
 
 					}
-
+					start_timer(IDLE_TIMER,5,thd_app);
 				}
-
-				if (active_player == NO_PLAYER) {
-
+				if (active_player == NO_PLAYER ){
+					set_all_black();
+					init_matrix();
 					gp4_init();
 					gp4_display();
 					active_player = PLAYER_1;
@@ -123,22 +202,27 @@ void *thread_app(void *arg) {
 					played_token.end_position.l = 0;
 					played_token.end_position.c = 3;
 					send_value.data.token.color = PLAYER_COLOR_1;
+					start_timer(ROUND_TIMER,15,thd_app);
+					start_timer(IDLE_TIMER,5,thd_app);
+
 				}
-				gp4_display();
-				compute_message(&send_value, &played_token);
-				send_message(QUEUE_SEND, &send_value, SIZEOFMESSAGE);
+
+
 			}
 
-			//decompte(&receive_value, &nb_value);
-
+			gp4_display();
+			compute_message(&send_value, &played_token);
+			send_message(QUEUE_SEND, &send_value, SIZEOFMESSAGE);
 		}
 
 	}
+
 }
 
 void *thread_display(void *arg) {
 	struct Element value_compt;
 	while (1) {
+
 		if (receive_message(QUEUE_SEND, &value_compt, SIZEOFMESSAGE)) {
 			printf(" display b %d%d  e %d%d \n",
 					value_compt.data.token.position.beg_position.c,
@@ -147,6 +231,7 @@ void *thread_display(void *arg) {
 					value_compt.data.token.position.end_position.l);
 			//			set_number(value_compt.data.value[1]);
 			setledmatrix(&value_compt);
+
 
 			for (int row = 0; row < 7; row++){
 				for (int col = 0; col < 7; col++){
@@ -166,6 +251,13 @@ void *thread_display(void *arg) {
 		}
 	}
 }
+void stop_timer(int8_t timer_id){
+	pthread_mutex_lock (&mutex_timer);
+	timer_table[timer_id].status = STOP;
+	pthread_mutex_unlock (&mutex_timer);
+
+}
+
 void start_timer(int8_t timer_id,int8_t countdown,Owner owner){
 	pthread_mutex_lock (&mutex_timer);
 	timer_table[timer_id].countdown = countdown;
@@ -177,30 +269,29 @@ void start_timer(int8_t timer_id,int8_t countdown,Owner owner){
 
 void *thread_timer(void *arg){
 	struct Element msg_blink;
+
 	while(1){
 		pthread_mutex_lock (&mutex_timer);
 		for(int8_t i=0;i<TIMER_MAX;i ++){
 			if (timer_table[i].status == START){
-				timer_table[i].countdown --;
 				if(timer_table[i].countdown == 0 ){
-					msg_blink.data.value[0]=trigger_timer;
-					msg_blink.data.value[1] = i;
-					msg_blink.data.value[2] = timer_table[i].status;
+					msg_blink.msg =msg_timer;
+					msg_blink.data.timer_id=i;
 					if(timer_table[i].owner == thd_app){
 						send_message(QUEUE_READ,&msg_blink,SIZEOFMESSAGE);
-
 					}
 					else if(timer_table[i].owner == thd_display){
 						send_message(QUEUE_SEND,&msg_blink,SIZEOFMESSAGE);
-
 					}
-
 					timer_table[i].status=STOP;
+				}
+				else{
+					timer_table[i].countdown --;
 				}
 			}
 		}
 		pthread_mutex_unlock (&mutex_timer);
-		usleep(1000);
+		usleep(1000000);
 	}
 
 

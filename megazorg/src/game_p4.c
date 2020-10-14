@@ -98,13 +98,13 @@ pos_token_played_t  gp4_move_left(void) {
 
 }
 bool is_col_empty(int col) {
-	if (col < 1) {
+	if (col < 0) {
 		return false;
 	}
 	if (col > COL_COUNT) {
 		return false;
 	}
-	if (matrix[col - 1][0] == 0) {
+	if (matrix[col][0] == 0) {
 		return true;
 	}
 	return false;
@@ -113,7 +113,7 @@ winner_t gp4_check_vertically(void){
 	winner_t game_status;
 	game_status.status = 0;
 	for (int line = 0; line < 7; line++) {
-		for (int col = 0; col < 4; col++) {
+		for (int col = 0; col < 7; col++) {
 			if (matrix[line][col] == matrix[line][col + 1]) {
 				if (matrix[line][col] == matrix[line][col + 2]) {
 					if (matrix[line][col] == matrix[line][col + 3]) {
@@ -140,7 +140,7 @@ winner_t gp4_check_horizontally(void){
 	winner_t game_status;
 	game_status.status = 0;
 	for (int col = 0; col < 7; col++) {
-		for (int line = 0; line < 3; line++) {
+		for (int line = 0; line < 7; line++) {
 			if (matrix[line][col] == matrix[line + 1][col]) {
 				if (matrix[line][col] ==matrix[line + 2][col]) {
 					if (matrix[line][col] == matrix[line + 3][col]) {
@@ -166,9 +166,10 @@ winner_t gp4_check_horizontally(void){
 winner_t gp4_check_diagonals_right_and_left(void){
 	winner_t game_status;
 	game_status.status = 0;
-	int col, line;
-	for (line = 0; line < 3; line++) {
-		for (col = 0; col < 4; col++) {
+//	int col, line;
+
+	for (int col = 0; col < 7; col++)  {
+		for (int line = 0; line < 7; line++){
 			if (matrix[line][col] == matrix[line + 1][col + 1]) {
 				if (matrix[line][col] == matrix[line + 2][col + 2]) {
 					if (matrix[line][col] == matrix[line + 3][col + 3]) {
@@ -188,8 +189,8 @@ winner_t gp4_check_diagonals_right_and_left(void){
 			}
 		}
 	}
-	for (col = 3; col < 7; col++) {
-		for (line = 0; line < 3; line++) {
+	for (int col = 0; col < 7; col++) {
+		for (int line = 0; line < 7; line++) {
 			if (matrix[line][col] == matrix[line - 1][col - 1]) {
 				if (matrix[line][col] == matrix[line - 2][col - 2]) {
 					if (matrix[line][col] == matrix[line - 3][col - 3]) {
@@ -211,17 +212,21 @@ winner_t gp4_check_diagonals_right_and_left(void){
 	}
 	return game_status;
 }
-winner_t gp4_check_winner(void) {
+
+winner_t gp4_check_winner (void) {
 	winner_t game_status;
 
 	int compteur = 0;
 
 	game_status = gp4_check_horizontally();
 	if(game_status.status == live){
-		game_status = gp4_check_vertically();
-		if(game_status.status == live){
-			game_status = gp4_check_diagonals_right_and_left();
-		}
+	}
+	game_status = gp4_check_vertically();
+	if(game_status.status == live){
+	}
+	game_status = gp4_check_diagonals_right_and_left();
+	if (game_status.status == live){
+
 	}
 
 	for (int col = 0; col < 7; col++) {
@@ -237,7 +242,6 @@ winner_t gp4_check_winner(void) {
 
 
 pos_token_played_t gp4_play_token(void){
-	winner_t winner_status;
 	int8_t play_line = LINE_COUNT -1;
 	while (matrix[g_token_top_selector][play_line] != EMPTY_SPACE){
 		play_line -= 1;
@@ -249,19 +253,6 @@ pos_token_played_t gp4_play_token(void){
 	token_played.beg_position.l = 0;
 	token_played.end_position.c = g_token_top_selector ;
 	token_played.end_position.l = play_line+1;
-	winner_status=gp4_check_winner();
-	if(winner_status.win_type == horiz){
-		printf("player win horiz\n");
-	}
-	else if(winner_status.win_type == vert){
-		printf("player win vert\n");
-	}
-	else if (winner_status.win_type == right_diag){
-		printf("player win right diag\n");
-	}
-	else if (winner_status.win_type == left_diag){
-		printf("player win left diag\n");
-	}
 
 	return token_played;
 }

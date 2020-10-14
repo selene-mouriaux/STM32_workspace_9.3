@@ -52,8 +52,8 @@ typedef enum {
 } status_t;
 
 typedef enum {
-	horiz ,
 	vert,
+	horiz,
 	right_diag,
 	left_diag,
 } victory_t;

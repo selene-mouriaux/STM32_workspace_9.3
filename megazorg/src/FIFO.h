@@ -18,9 +18,16 @@ typedef enum {
 	msg_timer,
 }msg_type;
 
+typedef enum{
+	IDLE_TIMER,
+	ROUND_TIMER,
+
+}timer;
+
 struct Element {
 	msg_type msg;
 	union {
+		timer timer_id;
 		player_data_msg player;
 		token_t token;
 		char value[SIZEOFMESSAGE];
