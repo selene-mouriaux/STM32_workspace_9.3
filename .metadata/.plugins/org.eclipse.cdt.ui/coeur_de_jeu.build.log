@@ -1,0 +1,6 @@
+14:56:09 **** Incremental Build of configuration Debug for project coeur_de_jeu ****
+make -j4 all 
+make: Nothing to be done for 'all'.
+
+14:56:10 Build Finished (took 476ms)
+
