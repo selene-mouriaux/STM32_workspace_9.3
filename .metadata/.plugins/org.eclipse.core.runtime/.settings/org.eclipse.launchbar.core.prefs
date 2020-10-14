@@ -15,3 +15,6 @@ org.eclipse.launchbar.core.descriptorType.default\:K2000.elf/activeLaunchMode=de
 org.eclipse.launchbar.core.descriptorType.default\:Photon_man\ Debug/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:leds_00\ Debug/activeLaunchMode=run
 org.eclipse.launchbar.core.descriptorType.default\:leds_01\ Debug/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:puissance_4_stm32.elf/activeLaunchMode=debug
+org.eclipse.launchbar.core.descriptorType.default\:test_sizeof_vartypes\ Debug/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:test_sizeof_vartypes\ Debug/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
