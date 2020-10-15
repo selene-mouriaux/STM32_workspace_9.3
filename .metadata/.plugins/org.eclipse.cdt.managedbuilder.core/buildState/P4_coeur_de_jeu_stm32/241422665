@@ -1,0 +1,10 @@
+#
+#Thu Oct 15 16:32:00 CEST 2020
+Debug/P4_coeur_de_jeu_stm32=1
+Src/queue.c=1
+Debug/Src/queue.o=1
+Debug/Src/main.o=1
+Src/main.c=1
+Src/queue.h=1
+P4_coeur_de_jeu_stm32.elf=1
+Debug/P4_coeur_de_jeu_stm32.elf=1
