@@ -2982,3 +2982,245 @@ Binding(ALT+CTRL+T,
 
 !ENTRY com.atollic.truestudio.mbs 4 0 2020-10-15 14:18:34.151
 !MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-15 16:33:18.057
+!MESSAGE Unloading product manager
+!SESSION 2020-10-16 08:35:33.620 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-16 08:35:35.622
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-16 08:35:35.627
+!MESSAGE OS info: Linux, 5.0.0-32-generic, amd64
+
+!ENTRY TrueSTUDIO 1 0 2020-10-16 08:35:36.496
+!MESSAGE Target: STM32, Version: 9.3.0, Build date: 20190212-0734, Installation dir: /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2020-10-16 08:35:36.496
+!MESSAGE Workspace: /home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3
+
+!ENTRY org.eclipse.jface 2 0 2020-10-16 08:35:37.745
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-10-16 08:35:37.745
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6dd38df2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@99c3cee,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2020-10-16 08:35:41.999
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-10-16 08:35:42.086
+!MESSAGE Code Review is up.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.573
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.574
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.574
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.574
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.584
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.585
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.585
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:19:55.585
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:19:55.591
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:19:55.591
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:19:55.592
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:19:55.592
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.915
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.915
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.915
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.916
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.921
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.921
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.921
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 10:36:27.921
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:36:27.926
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:36:27.927
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:36:27.928
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 10:36:27.928
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.461
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.462
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.462
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.462
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.467
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.467
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.467
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-16 11:07:00.467
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 11:07:00.471
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 11:07:00.471
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 11:07:00.472
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-16 11:07:00.472
+!MESSAGE Failed to find device info
+
+!ENTRY org.eclipse.cdt.launch 4 104 2020-10-16 13:19:09.292
+!MESSAGE Program file does not exist
+!STACK 0
+java.io.FileNotFoundException: /home/s_il_vanas/Atollic/TrueSTUDIO/STM32_workspace_9.3/FreeRTOS/Core/Src/main.c not found
+	at org.eclipse.cdt.launch.AbstractCLaunchDelegate2.verifyProgramPath(AbstractCLaunchDelegate2.java:681)
+	at org.eclipse.cdt.launch.internal.LocalRunLaunchDelegate.checkBinaryDetails(LocalRunLaunchDelegate.java:266)
+	at org.eclipse.cdt.launch.internal.LocalRunLaunchDelegate.runLocalApplication(LocalRunLaunchDelegate.java:88)
+	at org.eclipse.cdt.launch.internal.LocalRunLaunchDelegate.launch(LocalRunLaunchDelegate.java:76)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+!SUBENTRY 1 org.eclipse.cdt.launch 4 104 2020-10-16 13:19:09.294
+!MESSAGE /home/s_il_vanas/Atollic/TrueSTUDIO/STM32_workspace_9.3/FreeRTOS/Core/Src/main.c not found
+!STACK 0
+java.io.FileNotFoundException: /home/s_il_vanas/Atollic/TrueSTUDIO/STM32_workspace_9.3/FreeRTOS/Core/Src/main.c not found
+	at org.eclipse.cdt.launch.AbstractCLaunchDelegate2.verifyProgramPath(AbstractCLaunchDelegate2.java:681)
+	at org.eclipse.cdt.launch.internal.LocalRunLaunchDelegate.checkBinaryDetails(LocalRunLaunchDelegate.java:266)
+	at org.eclipse.cdt.launch.internal.LocalRunLaunchDelegate.runLocalApplication(LocalRunLaunchDelegate.java:88)
+	at org.eclipse.cdt.launch.internal.LocalRunLaunchDelegate.launch(LocalRunLaunchDelegate.java:76)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:885)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:739)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1039)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-10-16 13:24:21.464
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.mi.service.MIRunControl$9@38d97076): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Context cannot be suspended. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2020-10-16 13:24:21.464
+!MESSAGE Context cannot be suspended.
+
+!ENTRY com.atollic.truestudio.debug 4 0 2020-10-16 13:30:42.745
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 5 (contextManager row 121)
+
+!ENTRY com.atollic.truestudio.debug 4 0 2020-10-16 13:30:42.746
+!MESSAGE Existing sessions are:
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-16 15:10:36.465
+!MESSAGE Unloading product manager
+!SESSION 2020-10-16 15:10:47.544 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-16 15:10:49.346
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-16 15:10:49.351
+!MESSAGE OS info: Linux, 5.0.0-32-generic, amd64
+
+!ENTRY TrueSTUDIO 1 0 2020-10-16 15:10:50.157
+!MESSAGE Target: STM32, Version: 9.3.0, Build date: 20190212-0734, Installation dir: /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2020-10-16 15:10:50.157
+!MESSAGE Workspace: /home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3
+
+!ENTRY org.eclipse.jface 2 0 2020-10-16 15:10:51.344
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-10-16 15:10:51.344
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@34eaf9c1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5bbf744b,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2020-10-16 15:10:54.714
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-10-16 15:10:54.743
+!MESSAGE Code Review is up.

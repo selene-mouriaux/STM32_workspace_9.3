@@ -1,11 +1,1 @@
-16:32:00 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
-Info: Internal Builder is used for build
-arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -Os -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/queue.o ../Src/queue.c 
-In file included from ../Src/queue.c:11:0:
-../Src/queue.h:10:22: fatal error: semaphore.h: No such file or directory
- #include<semaphore.h>
-                      ^
-compilation terminated.
-
-16:32:00 Build Finished (took 524ms)
-
+Info: Nothing to build for P4_coeur_de_jeu_stm32
