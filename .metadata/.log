@@ -3839,3 +3839,125 @@ java.lang.NullPointerException
 	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.690
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.691
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.691
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.691
+!MESSAGE Failed to get device info (Debug) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.709
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.709
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.709
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 15:30:01.710
+!MESSAGE Failed to get device info (Release) for project 100_coeur_de_jeux
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 15:30:01.726
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 15:30:01.726
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 15:30:01.727
+!MESSAGE Failed to find device info
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 15:30:01.727
+!MESSAGE Failed to find device info
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-10-19 15:39:28.032
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@3fa4fdd4): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Interrupt failed. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-10-19 15:39:28.032
+!MESSAGE Interrupt failed.
+
+!ENTRY TrueSTUDIO 4 0 2020-10-19 16:18:13.119
+!MESSAGE ST-LINK GDB server failed to start (exit code = 1)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-10-19 16:18:13.173
+!MESSAGE Error in initializing ST-Link device.
+Reason: (1) Failed to connect to device. Please check power and cabling to target.
+
+!ENTRY TrueSTUDIO 4 0 2020-10-19 16:18:29.714
+!MESSAGE ST-LINK GDB server failed to start (exit code = 1)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-10-19 16:18:29.773
+!MESSAGE Error in initializing ST-Link device.
+Reason: (1) Failed to connect to device. Please check power and cabling to target.
+
+!ENTRY TrueSTUDIO 4 0 2020-10-19 16:18:43.543
+!MESSAGE ST-LINK GDB server failed to start (exit code = 1)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-10-19 16:18:43.562
+!MESSAGE Error in initializing ST-Link device.
+Reason: (1) Failed to connect to device. Please check power and cabling to target.
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-19 16:19:12.426
+!MESSAGE Unloading product manager
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-10-19 16:19:13.347
+!MESSAGE The workspace will exit with unsaved changes in this session.
+
+!ENTRY org.eclipse.core.jobs 2 2 2020-10-19 16:19:13.685
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.debug.core.DebugPlugin$EventDispatchJob
+!SESSION 2020-10-19 16:19:22.353 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-19 16:19:24.232
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-19 16:19:24.237
+!MESSAGE OS info: Linux, 5.0.0-32-generic, amd64
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-10-19 16:19:24.323
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY TrueSTUDIO 1 0 2020-10-19 16:19:25.072
+!MESSAGE Target: STM32, Version: 9.3.0, Build date: 20190212-0734, Installation dir: /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2020-10-19 16:19:25.072
+!MESSAGE Workspace: /home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3
+
+!ENTRY org.eclipse.jface 2 0 2020-10-19 16:19:26.178
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-10-19 16:19:26.178
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@15371de2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5503c7d,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2020-10-19 16:19:29.319
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-10-19 16:19:29.363
+!MESSAGE Code Review is up.
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-10-19 16:37:59.053
+!MESSAGE Unloading product manager

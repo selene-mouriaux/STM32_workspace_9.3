@@ -406,8 +406,10 @@ void led_verte_1hz(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	  HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-	  osDelay(500);
+	  HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_SET);
+	  osDelay(10);
+	  HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_RESET);
+	  osDelay(40);
   }
   /* USER CODE END 5 */ 
 }

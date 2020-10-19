@@ -104,14 +104,14 @@ const osThreadAttr_t thread_app_attributes = {
 osThreadId_t thread_readHandle;
 const osThreadAttr_t thread_read_attributes = {
 		.name = "thread_read",
-		.priority = (osPriority_t) osPriorityLow,
+		.priority = (osPriority_t) osPriorityNormal,
 		.stack_size = 128 * 4
 };
 /* Definitions for thread_write */
 osThreadId_t thread_writeHandle;
 const osThreadAttr_t thread_write_attributes = {
 		.name = "thread_write",
-		.priority = (osPriority_t) osPriorityLow,
+		.priority = (osPriority_t) osPriorityNormal,
 		.stack_size = 128 * 4
 };
 /* Definitions for thread_io */
@@ -157,11 +157,15 @@ static struct Queue* write_queue;
 static victory_infos_struct victory_infos;
 
 //Defined colors table of structs.
-static led colors[7] = { { COLOR_ON, COLOR_OFF, COLOR_OFF }, { COLOR_OFF,
-		COLOR_ON,
-		COLOR_OFF }, { COLOR_OFF, COLOR_OFF, COLOR_ON }, { COLOR_ON,
-				COLOR_ON, COLOR_ON }, { COLOR_ON, COLOR_OFF, COLOR_ON }, { COLOR_ON,
-						COLOR_ON, COLOR_OFF }, { COLOR_OFF, COLOR_OFF, COLOR_OFF } };
+static led colors[7] = {
+		{ COLOR_ON, COLOR_OFF, COLOR_OFF },
+		{ COLOR_OFF, COLOR_ON, COLOR_OFF },
+		{ COLOR_OFF, COLOR_OFF, COLOR_ON },
+		{ COLOR_ON,	COLOR_ON, COLOR_ON },
+		{ COLOR_ON, COLOR_OFF, COLOR_ON },
+		{ COLOR_ON,	COLOR_ON, COLOR_OFF },
+		{ COLOR_OFF, COLOR_OFF, COLOR_OFF }
+};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -295,16 +299,16 @@ int main(void)
 
 	/* Create the queue(s) */
 	/* creation of read_queue */
-	read_queueHandle = osMessageQueueNew (16, sizeof(WRITE_QUEUE_BUFFER_SIZE), &read_queue_attributes);
+	read_queueHandle = osMessageQueueNew (16, READ_QUEUE_BUFFER_SIZE, &read_queue_attributes);
 
 	/* creation of write_queue */
-	write_queueHandle = osMessageQueueNew (16, sizeof(WRITE_QUEUE_BUFFER_SIZE), &write_queue_attributes);
+	write_queueHandle = osMessageQueueNew (16, WRITE_QUEUE_BUFFER_SIZE, &write_queue_attributes);
 
 	/* creation of inputs_queue */
-	inputs_queueHandle = osMessageQueueNew (16, sizeof(SIZE_OF_PLAYER_COMMAND_BUFFER), &inputs_queue_attributes);
+	inputs_queueHandle = osMessageQueueNew (16, SIZE_OF_PLAYER_COMMAND_BUFFER, &inputs_queue_attributes);
 
 	/* creation of outputs_queue */
-	outputs_queueHandle = osMessageQueueNew (16, sizeof(SIZE_OF_LED_COMMAND_BUFFER), &outputs_queue_attributes);
+	outputs_queueHandle = osMessageQueueNew (16, SIZE_OF_LED_COMMAND_BUFFER, &outputs_queue_attributes);
 
 	/* USER CODE BEGIN RTOS_QUEUES */
 	/* add queues, ... */
@@ -996,14 +1000,14 @@ void thread_IO_queues(void *argument)
 	for(;;)
 	{
 		unsigned char buffer[SIZE_OF_LED_COMMAND_BUFFER] = { 0 };
-		if(osMessageQueueGet(&outputs_queueHandle, buffer, 0, 10) == osOK)
+		if(osMessageQueueGet(&outputs_queueHandle, buffer, 0, 20) == osOK)
 		{
-			HAL_UART_Transmit(&huart3,(uint8_t *) buffer, strlen((char*)buffer), 0xFFFF);
+			HAL_UART_Transmit(&huart3,(uint8_t *) buffer, SIZE_OF_LED_COMMAND_BUFFER, 10);
 		}
 
 		if(HAL_UART_Receive(&huart3,(uint8_t *) buffer, SIZE_OF_PLAYER_COMMAND_BUFFER, 10) == HAL_OK)
 		{
-			osMessageQueuePut(&inputs_queueHandle, buffer, 0, 10);
+			osMessageQueuePut(&inputs_queueHandle, buffer, 0, osWaitForever);
 		}
 		osDelay(1);
 	}
