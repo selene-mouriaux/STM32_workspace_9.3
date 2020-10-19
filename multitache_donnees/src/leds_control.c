@@ -45,6 +45,35 @@
 #define SIZE_OF_PLAYER_COMMAND_BUFFER (5)
 
 /**
+ * @brief encode number between 0 and 15 in its hexadecimal representation
+ *
+ * @param i Number to encode
+ * @return [0-9A-F] if 0 < i < 16; X otherwise
+ */
+static inline unsigned char toHexaHalfByte(const unsigned char i) {
+  if (i < 9) {
+    return '0' + i;
+  }
+  else if (i < 16) {
+    return 'A' + (i - 10);
+  }
+  else {
+    return 'X';
+  }
+}
+
+/**
+ * @brief encode byte in its hexadecimal representation
+ *
+ * @param buffer Buffer to store result, should be at least size 2
+ * @param byte Byte to encode
+ */
+static inline void encodeByte(char * const buffer, const unsigned char byte) {
+  buffer[0] = toHexaHalfByte((byte >> 4) & 0x0F);
+  buffer[1] = toHexaHalfByte(byte & 0x0F);
+}
+
+/**
  * @brief compute buffer to control led through serial link
  *
  * @param buffer Buffer to fill. Buffer must have enough memory: (4 + (nb leds per ring)*3) bytes
@@ -54,18 +83,24 @@
  * @param green Green value of RGB code
  * @param blue Blue value of RGB code
  */
-static void computeMessage(unsigned char * const buffer,
-    const unsigned int row, 
-    const unsigned int col, 
-    const unsigned int red, 
-    const unsigned int green, 
-    const unsigned int blue) {
+static void computeMessage(char * const buffer,
+		const unsigned char row,
+		const unsigned char col,
+		const unsigned char red,
+		const unsigned char green,
+		const unsigned char blue) {
 
-  snprintf((char *)buffer, 10, "R%d%d%02X%02X%02X", row, col, red,green,blue);
+	buffer[0] = 'R';
 
-  // Replace \0 by \n
-  buffer[SIZE_OF_LED_COMMAND_BUFFER - 1] = '\n';
+	buffer[1] = toHexaHalfByte(row);
+	buffer[2] = toHexaHalfByte(col);
+	encodeByte(&(buffer[3]), red);
+	encodeByte(&(buffer[5]), green);
+	encodeByte(&(buffer[7]), blue);
+
+	buffer[SIZE_OF_LED_COMMAND_BUFFER - 1] = '\n';
 }
+
 
 static int fd = -1;
 

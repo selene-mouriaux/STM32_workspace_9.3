@@ -104,13 +104,20 @@ const osThreadAttr_t thread_app_attributes = {
 osThreadId_t thread_readHandle;
 const osThreadAttr_t thread_read_attributes = {
 		.name = "thread_read",
-		.priority = (osPriority_t) osPriorityNormal,
+		.priority = (osPriority_t) osPriorityLow,
 		.stack_size = 128 * 4
 };
 /* Definitions for thread_write */
 osThreadId_t thread_writeHandle;
 const osThreadAttr_t thread_write_attributes = {
 		.name = "thread_write",
+		.priority = (osPriority_t) osPriorityLow,
+		.stack_size = 128 * 4
+};
+/* Definitions for thread_io */
+osThreadId_t thread_ioHandle;
+const osThreadAttr_t thread_io_attributes = {
+		.name = "thread_io",
 		.priority = (osPriority_t) osPriorityNormal,
 		.stack_size = 128 * 4
 };
@@ -123,6 +130,14 @@ const osMessageQueueAttr_t read_queue_attributes = {
 osMessageQueueId_t write_queueHandle;
 const osMessageQueueAttr_t write_queue_attributes = {
 		.name = "write_queue"
+};
+/* Definitions for inputs_queue */
+const osMessageQueueAttr_t inputs_queue_attributes = {
+		.name = "inputs_queue"
+};
+/* Definitions for outputs_queue */
+const osMessageQueueAttr_t outputs_queue_attributes = {
+		.name = "outputs_queue"
 };
 /* Definitions for myTimer01 */
 osTimerId_t myTimer01Handle;
@@ -158,6 +173,7 @@ static void MX_USB_OTG_FS_PCD_Init(void);
 void thread_handler_app(void *argument);
 void thread_handler_read(void *argument);
 void thread_handler_write(void *argument);
+void thread_IO_queues(void *argument);
 void Callback01(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -279,10 +295,16 @@ int main(void)
 
 	/* Create the queue(s) */
 	/* creation of read_queue */
-	read_queueHandle = osMessageQueueNew (16, sizeof(char*), &read_queue_attributes);
+	read_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &read_queue_attributes);
 
 	/* creation of write_queue */
-	write_queueHandle = osMessageQueueNew (16, sizeof(char*), &write_queue_attributes);
+	write_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &write_queue_attributes);
+
+	/* creation of inputs_queue */
+	inputs_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &inputs_queue_attributes);
+
+	/* creation of outputs_queue */
+	outputs_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &outputs_queue_attributes);
 
 	/* USER CODE BEGIN RTOS_QUEUES */
 	/* add queues, ... */
@@ -290,13 +312,16 @@ int main(void)
 
 	/* Create the thread(s) */
 	/* creation of thread_app */
-//	thread_appHandle = osThreadNew(thread_handler_app, NULL, &thread_app_attributes);
+	thread_appHandle = osThreadNew(thread_handler_app, NULL, &thread_app_attributes);
 
 	/* creation of thread_read */
-//	thread_readHandle = osThreadNew(thread_handler_read, NULL, &thread_read_attributes);
+	thread_readHandle = osThreadNew(thread_handler_read, NULL, &thread_read_attributes);
 
 	/* creation of thread_write */
 	thread_writeHandle = osThreadNew(thread_handler_write, NULL, &thread_write_attributes);
+
+	/* creation of thread_io */
+	thread_ioHandle = osThreadNew(thread_IO_queues, NULL, &thread_io_attributes);
 
 	/* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
@@ -762,9 +787,6 @@ void thread_handler_write(void *argument)
 
 			if (tmp_message_write[0] == CONNECT_4) {
 
-				//Console Display
-				gp4_display();
-				//Empty grid condition.
 				if (tmp_message_write[1] == RESET) {
 					for (int row = 2; row < 8; row++) {
 						for (int col = 1; col < 8; col++) {
@@ -958,6 +980,33 @@ void thread_handler_write(void *argument)
 		osDelay(1);
 	}
 	/* USER CODE END thread_handler_write */
+}
+
+/* USER CODE BEGIN Header_thread_IO_queues */
+/**
+ * @brief Function implementing the thread_io thread.
+ * @param argument: Not used
+ * @retval None
+ */
+/* USER CODE END Header_thread_IO_queues */
+void thread_IO_queues(void *argument)
+{
+	/* USER CODE BEGIN thread_IO_queues */
+	/* Infinite loop */
+	for(;;)
+	{
+		unsigned char buffer[SIZE_OF_LED_COMMAND_BUFFER] = { 0 };
+		if(osMessageQueueGet(&outputs_queueHandle, buffer, 0, 10) == osOK)
+		{
+			HAL_UART_Transmit(&huart3,(uint8_t *) buffer, strlen((char*)buffer), 0xFFFF);
+		}
+
+		if(HAL_UART_Receive(&huart3,(uint8_t *) buffer, SIZE_OF_PLAYER_COMMAND_BUFFER, 10) == HAL_OK)
+		{
+			osMessageQueuePut(&inputs_queueHandle, buffer, 0, 10);
+		}
+	}
+	/* USER CODE END thread_IO_queues */
 }
 
 /* Callback01 function */

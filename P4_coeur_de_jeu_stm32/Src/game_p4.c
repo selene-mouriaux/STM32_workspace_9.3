@@ -74,28 +74,6 @@ void gp4_init(void) {
 	victory_infos.victory_type = NO_VICTORY;
 }
 
-//Affiche la matrice dans la console.
-void gp4_display(void) {
-	char top_line[80 + 1];
-	char tmp_add[10 + 1];
-	snprintf(top_line, 80, "  TOP   = ");
-	for (int8_t col = 0; col < COLS; col++) {
-		if (col == token_top_selector)
-			snprintf(tmp_add, 10, "%d ", active_player);
-		else
-			snprintf(tmp_add, 10, "0 ");
-		strcat(top_line, tmp_add);
-	}
-	snprintf(tmp_add, 10, "(%d)", active_player_color);
-	strcat(top_line, tmp_add);
-	debug_printf(2, "%s\n", top_line);
-	for (int8_t row = 0; row < ROWS; row++) {
-		debug_printf(2, " Line %d = %d %d %d %d %d %d %d\n", (row + 1),
-				matrix[row][0], matrix[row][1], matrix[row][2], matrix[row][3],
-				matrix[row][4], matrix[row][5], matrix[row][6]);
-	}
-}
-
 //Bouger le jeton en jeu vers la gauche.
 move_t gp4_move_left(void) {
 	for (int8_t col = (token_top_selector - 1); col >= -1; col--) {

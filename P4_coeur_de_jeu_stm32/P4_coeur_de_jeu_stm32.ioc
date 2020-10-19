@@ -2,7 +2,7 @@
 Mcu.Family=STM32F4
 ProjectManager.MainLocation=Src
 RCC.MCOFreq_Value=72000000
-FREERTOS.Queues01=read_queue,16,uint16_t,0,Dynamic,NULL,NULL;write_queue,16,uint16_t,0,Dynamic,NULL,NULL
+FREERTOS.Queues01=read_queue,16,uint16_t,0,Dynamic,NULL,NULL;write_queue,16,uint16_t,0,Dynamic,NULL,NULL;inputs_queue,16,uint16_t,0,Dynamic,NULL,NULL;outputs_queue,16,uint16_t,0,Dynamic,NULL,NULL
 PB13.GPIOParameters=GPIO_Label
 RCC.USART1Freq_Value=72000000
 RCC.CortexFreq_Value=168000000
@@ -158,7 +158,7 @@ RCC.SAI_AClocksFreq_Value=24500000
 PA2.Locked=true
 ProjectManager.ProjectFileName=P4_coeur_de_jeu_stm32.ioc
 RCC.ADC12outputFreq_Value=72000000
-FREERTOS.Tasks01=thread_app,24,128,thread_handler_app,Default,NULL,Dynamic,NULL,NULL;thread_read,8,128,thread_handler_read,Default,NULL,Dynamic,NULL,NULL;thread_write,8,128,thread_handler_write,Default,NULL,Dynamic,NULL,NULL
+FREERTOS.Tasks01=thread_app,24,128,thread_handler_app,Default,NULL,Dynamic,NULL,NULL;thread_read,8,128,thread_handler_read,Default,NULL,Dynamic,NULL,NULL;thread_write,8,128,thread_handler_write,Default,NULL,Dynamic,NULL,NULL;thread_io,24,128,thread_IO_queues,Default,NULL,Dynamic,NULL,NULL
 PG7.Locked=true
 PA7.Mode=RMII
 PG7.Signal=GPIO_Input

@@ -1,0 +1,18 @@
+08:54:29 **** Build of configuration Debug for project multitache_donnees ****
+make -j4 all 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/game.d" -MT"src/game.o" -o "src/game.o" "../src/game.c"
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/game_p4.d" -MT"src/game_p4.o" -o "src/game_p4.o" "../src/game_p4.c"
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/leds_control.d" -MT"src/leds_control.o" -o "src/leds_control.o" "../src/leds_control.c"
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/leds_control.c: In function ‘setLedColor’:
+../src/leds_control.c:142:18: warning: pointer targets in passing argument 1 of ‘computeMessage’ differ in signedness [-Wpointer-sign]
+   computeMessage(buffer, finalRow, finalCol, red, green, blue);
+                  ^~~~~~
+../src/leds_control.c:86:13: note: expected ‘char * const’ but argument is of type ‘unsigned char *’
+ static void computeMessage(char * const buffer,
+             ^~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/timer.d" -MT"src/timer.o" -o "src/timer.o" "../src/timer.c"
+gcc  -o "multitache_donnees"  ./src/game.o ./src/game_p4.o ./src/leds_control.o ./src/main.o ./src/timer.o   -lpthread
+
+08:54:30 Build Finished (took 777ms)
+

@@ -8,6 +8,11 @@
 #ifndef _LEDS_CONTROL
 #define _LEDS_CONTROL
 
+#include "cmsis_os2.h"
+
+#define SIZE_OF_LED_COMMAND_BUFFER (10)
+#define SIZE_OF_PLAYER_COMMAND_BUFFER (5)
+
 typedef enum {
   LCRC_OK,
   LCRC_ERROR_SERIAL_OPEN,  // Check simulator status - impossible to open serial link
@@ -18,6 +23,9 @@ typedef enum {
   LCRC_ERROR_ROW,          // ROW must be between 1 and 7
   LCRC_ERROR_RGB_VALUE,    // Value of red, green and blue must be less or equal to 255
 } LedControlReturnCode ;
+
+osMessageQueueId_t inputs_queueHandle;
+osMessageQueueId_t outputs_queueHandle;
 
 /**
  * @brief Send command to a led

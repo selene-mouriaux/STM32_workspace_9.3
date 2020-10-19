@@ -50,10 +50,36 @@
 #define LC_SERIAL_PATH "/tmp/puissance4/serial/ttyS1"
 #endif
 
-#define SIZE_OF_LED_COMMAND_BUFFER (10)
-#define SIZE_OF_PLAYER_COMMAND_BUFFER (5)
-
 extern UART_HandleTypeDef huart3;
+
+/**
+ * @brief encode number between 0 and 15 in its hexadecimal representation
+ *
+ * @param i Number to encode
+ * @return [0-9A-F] if 0 < i < 16; X otherwise
+ */
+static inline unsigned char toHexaHalfByte(const unsigned char i) {
+	if (i < 9) {
+		return '0' + i;
+	}
+	else if (i < 16) {
+		return 'A' + (i - 10);
+	}
+	else {
+		return 'X';
+	}
+}
+
+/**
+ * @brief encode byte in its hexadecimal representation
+ *
+ * @param buffer Buffer to store result, should be at least size 2
+ * @param byte Byte to encode
+ */
+static inline void encodeByte(char * const buffer, const unsigned char byte) {
+	buffer[0] = toHexaHalfByte((byte >> 4) & 0x0F);
+	buffer[1] = toHexaHalfByte(byte & 0x0F);
+}
 
 /**
  * @brief compute buffer to control led through serial link
@@ -65,17 +91,21 @@ extern UART_HandleTypeDef huart3;
  * @param green Green value of RGB code
  * @param blue Blue value of RGB code
  */
-static void computeMessage(unsigned char * const buffer,
-		const unsigned int row,
-		const unsigned int col,
-		const unsigned int red,
-		const unsigned int green,
-		const unsigned int blue) {
+static void computeMessage(char * const buffer,
+		const unsigned char row,
+		const unsigned char col,
+		const unsigned char red,
+		const unsigned char green,
+		const unsigned char blue) {
 
-	snprintf((char *)buffer, 10, "R%d%d%02X%02X%02X", row, col, red,green,blue);
+	buffer[0] = 'R';
 
+	buffer[1] = toHexaHalfByte(row);
+	buffer[2] = toHexaHalfByte(col);
+	encodeByte(&(buffer[3]), red);
+	encodeByte(&(buffer[5]), green);
+	encodeByte(&(buffer[7]), blue);
 
-	// Replace \0 by \n
 	buffer[SIZE_OF_LED_COMMAND_BUFFER - 1] = '\n';
 }
 
@@ -101,13 +131,7 @@ LedControlReturnCode setLedColor(const unsigned int row,
 	unsigned char buffer[SIZE_OF_LED_COMMAND_BUFFER] = { 0 };
 
 	computeMessage(buffer, finalRow, finalCol, red, green, blue);
-	HAL_UART_Transmit(&huart3,(uint8_t *) buffer, strlen((char*)buffer), 0xFFFF);
-
-	//  const ssize_t nbOfWrittenBytes = LC_WRITE(fd, buffer, SIZE_OF_LED_COMMAND_BUFFER);
-
-	//  if (nbOfWrittenBytes != SIZE_OF_LED_COMMAND_BUFFER) {
-	//    return LCRC_ERROR_SERIAL_WRITE;
-	//  }
+	osMessageQueuePut(&outputs_queueHandle, buffer, 0, osWaitForever);
 
 	return LCRC_OK;
 }
@@ -118,12 +142,9 @@ char readbutton(char *pReadData, char DataSize)
 
 	unsigned char buffer[SIZE_OF_PLAYER_COMMAND_BUFFER] = { 0 };
 
-	const HAL_StatusTypeDef nbOfReadBytes =  HAL_UART_Receive(&huart3,(uint8_t *) pReadData, DataSize, 0xFFFF);
-
-
-	if(nbOfReadBytes==HAL_OK)
+	if(osMessageQueueGet(&inputs_queueHandle, buffer, 0, osWaitForever) == osOK)
 	{
-		memcpy(pReadData,buffer,nbOfReadBytes);
+		memcpy(pReadData, buffer, SIZE_OF_PLAYER_COMMAND_BUFFER);
 		return LCRC_OK;
 	}
 	return LCRC_ERROR_SERIAL_READ;
