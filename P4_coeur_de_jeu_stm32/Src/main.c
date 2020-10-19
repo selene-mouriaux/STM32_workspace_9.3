@@ -295,16 +295,16 @@ int main(void)
 
 	/* Create the queue(s) */
 	/* creation of read_queue */
-	read_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &read_queue_attributes);
+	read_queueHandle = osMessageQueueNew (16, sizeof(WRITE_QUEUE_BUFFER_SIZE), &read_queue_attributes);
 
 	/* creation of write_queue */
-	write_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &write_queue_attributes);
+	write_queueHandle = osMessageQueueNew (16, sizeof(WRITE_QUEUE_BUFFER_SIZE), &write_queue_attributes);
 
 	/* creation of inputs_queue */
-	inputs_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &inputs_queue_attributes);
+	inputs_queueHandle = osMessageQueueNew (16, sizeof(SIZE_OF_PLAYER_COMMAND_BUFFER), &inputs_queue_attributes);
 
 	/* creation of outputs_queue */
-	outputs_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &outputs_queue_attributes);
+	outputs_queueHandle = osMessageQueueNew (16, sizeof(SIZE_OF_LED_COMMAND_BUFFER), &outputs_queue_attributes);
 
 	/* USER CODE BEGIN RTOS_QUEUES */
 	/* add queues, ... */
