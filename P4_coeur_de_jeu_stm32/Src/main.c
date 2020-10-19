@@ -1005,6 +1005,7 @@ void thread_IO_queues(void *argument)
 		{
 			osMessageQueuePut(&inputs_queueHandle, buffer, 0, 10);
 		}
+		osDelay(1);
 	}
 	/* USER CODE END thread_IO_queues */
 }

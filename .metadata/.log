@@ -3569,3 +3569,273 @@ java.lang.ClassNotFoundException: org.eclipse.cdt.managedbuilder.gnu.ui.GcovAppC
 	at org.eclipse.ui.actions.BuildAction$1.runInWorkspace(BuildAction.java:285)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.411
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.general.runtimelib.1343925828' fixed. Fixing to 'com.atollic.truestudio.ld.general.clib.small'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.413
+!MESSAGE Famine_project_STM32_4tasks needs property 'FPU' fixed. Fixing from 'com.atollic.truestudio.common_options.target.fpucore.fpv4-sp-d16' to 'com.atollic.truestudio.common_options.target.fpucore.None'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.413
+!MESSAGE Famine_project_STM32_4tasks needs property 'FPU' fixed. Fixing from 'com.atollic.truestudio.common_options.target.fpucore.fpv4-sp-d16' to 'com.atollic.truestudio.common_options.target.fpucore.None'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.413
+!MESSAGE Famine_project_STM32_4tasks needs property 'FPU' fixed. Fixing from 'com.atollic.truestudio.common_options.target.fpucore.fpv4-sp-d16' to 'com.atollic.truestudio.common_options.target.fpucore.None'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.426
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.general.runtimelib.602346171' fixed. Fixing to 'com.atollic.truestudio.ld.general.clib.small'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.426
+!MESSAGE Famine_project_STM32_4tasks needs property 'FPU' fixed. Fixing from 'com.atollic.truestudio.common_options.target.fpucore.fpv4-sp-d16' to 'com.atollic.truestudio.common_options.target.fpucore.None'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.426
+!MESSAGE Famine_project_STM32_4tasks needs property 'FPU' fixed. Fixing from 'com.atollic.truestudio.common_options.target.fpucore.fpv4-sp-d16' to 'com.atollic.truestudio.common_options.target.fpucore.None'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.426
+!MESSAGE Famine_project_STM32_4tasks needs property 'FPU' fixed. Fixing from 'com.atollic.truestudio.common_options.target.fpucore.fpv4-sp-d16' to 'com.atollic.truestudio.common_options.target.fpucore.None'.
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 10:57:55.437
+!MESSAGE Failed to generate command
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Can't find MCU STM32F429ZI
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.getMcpuForMcu(McuOptionCommandGenerator.java:43)
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.generateCommand(McuOptionCommandGenerator.java:62)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.addGeneratedCommand(GCCSpecsDetectorAtollicArm.java:194)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerArguments(GCCSpecsDetectorAtollicArm.java:160)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getArgsFromToolchain(GCCSpecsDetectorAtollicArm.java:127)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerCommand(GCCSpecsDetectorAtollicArm.java:94)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.resolveCommand(AbstractBuiltinSpecsDetector.java:308)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.calculateEnvHash(AbstractBuiltinSpecsDetector.java:422)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.validateEnvironment(AbstractBuiltinSpecsDetector.java:466)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.execute(AbstractBuiltinSpecsDetector.java:481)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.registerListener(AbstractBuiltinSpecsDetector.java:375)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsProvidersSerializer.reRegisterListeners(LanguageSettingsProvidersSerializer.java:1375)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setCurrentDescription(XmlProjectDescriptionStorage.java:386)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setLoaddedDescriptionOnLoad(XmlProjectDescriptionStorage.java:357)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:256)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:437)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:419)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:413)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:406)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager.loadSettings(RefreshScopeManager.java:480)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1$1.visit(RefreshScopeManager.java:153)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:75)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1.resourceChanged(RefreshScopeManager.java:141)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:374)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
+	at org.eclipse.core.internal.resources.Project.open(Project.java:1078)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:509)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.run(SmartImportJob.java:192)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 10:57:55.438
+!MESSAGE Failed to generate command
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Can't find MCU STM32F429ZI
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.getMcpuForMcu(McuOptionCommandGenerator.java:43)
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.generateCommand(McuOptionCommandGenerator.java:62)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.addGeneratedCommand(GCCSpecsDetectorAtollicArm.java:194)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerArguments(GCCSpecsDetectorAtollicArm.java:160)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getArgsFromToolchain(GCCSpecsDetectorAtollicArm.java:127)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerCommand(GCCSpecsDetectorAtollicArm.java:94)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.resolveCommand(AbstractBuiltinSpecsDetector.java:308)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.calculateEnvHash(AbstractBuiltinSpecsDetector.java:422)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.validateEnvironment(AbstractBuiltinSpecsDetector.java:466)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.execute(AbstractBuiltinSpecsDetector.java:481)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.registerListener(AbstractBuiltinSpecsDetector.java:375)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsProvidersSerializer.reRegisterListeners(LanguageSettingsProvidersSerializer.java:1375)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setCurrentDescription(XmlProjectDescriptionStorage.java:386)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setLoaddedDescriptionOnLoad(XmlProjectDescriptionStorage.java:357)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:256)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:437)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:419)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:413)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:406)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager.loadSettings(RefreshScopeManager.java:480)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1$1.visit(RefreshScopeManager.java:153)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:75)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1.resourceChanged(RefreshScopeManager.java:141)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:374)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
+	at org.eclipse.core.internal.resources.Project.open(Project.java:1078)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:509)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.run(SmartImportJob.java:192)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 10:57:55.440
+!MESSAGE Failed to generate command
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Can't find MCU STM32F429ZI
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.getMcpuForMcu(McuOptionCommandGenerator.java:43)
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.generateCommand(McuOptionCommandGenerator.java:62)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.addGeneratedCommand(GCCSpecsDetectorAtollicArm.java:194)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerArguments(GCCSpecsDetectorAtollicArm.java:160)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getArgsFromToolchain(GCCSpecsDetectorAtollicArm.java:127)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerCommand(GCCSpecsDetectorAtollicArm.java:94)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.resolveCommand(AbstractBuiltinSpecsDetector.java:308)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.calculateEnvHash(AbstractBuiltinSpecsDetector.java:422)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.validateEnvironment(AbstractBuiltinSpecsDetector.java:466)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.execute(AbstractBuiltinSpecsDetector.java:481)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.registerListener(AbstractBuiltinSpecsDetector.java:375)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsProvidersSerializer.reRegisterListeners(LanguageSettingsProvidersSerializer.java:1375)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setCurrentDescription(XmlProjectDescriptionStorage.java:386)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setLoaddedDescriptionOnLoad(XmlProjectDescriptionStorage.java:357)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:256)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:437)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:419)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:413)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:406)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager.loadSettings(RefreshScopeManager.java:480)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1$1.visit(RefreshScopeManager.java:153)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:75)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1.resourceChanged(RefreshScopeManager.java:141)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:374)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
+	at org.eclipse.core.internal.resources.Project.open(Project.java:1078)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:509)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.run(SmartImportJob.java:192)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 10:57:55.440
+!MESSAGE Failed to generate command
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Can't find MCU STM32F429ZI
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.getMcpuForMcu(McuOptionCommandGenerator.java:43)
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.generateCommand(McuOptionCommandGenerator.java:62)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.addGeneratedCommand(GCCSpecsDetectorAtollicArm.java:194)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerArguments(GCCSpecsDetectorAtollicArm.java:160)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getArgsFromToolchain(GCCSpecsDetectorAtollicArm.java:127)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerCommand(GCCSpecsDetectorAtollicArm.java:94)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.resolveCommand(AbstractBuiltinSpecsDetector.java:308)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.calculateEnvHash(AbstractBuiltinSpecsDetector.java:422)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.validateEnvironment(AbstractBuiltinSpecsDetector.java:466)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.execute(AbstractBuiltinSpecsDetector.java:481)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.registerListener(AbstractBuiltinSpecsDetector.java:375)
+	at org.eclipse.cdt.internal.core.language.settings.providers.LanguageSettingsProvidersSerializer.reRegisterListeners(LanguageSettingsProvidersSerializer.java:1375)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setCurrentDescription(XmlProjectDescriptionStorage.java:386)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.setLoaddedDescriptionOnLoad(XmlProjectDescriptionStorage.java:357)
+	at org.eclipse.cdt.internal.core.settings.model.xml.XmlProjectDescriptionStorage.getProjectDescription(XmlProjectDescriptionStorage.java:256)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescriptionInternal(CProjectDescriptionManager.java:437)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:419)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:413)
+	at org.eclipse.cdt.internal.core.settings.model.CProjectDescriptionManager.getProjectDescription(CProjectDescriptionManager.java:406)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager.loadSettings(RefreshScopeManager.java:480)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1$1.visit(RefreshScopeManager.java:153)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:75)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.cdt.core.resources.RefreshScopeManager$1.resourceChanged(RefreshScopeManager.java:141)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:374)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
+	at org.eclipse.core.internal.resources.Project.open(Project.java:1078)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.toExistingOrNewProject(SmartImportJob.java:509)
+	at org.eclipse.ui.internal.wizards.datatransfer.SmartImportJob.run(SmartImportJob.java:192)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.atollic.truestudio.mbs 4 0 2020-10-19 10:57:55.444
+!MESSAGE Failed to generate command
+!STACK 0
+org.eclipse.cdt.managedbuilder.core.BuildException: Can't find MCU STM32F429ZI
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.getMcpuForMcu(McuOptionCommandGenerator.java:43)
+	at com.atollic.truestudio.mbs.McuOptionCommandGenerator.generateCommand(McuOptionCommandGenerator.java:62)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.addGeneratedCommand(GCCSpecsDetectorAtollicArm.java:194)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerArguments(GCCSpecsDetectorAtollicArm.java:160)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getArgsFromToolchain(GCCSpecsDetectorAtollicArm.java:127)
+	at com.atollic.truestudio.mbs.GCCSpecsDetectorAtollicArm.getCompilerCommand(GCCSpecsDetectorAtollicArm.java:94)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.resolveCommand(AbstractBuiltinSpecsDetector.java:308)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.startupForLanguage(AbstractBuiltinSpecsDetector.java:609)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector.runForEachLanguage(AbstractBuiltinSpecsDetector.java:561)
+	at org.eclipse.cdt.managedbuilder.language.settings.providers.AbstractBuiltinSpecsDetector$1.runInWorkspace(AbstractBuiltinSpecsDetector.java:496)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.510
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.general.runtimelib.830726505' fixed. Fixing to 'com.atollic.truestudio.ld.general.clib.small'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.512
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.toolchain_options.mcu.1672118295' fixed. Fixing to 'STM32F429ZI'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.513
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.toolchain_options.vendor.575904372' fixed. Fixing to 'STMicroelectronics'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.551
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.general.runtimelib.959121365' fixed. Fixing to 'com.atollic.truestudio.ld.general.clib.small'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.551
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.toolchain_options.mcu.2030719658' fixed. Fixing to 'STM32F429ZI'.
+
+!ENTRY com.atollic.truestudio.mbs 2 0 2020-10-19 10:57:55.551
+!MESSAGE Famine_project_STM32_4tasks needs property 'com.atollic.truestudio.toolchain_options.vendor.955897543' fixed. Fixing to 'STMicroelectronics'.
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-10-19 10:58:00.898
+!MESSAGE Indexed 'Famine_project_STM32_4tasks' (37 sources, 72 headers) in 3.02 sec: 10,450 declarations; 49,774 references; 41 unresolved inclusions; 434 syntax errors; 8,082 unresolved names (12%)
+
+!ENTRY org.eclipse.debug.core 4 2 2020-10-19 11:59:28.696
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.internal.core.srcfinder.CSourceFinder.launchConfigurationRemoved(CSourceFinder.java:366)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.run(LaunchManager.java:223)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.notify(LaunchManager.java:207)
+	at org.eclipse.debug.internal.core.LaunchManager.launchConfigurationDeleted(LaunchManager.java:2183)
+	at org.eclipse.debug.internal.core.LaunchManager.projectClosed(LaunchManager.java:2214)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchManagerVisitor.visit(LaunchManager.java:373)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:75)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.debug.internal.core.LaunchManager.resourceChanged(LaunchManager.java:2302)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:374)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+
+!ENTRY org.eclipse.debug.core 4 120 2020-10-19 11:59:28.699
+!MESSAGE An exception occurred during launch configuration change notification.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.debug.internal.core.srcfinder.CSourceFinder.launchConfigurationRemoved(CSourceFinder.java:366)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.run(LaunchManager.java:223)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.notify(LaunchManager.java:207)
+	at org.eclipse.debug.internal.core.LaunchManager.launchConfigurationDeleted(LaunchManager.java:2183)
+	at org.eclipse.debug.internal.core.LaunchManager.projectClosed(LaunchManager.java:2214)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchManagerVisitor.visit(LaunchManager.java:373)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:64)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:75)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:48)
+	at org.eclipse.debug.internal.core.LaunchManager.resourceChanged(LaunchManager.java:2302)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:299)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:289)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:152)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:374)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1469)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:46)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
