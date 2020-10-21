@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3/recherche_frequence_via_LOGIC"/>
+		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3/driver_led_panel_control"/>
+		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3/interrupts_VS_polling_stm32"/>
 		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3/Famine_project_STM32_4tasks"/>
 		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3/P4_coeur_de_jeu_stm32"/>
 		<item value="/home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3/megazorg"/>
