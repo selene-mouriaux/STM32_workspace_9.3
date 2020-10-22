@@ -42,9 +42,9 @@
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-
 ETH_HandleTypeDef heth;
 
+UART_HandleTypeDef huart7;
 UART_HandleTypeDef huart3;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
@@ -88,6 +88,7 @@ static void MX_GPIO_Init(void);
 static void MX_ETH_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
+static void MX_UART7_Init(void);
 void default_polling(void *argument);
 void second_polling(void *argument);
 void dealing_with_interruptions(void *argument);
@@ -132,6 +133,7 @@ int main(void)
 	MX_ETH_Init();
 	MX_USART3_UART_Init();
 	MX_USB_OTG_FS_PCD_Init();
+	MX_UART7_Init();
 	/* USER CODE BEGIN 2 */
 
 	/* USER CODE END 2 */
@@ -273,6 +275,39 @@ static void MX_ETH_Init(void)
 }
 
 /**
+ * @brief UART7 Initialization Function
+ * @param None
+ * @retval None
+ */
+static void MX_UART7_Init(void)
+{
+
+	/* USER CODE BEGIN UART7_Init 0 */
+
+	/* USER CODE END UART7_Init 0 */
+
+	/* USER CODE BEGIN UART7_Init 1 */
+
+	/* USER CODE END UART7_Init 1 */
+	huart7.Instance = UART7;
+	huart7.Init.BaudRate = 115200;
+	huart7.Init.WordLength = UART_WORDLENGTH_8B;
+	huart7.Init.StopBits = UART_STOPBITS_1;
+	huart7.Init.Parity = UART_PARITY_NONE;
+	huart7.Init.Mode = UART_MODE_TX_RX;
+	huart7.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+	huart7.Init.OverSampling = UART_OVERSAMPLING_16;
+	if (HAL_UART_Init(&huart7) != HAL_OK)
+	{
+		Error_Handler();
+	}
+	/* USER CODE BEGIN UART7_Init 2 */
+
+	/* USER CODE END UART7_Init 2 */
+
+}
+
+/**
  * @brief USART3 Initialization Function
  * @param None
  * @retval None
@@ -354,6 +389,7 @@ static void MX_GPIO_Init(void)
 	__HAL_RCC_GPIOH_CLK_ENABLE();
 	__HAL_RCC_GPIOA_CLK_ENABLE();
 	__HAL_RCC_GPIOB_CLK_ENABLE();
+	__HAL_RCC_GPIOE_CLK_ENABLE();
 	__HAL_RCC_GPIOD_CLK_ENABLE();
 	__HAL_RCC_GPIOG_CLK_ENABLE();
 
@@ -422,17 +458,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 void default_polling(void *argument)
 {
 	/* USER CODE BEGIN 5 */
-	int j = 0;
+	// envoi
+	char * message = "xkljwbvmxwk";
 	/* Infinite loop */
 	for(;;)
 	{
 		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_4)){
-			for(j=0; j<7; j++){
-				HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-				HAL_Delay(800);
-				HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
-				HAL_Delay(800);
-			}
+			HAL_UART_Transmit(&huart7, (uint8_t*)message, sizeof(message), 100);
+			HAL_Delay(2000);
 		}
 
 		osDelay(1);
@@ -454,9 +487,9 @@ void second_polling(void *argument)
 	for(;;)
 	{
 		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_5)){
-			  HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_SET);
-			  HAL_Delay(5000);
-			  HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_RESET);
+			HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_SET);
+			HAL_Delay(5000);
+			HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_RESET);
 		}
 		osDelay(1);
 	}
