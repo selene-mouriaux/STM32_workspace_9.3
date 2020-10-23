@@ -459,12 +459,12 @@ void default_polling(void *argument)
 {
 	/* USER CODE BEGIN 5 */
 	// envoi
-	char * message = "xkljwbvmxwk";
+	char * message = "tu r'gardes de travers !!\n\r";
 	/* Infinite loop */
 	for(;;)
 	{
 		if(HAL_GPIO_ReadPin(GPIOD, GPIO_PIN_4)){
-			HAL_UART_Transmit(&huart7, (uint8_t*)message, sizeof(message), 100);
+			HAL_UART_Transmit(&huart7, (uint8_t*)message, 30, 100);
 			HAL_Delay(2000);
 		}
 
