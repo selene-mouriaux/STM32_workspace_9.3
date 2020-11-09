@@ -151,8 +151,8 @@ const osMutexAttr_t myMutex01_attributes = {
 };
 /* USER CODE BEGIN PV */
 //Global Static Vars, inter-thread communication.
-static struct Queue* read_queue;
-static struct Queue* write_queue;
+//static struct Queue* read_queue;
+//static struct Queue* write_queue;
 
 static victory_infos_struct victory_infos;
 
@@ -203,11 +203,11 @@ void SendMessage(Queue_id queue, char* message, int message_length) {
 
 	if (queue == QUEUE_READ) {
 		if (message_length <= READ_QUEUE_BUFFER_SIZE) {
-			osMessageQueuePut(&read_queue, message, 0, osWaitForever);
+			osMessageQueuePut(read_queueHandle, message, 0, osWaitForever);
 		}
 	} else if (queue == QUEUE_WRITE) {
 		if (message_length <= WRITE_QUEUE_BUFFER_SIZE) {
-			osMessageQueuePut(&write_queue, message, 0, osWaitForever);
+			osMessageQueuePut(write_queueHandle, message, 0, osWaitForever);
 		}
 	}
 }
@@ -216,14 +216,14 @@ void SendMessage(Queue_id queue, char* message, int message_length) {
 int ReceiveMessage(Queue_id queue, char* message, int message_length) {
 	if (queue == QUEUE_WRITE) {
 		if (message_length >= WRITE_QUEUE_BUFFER_SIZE) {
-			int status = osMessageQueueGet(&write_queue, message, 0, osWaitForever);
+			int status = osMessageQueueGet(write_queueHandle, message, 0, osWaitForever);
 			return status;
 		} else {
 			return -1;
 		}
 	} else if (queue == QUEUE_READ) {
 		if (message_length >= READ_QUEUE_BUFFER_SIZE) {
-			osMessageQueueGet(&write_queue, message, 0, osWaitForever);
+			osMessageQueueGet(read_queueHandle, message, 0, osWaitForever);
 			return 0;
 		}
 	}
@@ -245,8 +245,8 @@ int main(void)
 {
 	/* USER CODE BEGIN 1 */
 
-	read_queue = read_queueHandle;
-	write_queue = write_queueHandle;
+	//read_queue = read_queueHandle;
+	//write_queue = write_queueHandle;
 
 	/* USER CODE END 1 */
 
@@ -279,7 +279,7 @@ int main(void)
 	osKernelInitialize();
 	/* Create the mutex(es) */
 	/* creation of myMutex01 */
-	myMutex01Handle = osMutexNew(&myMutex01_attributes);
+	//myMutex01Handle = osMutexNew(&myMutex01_attributes);
 
 	/* USER CODE BEGIN RTOS_MUTEX */
 	/* add mutexes, ... */
@@ -291,7 +291,7 @@ int main(void)
 
 	/* Create the timer(s) */
 	/* creation of myTimer01 */
-	myTimer01Handle = osTimerNew(Callback01, osTimerPeriodic, NULL, &myTimer01_attributes);
+//	myTimer01Handle = osTimerNew(Callback01, osTimerPeriodic, NULL, &myTimer01_attributes);
 
 	/* USER CODE BEGIN RTOS_TIMERS */
 	/* start timers, add new ones, ... */
@@ -781,8 +781,8 @@ void thread_handler_write(void *argument)
 	{
 
 		//Led panel controlling handler and blinking handler. 2 THREADS !.
-		setLedColor(1, 1, colors[GREEN].RValue, colors[GREEN].GValue,
-				colors[GREEN].BValue);
+		//setLedColor(1, 1, colors[GREEN].RValue, colors[GREEN].GValue,
+		//		colors[GREEN].BValue);
 
 		//if (pthread_self() == write_thread_id_set) {
 		//Wait message from writing queue.
@@ -1000,14 +1000,14 @@ void thread_IO_queues(void *argument)
 	for(;;)
 	{
 		unsigned char buffer[SIZE_OF_LED_COMMAND_BUFFER] = { 0 };
-		if(osMessageQueueGet(&outputs_queueHandle, buffer, 0, 20) == osOK)
+		if(osMessageQueueGet(outputs_queueHandle, buffer, 0, 20) == osOK)
 		{
 			HAL_UART_Transmit(&huart3,(uint8_t *) buffer, SIZE_OF_LED_COMMAND_BUFFER, 10);
 		}
 
 		if(HAL_UART_Receive(&huart3,(uint8_t *) buffer, SIZE_OF_PLAYER_COMMAND_BUFFER, 10) == HAL_OK)
 		{
-			osMessageQueuePut(&inputs_queueHandle, buffer, 0, osWaitForever);
+			osMessageQueuePut(inputs_queueHandle, buffer, 0, osWaitForever);
 		}
 		osDelay(1);
 	}

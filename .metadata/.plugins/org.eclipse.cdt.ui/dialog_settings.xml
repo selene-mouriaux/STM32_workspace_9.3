@@ -25,6 +25,12 @@
 		<item value="false" key="caseSensitive"/>
 		<item value="227191" key="searchFlags"/>
 		<list key="previousPatterns">
+			<item value="stdio"/>
+			<item value="printf"/>
+			<item value="thread_writ"/>
+			<item value="xrite"/>
+			<item value="TIM1"/>
+			<item value="outputs_queueHandle"/>
 			<item value="EXT"/>
 			<item value="interrupt"/>
 			<item value="ld"/>

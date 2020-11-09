@@ -130,8 +130,8 @@ LedControlReturnCode setLedColor(const unsigned int row,
 
 	unsigned char buffer[SIZE_OF_LED_COMMAND_BUFFER] = { 0 };
 
-	computeMessage(buffer, finalRow, finalCol, red, green, blue);
-	osMessageQueuePut(&outputs_queueHandle, buffer, 0, osWaitForever);
+	computeMessage((char*)buffer, finalRow, finalCol, red, green, blue);
+	osMessageQueuePut(outputs_queueHandle, buffer, 0, osWaitForever);
 
 	return LCRC_OK;
 }
@@ -142,7 +142,7 @@ char readbutton(char *pReadData, char DataSize)
 
 	unsigned char buffer[SIZE_OF_PLAYER_COMMAND_BUFFER] = { 0 };
 
-	if(osMessageQueueGet(&inputs_queueHandle, buffer, 0, osWaitForever) == osOK)
+	if(osMessageQueueGet(inputs_queueHandle, &buffer, 0, osWaitForever) == osOK)
 	{
 		memcpy(pReadData, buffer, SIZE_OF_PLAYER_COMMAND_BUFFER);
 		return LCRC_OK;
