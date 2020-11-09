@@ -50,7 +50,7 @@
 #define LC_SERIAL_PATH "/tmp/puissance4/serial/ttyS1"
 #endif
 
-extern UART_HandleTypeDef huart3;
+extern UART_HandleTypeDef huart7;
 
 /**
  * @brief encode number between 0 and 15 in its hexadecimal representation
