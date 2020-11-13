@@ -1,0 +1,26 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+#include "rtc.h"
+
+void get_RTC_data() {
+	//buffer = HAL RECEIVE
+}
+
+struct Timestamp build_timestamp(uint8_t* buffer) {
+	//turn buffer into Timestamp Struct and return it
+	return horodatage;
+}
+
+char* create_timestamp_string(Timestamp horodatage) {
+	//concat and return string based on struct
+	return ;
+}
+
+unsigned char * composeRtcMessage() {
+	//add d at hte beginning of string to send to debug
+}
+

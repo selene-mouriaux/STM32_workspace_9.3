@@ -1,0 +1,29 @@
+/*
+ * rtc.h
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+
+#ifndef RTC_H_
+#define RTC_H_
+
+#define SIZE_OF_MESSAGE (18)
+
+typedef struct {
+	uint8_t Day;
+	uint8_t Month;
+	uint8_t Year;
+	uint8_t Wod;
+	uint8_t Hour;
+	uint8_t Minute;
+	uint8_t Second;
+}Timestamp;
+
+void get_RTC_data();
+struct Timestamp build_timestamp(uint8_t* buffer);
+unsigned char* create_timestamp_string(Timestamp horodatage);
+unsigned char* composeRtcMessage();
+
+
+#endif /* RTC_H_ */

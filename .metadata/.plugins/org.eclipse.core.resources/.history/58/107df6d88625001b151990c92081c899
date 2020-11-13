@@ -1,0 +1,20 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+#include "rtc.h"
+
+void get_RTC_data() {
+
+}
+
+struct Timestamp build_timestamp() {
+
+}
+
+unsigned char * composeRtcMessage() {
+
+}
+

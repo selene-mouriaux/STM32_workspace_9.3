@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="ShowViewDialog">
-		<item value="340" key="DIALOG_WIDTH"/>
+		<item value="499" key="DIALOG_WIDTH"/>
 		<item value="1|Ubuntu|10.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
-		<item value="443" key="DIALOG_HEIGHT"/>
-		<item value="793" key="DIALOG_X_ORIGIN"/>
-		<item value="227" key="DIALOG_Y_ORIGIN"/>
+		<item value="com.atollic.truestudio.rtos.freertos.queues" key="ShowViewDialog.STORE_SELECTED_VIEW_ID"/>
+		<item value="565" key="DIALOG_HEIGHT"/>
+		<item value="413" key="DIALOG_X_ORIGIN"/>
+		<item value="126" key="DIALOG_Y_ORIGIN"/>
+		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="Debug_FreeRTOS"/>
+		</list>
 	</section>
 </section>

@@ -9,6 +9,8 @@
 #define DEBUG_H_
 
 void debug_setlevel(int inNewLevel) ;
+void sendDebugMessage(int message_type, char* message_to_send, char* debug_message) ;
+
 /*
  * debug_setlevel() : set current debug level
  * 0 => Display only messages with level 0

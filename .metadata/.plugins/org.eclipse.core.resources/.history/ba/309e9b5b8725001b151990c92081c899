@@ -1,0 +1,24 @@
+/*
+ * rtc.h
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+
+#ifndef RTC_H_
+#define RTC_H_
+
+#define SIZE_OF_MESSAGE (18)
+
+typedef struct {
+	int Day;
+	int Month;
+	int Year;
+	int Hour;
+	int Minute;
+	int Second;
+	int Wod;
+}Timestamp;
+
+
+#endif /* RTC_H_ */

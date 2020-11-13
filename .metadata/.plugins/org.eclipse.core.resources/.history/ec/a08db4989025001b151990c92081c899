@@ -1,0 +1,65 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+#include "rtc.h"
+uint8_t buffer[8];
+
+void get_RTC_data() {
+	HAL_I2C_Master_Receive(hi2c1, &1101000, uint8_t *buffer, 8, 100);
+}
+
+uint8_t get_day_from(buffer) {
+
+}
+
+uint8_t get_month_from(buffer) {
+
+}
+
+uint8_t get_year_from(buffer) {
+
+}
+
+uint8_t get_DOW_from(buffer) {
+
+}
+
+uint8_t get_hours_from(buffer) {
+
+}
+
+uint8_t get_minutes_from(buffer) {
+
+}
+
+uint8_t get_seconds_from(buffer) {
+
+}
+
+struct Timestamp build_timestamp(uint8_t* buffer) {
+	Timestamp horodatage = {.Day = get_day_from(buffer), .Month = get_month_from(buffer), .Year = get_year_from(buffer),
+			.DOW = get_DOW_from(buffer), .Hour = get_hours_from(buffer), .Minute = get_minutes_from(buffer),
+			.Second = get_seconds_from(buffer)};
+	return horodatage;
+}
+
+unsigned char* create_timestamp_string(Timestamp horodatage) {
+	//concat and return string based on struct including 'd'..
+	return ;
+}
+
+unsigned char* composeRtcMessage() {
+	//make the calls:
+
+	//get rtc data
+	get_RTC_data();
+	//extract and build struct
+	horodatage = build_timestamp(buffer);
+	//create string
+	//return string  to send
+	return ;
+}
+

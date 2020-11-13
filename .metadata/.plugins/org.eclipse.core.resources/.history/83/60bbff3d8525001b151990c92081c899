@@ -1,0 +1,12 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+#include "rtc.h"
+
+unsigned char * composeRtcMessage() {
+
+}
+

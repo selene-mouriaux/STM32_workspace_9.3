@@ -25,6 +25,12 @@
 		<item value="false" key="caseSensitive"/>
 		<item value="227191" key="searchFlags"/>
 		<list key="previousPatterns">
+			<item value="SET"/>
+			<item value="uart7"/>
+			<item value="uart"/>
+			<item value="read_queueHandle"/>
+			<item value="osMessageQueue"/>
+			<item value="inputs_queueHandle"/>
 			<item value="stdio"/>
 			<item value="printf"/>
 			<item value="thread_writ"/>

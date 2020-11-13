@@ -89,6 +89,8 @@ typedef enum {
 /* Private variables ---------------------------------------------------------*/
 ETH_HandleTypeDef heth;
 
+I2C_HandleTypeDef hi2c1;
+
 UART_HandleTypeDef huart7;
 UART_HandleTypeDef huart3;
 
@@ -168,6 +170,7 @@ static void MX_ETH_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
 static void MX_UART7_Init(void);
+static void MX_I2C1_Init(void);
 void thread_handler_app(void *argument);
 void thread_handler_read(void *argument);
 void thread_handler_write(void *argument);
@@ -265,6 +268,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
   MX_UART7_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -286,16 +290,16 @@ int main(void)
 
   /* Create the queue(s) */
   /* creation of read_queue */
-  read_queueHandle = osMessageQueueNew (16, sizeof(READ_QUEUE_BUFFER_SIZE), &read_queue_attributes);
+  read_queueHandle = osMessageQueueNew (16, 3, &read_queue_attributes);
 
   /* creation of write_queue */
-  write_queueHandle = osMessageQueueNew (16, sizeof(WRITE_QUEUE_BUFFER_SIZE), &write_queue_attributes);
+  write_queueHandle = osMessageQueueNew (16, 8, &write_queue_attributes);
 
   /* creation of inputs_queue */
-  inputs_queueHandle = osMessageQueueNew (16, sizeof(SIZE_OF_PLAYER_COMMAND_BUFFER), &inputs_queue_attributes);
+  inputs_queueHandle = osMessageQueueNew (16, 5, &inputs_queue_attributes);
 
   /* creation of outputs_queue */
-  outputs_queueHandle = osMessageQueueNew (16, sizeof(SIZE_OF_LED_COMMAND_BUFFER), &outputs_queue_attributes);
+  outputs_queueHandle = osMessageQueueNew (16, 10, &outputs_queue_attributes);
 
   /* USER CODE BEGIN RTOS_QUEUES */
 	/* add queues, ... */
@@ -316,6 +320,8 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
+//  char start_bit = 0x00;
+//  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x00,1, &start_bit, 1, 1000);
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -414,6 +420,52 @@ static void MX_ETH_Init(void)
   /* USER CODE BEGIN ETH_Init 2 */
 
   /* USER CODE END ETH_Init 2 */
+
+}
+
+/**
+  * @brief I2C1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_I2C1_Init(void)
+{
+
+  /* USER CODE BEGIN I2C1_Init 0 */
+
+  /* USER CODE END I2C1_Init 0 */
+
+  /* USER CODE BEGIN I2C1_Init 1 */
+
+  /* USER CODE END I2C1_Init 1 */
+  hi2c1.Instance = I2C1;
+  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
+  hi2c1.Init.OwnAddress1 = 0;
+  hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
+  hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
+  hi2c1.Init.OwnAddress2 = 0;
+  hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  if (HAL_I2C_Init(&hi2c1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Analogue filter 
+  */
+  if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Configure Digital filter 
+  */
+  if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN I2C1_Init 2 */
+
+  /* USER CODE END I2C1_Init 2 */
 
 }
 
@@ -1017,6 +1069,9 @@ void thread_handler_write(void *argument)
 void thread_IO_queues(void *argument)
 {
   /* USER CODE BEGIN thread_IO_queues */
+	uint8_t rtcmessage[8];
+	uint8_t slaveAddr = 0b1101000;
+	uint8_t pData = 0x00;
 	/* Infinite loop */
 	for(;;)
 	{
@@ -1029,6 +1084,11 @@ void thread_IO_queues(void *argument)
 		if(HAL_UART_Receive(&huart7,(uint8_t *) buffer, SIZE_OF_PLAYER_COMMAND_BUFFER, 10) == HAL_OK)
 		{
 			osMessageQueuePut(inputs_queueHandle, buffer, 0, osWaitForever);
+		}
+		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)){
+			HAL_I2C_Master_Transmit(&hi2c1, slaveAddr<<1, &pData, 1, 100);
+			HAL_I2C_Master_Receive(&hi2c1, slaveAddr<<1, (uint8_t *) rtcmessage, 8, 100);
+			osDelay(500);
 		}
 		osDelay(1);
 	}

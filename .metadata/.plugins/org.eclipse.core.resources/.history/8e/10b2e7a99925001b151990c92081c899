@@ -1,0 +1,77 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+#include "rtc.h"
+uint8_t buffer[7];
+
+void get_RTC_data() {
+	HAL_I2C_Master_Receive(hi2c1, &0x68, uint8_t *buffer, 7, 100);
+}
+
+uint8_t get_day_from(buffer) {
+ return 01;
+}
+
+uint8_t get_month_from(buffer) {
+	return 02;
+}
+
+uint8_t get_year_from(buffer) {
+	return 03;
+}
+
+uint8_t get_DOW_from(buffer) {
+	return 04;
+}
+
+uint8_t get_hours_from(buffer) {
+	hours = buffer[2];
+	hours_units = hours && 0x0F;
+	hours_tens = hours && 0x10;
+	hours_tens = hours >> 4;
+	return 05;
+}
+
+uint8_t get_minutes_from(buffer) {
+	minutes = buffer[1];
+	minutes_units = minutes && 0x0F;
+	minutes_tens = minutes && 0x70;
+	minutes_tens = minutes_tens >> 4;
+	return 06;
+}
+
+uint8_t get_seconds_from(buffer) {
+	seconds = buffer[0];
+	seconds_units = seconds && 0x0F;
+	seconds_tens = seconds && 0x70;
+	seconds_tens = seconds_tens >> 4;
+	return 07;
+}
+
+struct Timestamp build_timestamp(uint8_t* buffer) {
+	Timestamp horodatage = {.Day = get_day_from(buffer), .Month = get_month_from(buffer), .Year = get_year_from(buffer),
+			.DOW = get_DOW_from(buffer), .Hour = get_hours_from(buffer), .Minute = get_minutes_from(buffer),
+			.Second = get_seconds_from(buffer)};
+	return horodatage;
+}
+
+unsigned char* create_timestamp_string(Timestamp horodatage) {
+	//concat and return string based on struct including 'd'..
+	return ;
+}
+
+unsigned char* composeRtcMessage() {
+	//make the calls:
+
+	//get rtc data
+	get_RTC_data();
+	//extract and build struct
+	horodatage = build_timestamp(buffer);
+	//create string
+	//return string  to send
+	return buffer;
+}
+
