@@ -5,36 +5,34 @@
  *      Author: silvanas
  */
 
-/*#ifndef RTC_H_
+#ifndef RTC_H_
 #define RTC_H_
 
 #include<stdint.h>
 
 
-#define SIZE_OF_MESSAGE (18)
+#define SIZE_OF_MESSAGE (29)
 
 typedef struct {
 	uint8_t Day[2];
 	uint8_t Month[2];
 	uint8_t Year[4];
-	uint8_t DOW;
+	uint8_t DOW[3];
 	uint8_t Hour[2];
 	uint8_t Minute[2];
 	uint8_t Second[2];
 }Timestamp;
 
-void get_RTC_data();
-uint8_t get_day_from(buffer);
-uint8_t get_month_from(buffer);
-uint8_t get_year_from(buffer);
-uint8_t get_DOW_from(buffer);
-uint8_t get_hours_from(buffer);
-uint8_t get_minutes_from(buffer);
-uint8_t get_seconds_from(buffer);
-struct Timestamp build_timestamp(uint8_t* buffer);
+char* get_day_from(uint8_t* rtcmessage);
+char* get_month_from(uint8_t* rtcmessage);
+char* get_year_from(uint8_t* rtcmessage);
+char* get_DOW_from(uint8_t* rtcmessage);
+char* get_hours_from(uint8_t* rtcmessage);
+void get_minutes_from(uint8_t* rtcmessage);
+void get_seconds_from(uint8_t* rtcmessage);
+struct Timestamp build_timestamp(uint8_t* rctmessage);
 unsigned char* create_timestamp_string(Timestamp horodatage);
-char* composeRtcMessage();
+char* composeRtcMessage(char* rctmessage);
 
 
 #endif /* RTC_H_ */
-*/

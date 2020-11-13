@@ -27,6 +27,7 @@
 #include"debug.h"
 #include"game_p4.h"
 #include"leds_control.h"
+#include"rtc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -1072,6 +1073,7 @@ void thread_IO_queues(void *argument)
 	uint8_t rtcmessage[8];
 	uint8_t slaveAddr = 0b1101000;
 	uint8_t pData = 0x00;
+	uint8_t* ptr_date_from_RTC;
 	/* Infinite loop */
 	for(;;)
 	{
@@ -1086,9 +1088,11 @@ void thread_IO_queues(void *argument)
 			osMessageQueuePut(inputs_queueHandle, buffer, 0, osWaitForever);
 		}
 		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)){
+			osDelay(100);
 			HAL_I2C_Master_Transmit(&hi2c1, slaveAddr<<1, &pData, 1, 100);
 			HAL_I2C_Master_Receive(&hi2c1, slaveAddr<<1, (uint8_t *) rtcmessage, 8, 100);
-			osDelay(500);
+			ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+			HAL_UART_Transmit(&huart3,(uint8_t *) ptr_date_from_RTC, SIZE_OF_MESSAGE, 10);
 		}
 		osDelay(1);
 	}

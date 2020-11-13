@@ -1,0 +1,82 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+#include "rtc.h"
+
+uint8_t rtcmessage[8];
+uint8_t slaveAddr = 0b1101000;
+uint8_t pData = 0x00;
+char date_from_RTC[SIZE_OF_MESSAGE];
+extern I2C_HandleTypeDef hi2c1;
+
+void get_RTC_data() {
+	HAL_I2C_Master_Transmit(&hi2c1, slaveAddr<<1, &pData, 1, 100);
+	HAL_I2C_Master_Receive(&hi2c1, slaveAddr<<1, (uint8_t *) rtcmessage, 8, 100);
+}
+
+uint8_t get_day_from(rtcmessage) {
+ return 01;
+}
+
+uint8_t get_month_from(rtcmessage) {
+	return 02;
+}
+
+uint8_t get_year_from(rtcmessage) {
+	return 03;
+}
+
+uint8_t get_DOW_from(rtcmessage) {
+	return 04;
+}
+
+uint8_t get_hours_from(rtcmessage) {
+	hours = rtcmessage[2];
+	hours_units = hours && 0x0F;
+	hours_tens = hours && 0x10;
+	hours_tens = hours >> 4;
+	return 05;
+}
+
+uint8_t get_minutes_from(rtcmessage) {
+	minutes = rtcmessage[1];
+	minutes_units = minutes && 0x0F;
+	minutes_tens = minutes && 0x70;
+	minutes_tens = minutes_tens >> 4;
+	return 06;
+}
+
+uint8_t get_seconds_from(rtcmessage) {
+	seconds = rtcmessage[0];
+	seconds_units = seconds && 0x0F;
+	seconds_tens = seconds && 0x70;
+	seconds_tens = seconds_tens >> 4;
+	return 07;
+}
+
+struct Timestamp build_timestamp(uint8_t* rtcmessage) {
+	Timestamp horodatage = {.Day = get_day_from(rtcmessage), .Month = get_month_from(rtcmessage), .Year = get_year_from(rtcmessage),
+			.DOW = get_DOW_from(rtcmessage), .Hour = get_hours_from(rtcmessage), .Minute = get_minutes_from(rtcmessage),
+			.Second = get_seconds_from(rtcmessage)};
+	return horodatage;
+}
+
+unsigned char* create_timestamp_string(Timestamp horodatage) {
+	//concat and return string based on struct including 'd'..
+	return ;
+}
+
+char* composeRtcMessage() {
+	//make the calls:
+
+	//get rtc data
+	get_RTC_data();
+	//extract and build struct
+	horodatage = build_timestamp(rtcmessage);
+	//create string
+	//return string  to send
+	return "azertyuiopqsdfghj";
+}
