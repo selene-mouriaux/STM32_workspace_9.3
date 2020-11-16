@@ -4479,3 +4479,894 @@ Generate listing file done
 Generate build reports done
 arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
 Info: Nothing to build for P4_coeur_de_jeu_stm32
+08:55:26 **** Rebuild of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/main.o ../Src/main.c 
+../Src/main.c: In function 'thread_IO_queues':
+../Src/main.c:1094:42: warning: pointer targets in passing argument 1 of 'composeRtcMessage' differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                                          ^~~~~~~~~~
+In file included from ../Src/main.c:30:0:
+../Src/rtc.h:35:7: note: expected 'char *' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char* composeRtcMessage(char* rctmessage);
+       ^~~~~~~~~~~~~~~~~
+../Src/main.c:1094:22: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                      ^
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/leds_control.o ../Src/leds_control.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g -Wa,--no-warn -x assembler-with-cpp -specs=nano.specs -o startup/startup_stm32f429xx.o ../startup/startup_stm32f429xx.s 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/stm32f4xx_it.o ../Src/stm32f4xx_it.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/queue.o ../Middlewares/Third_Party/FreeRTOS/Source/queue.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/system_stm32f4xx.o ../Src/system_stm32f4xx.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/numbers_module.o ../Src/numbers_module.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/list.o ../Middlewares/Third_Party/FreeRTOS/Source/list.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/tasks.o ../Middlewares/Third_Party/FreeRTOS/Source/tasks.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/stm32f4xx_hal_timebase_tim.o ../Src/stm32f4xx_hal_timebase_tim.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/debug.o ../Src/debug.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/croutine.o ../Middlewares/Third_Party/FreeRTOS/Source/croutine.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'get_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours && 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours && 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'get_minutes_from' differ in signedness [-Wpointer-sign]
+  get_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void get_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:81:19: warning: pointer targets in passing argument 1 of 'get_seconds_from' differ in signedness [-Wpointer-sign]
+  get_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:48:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void get_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/freertos.o ../Src/freertos.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/game_p4.o ../Src/game_p4.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/timers.o ../Middlewares/Third_Party/FreeRTOS/Source/timers.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/stm32f4xx_hal_msp.o ../Src/stm32f4xx_hal_msp.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/syscalls.o ../Src/syscalls.c 
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c 
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40828	    144	  21840	  62812	   f55c	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+Info: Nothing to build for P4_coeur_de_jeu_stm32
+09:27:35 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours && 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours && 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:81:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:48:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/main.o ../Src/main.c 
+../Src/main.c: In function 'thread_IO_queues':
+../Src/main.c:1094:42: warning: pointer targets in passing argument 1 of 'composeRtcMessage' differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                                          ^~~~~~~~~~
+In file included from ../Src/main.c:30:0:
+../Src/rtc.h:35:7: note: expected 'char *' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char* composeRtcMessage(char* rctmessage);
+       ^~~~~~~~~~~~~~~~~
+../Src/main.c:1094:22: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                      ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40728	    144	  21840	  62712	   f4f8	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+09:29:22 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours && 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours && 0x0F;
+          ^~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40636	    144	  21840	  62620	   f49c	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+09:39:03 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours && 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours && 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40728	    144	  21840	  62712	   f4f8	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+09:41:48 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours && 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours && 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40728	    144	  21840	  62712	   f4f8	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+10:04:26 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours && 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours && 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40728	    144	  21840	  62712	   f4f8	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+10:56:20 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours & 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours & 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40716	    144	  21840	  62700	   f4ec	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+10:57:36 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours & 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours & 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:81:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:48:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40804	    144	  21840	  62788	   f544	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+11:07:51 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours & 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours & 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:81:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:48:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40812	    144	  21840	  62796	   f54c	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+11:08:54 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:33:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours & 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:32:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours & 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:80:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:38:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:81:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:48:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  40820	    144	  21840	  62804	   f554	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+11:22:21 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:51:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours & 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:50:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours & 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:100:15: warning: pointer targets in passing argument 1 of 'set_day_from' differ in signedness [-Wpointer-sign]
+  set_day_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:14:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_day_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:101:17: warning: pointer targets in passing argument 1 of 'set_month_from' differ in signedness [-Wpointer-sign]
+  set_month_from(rtcmessage);
+                 ^~~~~~~~~~
+../Src/rtc.c:24:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_month_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~~
+../Src/rtc.c:102:16: warning: pointer targets in passing argument 1 of 'set_year_from' differ in signedness [-Wpointer-sign]
+  set_year_from(rtcmessage);
+                ^~~~~~~~~~
+../Src/rtc.c:34:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_year_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~
+../Src/rtc.c:103:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:56:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:104:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:66:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c: In function 'set_day_from':
+../Src/rtc.c:22:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_month_from':
+../Src/rtc.c:32:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_year_from':
+../Src/rtc.c:42:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  41112	    144	  21840	  63096	   f678	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+11:27:57 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_DOW_from':
+../Src/rtc.c:49:20: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   date_from_RTC[1] = "DIM";
+                    ^
+../Src/rtc.c:51:20: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   date_from_RTC[1] = "LUN";
+                    ^
+../Src/rtc.c:53:20: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   date_from_RTC[1] = "MAR";
+                    ^
+../Src/rtc.c:55:20: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   date_from_RTC[1] = "MER";
+                    ^
+../Src/rtc.c:57:20: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   date_from_RTC[1] = "JEU";
+                    ^
+../Src/rtc.c:59:20: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   date_from_RTC[1] = "VEN";
+                    ^
+../Src/rtc.c:61:20: warning: assignment makes integer from pointer without a cast [-Wint-conversion]
+   date_from_RTC[1] = "SAM";
+                    ^
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:68:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours & 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:67:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours & 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:117:15: warning: pointer targets in passing argument 1 of 'set_DOW_from' differ in signedness [-Wpointer-sign]
+  set_DOW_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:44:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_DOW_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:118:15: warning: pointer targets in passing argument 1 of 'set_day_from' differ in signedness [-Wpointer-sign]
+  set_day_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:14:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_day_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:119:17: warning: pointer targets in passing argument 1 of 'set_month_from' differ in signedness [-Wpointer-sign]
+  set_month_from(rtcmessage);
+                 ^~~~~~~~~~
+../Src/rtc.c:24:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_month_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~~
+../Src/rtc.c:120:16: warning: pointer targets in passing argument 1 of 'set_year_from' differ in signedness [-Wpointer-sign]
+  set_year_from(rtcmessage);
+                ^~~~~~~~~~
+../Src/rtc.c:34:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_year_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~
+../Src/rtc.c:121:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:73:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:122:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:83:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c: In function 'set_day_from':
+../Src/rtc.c:22:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_month_from':
+../Src/rtc.c:32:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_year_from':
+../Src/rtc.c:42:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_DOW_from':
+../Src/rtc.c:63:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  41340	    144	  21840	  63324	   f75c	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+11:31:39 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:82:10: warning: variable 'hours_tens' set but not used [-Wunused-but-set-variable]
+  uint8_t hours_tens = hours & 0x10;
+          ^~~~~~~~~~
+../Src/rtc.c:81:10: warning: unused variable 'hours_units' [-Wunused-variable]
+  uint8_t hours_units = hours & 0x0F;
+          ^~~~~~~~~~~
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:131:15: warning: pointer targets in passing argument 1 of 'set_DOW_from' differ in signedness [-Wpointer-sign]
+  set_DOW_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:44:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_DOW_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:132:15: warning: pointer targets in passing argument 1 of 'set_day_from' differ in signedness [-Wpointer-sign]
+  set_day_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:14:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_day_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:133:17: warning: pointer targets in passing argument 1 of 'set_month_from' differ in signedness [-Wpointer-sign]
+  set_month_from(rtcmessage);
+                 ^~~~~~~~~~
+../Src/rtc.c:24:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_month_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~~
+../Src/rtc.c:134:16: warning: pointer targets in passing argument 1 of 'set_year_from' differ in signedness [-Wpointer-sign]
+  set_year_from(rtcmessage);
+                ^~~~~~~~~~
+../Src/rtc.c:34:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_year_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~
+../Src/rtc.c:135:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:87:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:136:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:97:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c: In function 'set_day_from':
+../Src/rtc.c:22:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_month_from':
+../Src/rtc.c:32:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_year_from':
+../Src/rtc.c:42:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_DOW_from':
+../Src/rtc.c:77:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  41348	    144	  21840	  63332	   f764	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+11:51:16 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:152:15: warning: pointer targets in passing argument 1 of 'set_DOW_from' differ in signedness [-Wpointer-sign]
+  set_DOW_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:44:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_DOW_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:153:15: warning: pointer targets in passing argument 1 of 'set_day_from' differ in signedness [-Wpointer-sign]
+  set_day_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:14:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_day_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:154:17: warning: pointer targets in passing argument 1 of 'set_month_from' differ in signedness [-Wpointer-sign]
+  set_month_from(rtcmessage);
+                 ^~~~~~~~~~
+../Src/rtc.c:24:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_month_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~~
+../Src/rtc.c:155:16: warning: pointer targets in passing argument 1 of 'set_year_from' differ in signedness [-Wpointer-sign]
+  set_year_from(rtcmessage);
+                ^~~~~~~~~~
+../Src/rtc.c:34:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_year_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~
+../Src/rtc.c:156:17: warning: pointer targets in passing argument 1 of 'set_hours_from' differ in signedness [-Wpointer-sign]
+  set_hours_from(rtcmessage);
+                 ^~~~~~~~~~
+../Src/rtc.c:83:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_hours_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~~
+../Src/rtc.c:157:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:108:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:158:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:118:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c: In function 'set_day_from':
+../Src/rtc.c:22:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_month_from':
+../Src/rtc.c:32:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_year_from':
+../Src/rtc.c:42:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_DOW_from':
+../Src/rtc.c:81:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:106:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  41540	    144	  21840	  63524	   f824	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+11:53:42 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/rtc.o ../Src/rtc.c 
+../Src/rtc.c: In function 'composeRtcMessage':
+../Src/rtc.c:152:15: warning: pointer targets in passing argument 1 of 'set_DOW_from' differ in signedness [-Wpointer-sign]
+  set_DOW_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:44:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_DOW_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:153:15: warning: pointer targets in passing argument 1 of 'set_day_from' differ in signedness [-Wpointer-sign]
+  set_day_from(rtcmessage);
+               ^~~~~~~~~~
+../Src/rtc.c:14:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_day_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~
+../Src/rtc.c:154:17: warning: pointer targets in passing argument 1 of 'set_month_from' differ in signedness [-Wpointer-sign]
+  set_month_from(rtcmessage);
+                 ^~~~~~~~~~
+../Src/rtc.c:24:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_month_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~~
+../Src/rtc.c:155:16: warning: pointer targets in passing argument 1 of 'set_year_from' differ in signedness [-Wpointer-sign]
+  set_year_from(rtcmessage);
+                ^~~~~~~~~~
+../Src/rtc.c:34:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_year_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~
+../Src/rtc.c:156:17: warning: pointer targets in passing argument 1 of 'set_hours_from' differ in signedness [-Wpointer-sign]
+  set_hours_from(rtcmessage);
+                 ^~~~~~~~~~
+../Src/rtc.c:83:7: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ char* set_hours_from(uint8_t* rtcmessage) {
+       ^~~~~~~~~~~~~~
+../Src/rtc.c:157:19: warning: pointer targets in passing argument 1 of 'set_minutes_from' differ in signedness [-Wpointer-sign]
+  set_minutes_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:108:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_minutes_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c:158:19: warning: pointer targets in passing argument 1 of 'set_seconds_from' differ in signedness [-Wpointer-sign]
+  set_seconds_from(rtcmessage);
+                   ^~~~~~~~~~
+../Src/rtc.c:118:6: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ void set_seconds_from(uint8_t* rtcmessage) {
+      ^~~~~~~~~~~~~~~~
+../Src/rtc.c: In function 'set_day_from':
+../Src/rtc.c:22:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_month_from':
+../Src/rtc.c:32:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_year_from':
+../Src/rtc.c:42:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_DOW_from':
+../Src/rtc.c:81:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+../Src/rtc.c: In function 'set_hours_from':
+../Src/rtc.c:106:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  41524	    144	  21840	  63508	   f814	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+12:05:55 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/main.o ../Src/main.c 
+../Src/main.c: In function 'main':
+../Src/main.c:325:43: warning: pointer targets in passing argument 5 of 'HAL_I2C_Mem_Write' differ in signedness [-Wpointer-sign]
+   HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x00,1, &bit1, 1, 100);
+                                           ^
+In file included from ../Inc/stm32f4xx_hal_conf.h:319:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c:327:43: warning: pointer targets in passing argument 5 of 'HAL_I2C_Mem_Write' differ in signedness [-Wpointer-sign]
+   HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x01,1, &bit2, 1, 100);
+                                           ^
+In file included from ../Inc/stm32f4xx_hal_conf.h:319:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c:329:43: warning: pointer targets in passing argument 5 of 'HAL_I2C_Mem_Write' differ in signedness [-Wpointer-sign]
+   HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x02,1, &bit3, 1, 100);
+                                           ^
+In file included from ../Inc/stm32f4xx_hal_conf.h:319:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c:331:43: warning: pointer targets in passing argument 5 of 'HAL_I2C_Mem_Write' differ in signedness [-Wpointer-sign]
+   HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x03,1, &bit4, 1, 100);
+                                           ^
+In file included from ../Inc/stm32f4xx_hal_conf.h:319:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c:333:43: warning: pointer targets in passing argument 5 of 'HAL_I2C_Mem_Write' differ in signedness [-Wpointer-sign]
+   HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x04,1, &bit5, 1, 100);
+                                           ^
+In file included from ../Inc/stm32f4xx_hal_conf.h:319:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c:335:43: warning: pointer targets in passing argument 5 of 'HAL_I2C_Mem_Write' differ in signedness [-Wpointer-sign]
+   HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x05,1, &bit6, 1, 100);
+                                           ^
+In file included from ../Inc/stm32f4xx_hal_conf.h:319:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c:337:43: warning: pointer targets in passing argument 5 of 'HAL_I2C_Mem_Write' differ in signedness [-Wpointer-sign]
+   HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x06,1, &bit7, 1, 100);
+                                           ^
+In file included from ../Inc/stm32f4xx_hal_conf.h:319:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Inc/main.h:31,
+                 from ../Src/main.c:22:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:571:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'thread_IO_queues':
+../Src/main.c:1106:42: warning: pointer targets in passing argument 1 of 'composeRtcMessage' differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                                          ^~~~~~~~~~
+In file included from ../Src/main.c:30:0:
+../Src/rtc.h:35:7: note: expected 'char *' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char* composeRtcMessage(char* rctmessage);
+       ^~~~~~~~~~~~~~~~~
+../Src/main.c:1106:22: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                      ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  42524	    144	  21840	  64508	   fbfc	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 
+13:06:28 **** Incremental Build of configuration Debug for project P4_coeur_de_jeu_stm32 ****
+Info: Internal Builder is used for build
+arm-atollic-eabi-gcc -c -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -std=gnu11 -DUSE_HAL_DRIVER -DSTM32F429xx -I../Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -g -fstack-usage -Wall -specs=nano.specs -o Src/main.o ../Src/main.c 
+../Src/main.c: In function 'thread_IO_queues':
+../Src/main.c:1108:42: warning: pointer targets in passing argument 1 of 'composeRtcMessage' differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                                          ^~~~~~~~~~
+In file included from ../Src/main.c:30:0:
+../Src/rtc.h:35:7: note: expected 'char *' but argument is of type 'uint8_t * {aka unsigned char *}'
+ char* composeRtcMessage(char* rctmessage);
+       ^~~~~~~~~~~~~~~~~
+../Src/main.c:1108:22: warning: pointer targets in assignment differ in signedness [-Wpointer-sign]
+    ptr_date_from_RTC = composeRtcMessage(rtcmessage);
+                      ^
+arm-atollic-eabi-gcc -o P4_coeur_de_jeu_stm32.elf Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_eth.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.o Middlewares/Third_Party/FreeRTOS/Source/croutine.o Middlewares/Third_Party/FreeRTOS/Source/event_groups.o Middlewares/Third_Party/FreeRTOS/Source/list.o Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.o Middlewares/Third_Party/FreeRTOS/Source/queue.o Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.o Middlewares/Third_Party/FreeRTOS/Source/tasks.o Middlewares/Third_Party/FreeRTOS/Source/timers.o Src/debug.o Src/freertos.o Src/game_p4.o Src/leds_control.o Src/main.o Src/numbers_module.o Src/rtc.o Src/stm32f4xx_hal_msp.o Src/stm32f4xx_hal_timebase_tim.o Src/stm32f4xx_it.o Src/syscalls.o Src/system_stm32f4xx.o startup/startup_stm32f429xx.o -mthumb -mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -T../STM32F429ZI_FLASH.ld -specs=nosys.specs -static -Wl,-Map=P4_coeur_de_jeu_stm32.map -Wl,--gc-sections -Wl,--defsym=malloc_getpagesize_P=0x80 -Wl,--start-group -lc -lm -Wl,--end-group -specs=nano.specs 
+/opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/jre/bin/java -jar /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/Tools/arm-atollic-reports.jar sizeinfo list P4_coeur_de_jeu_stm32.elf 
+Generate build reports...
+Print size information
+   text	   data	    bss	    dec	    hex	filename
+  41524	    144	  21840	  63508	   f814	P4_coeur_de_jeu_stm32.elf
+Print size information done
+Generate listing file
+Output sent to: P4_coeur_de_jeu_stm32.list
+Generate listing file done
+Generate build reports done
+arm-atollic-eabi-objcopy -O ihex P4_coeur_de_jeu_stm32.elf P4_coeur_de_jeu_stm32.hex 

@@ -23,13 +23,13 @@ typedef struct {
 	uint8_t Second[2];
 }Timestamp;
 
-char* get_day_from(uint8_t* rtcmessage);
-char* get_month_from(uint8_t* rtcmessage);
-char* get_year_from(uint8_t* rtcmessage);
-char* get_DOW_from(uint8_t* rtcmessage);
-char* get_hours_from(uint8_t* rtcmessage);
-void get_minutes_from(uint8_t* rtcmessage);
-void get_seconds_from(uint8_t* rtcmessage);
+char* set_day_from(uint8_t* rtcmessage);
+char* set_month_from(uint8_t* rtcmessage);
+char* set_year_from(uint8_t* rtcmessage);
+char* set_DOW_from(uint8_t* rtcmessage);
+char* set_hours_from(uint8_t* rtcmessage);
+void set_minutes_from(uint8_t* rtcmessage);
+void set_seconds_from(uint8_t* rtcmessage);
 struct Timestamp build_timestamp(uint8_t* rctmessage);
 unsigned char* create_timestamp_string(Timestamp horodatage);
 char* composeRtcMessage(char* rctmessage);

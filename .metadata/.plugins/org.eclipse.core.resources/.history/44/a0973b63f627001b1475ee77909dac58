@@ -1,0 +1,127 @@
+/*
+ * rtc.c
+ *
+ *  Created on: Nov 12, 2020
+ *      Author: silvanas
+ */
+#include "rtc.h"
+
+
+char date_from_RTC[SIZE_OF_MESSAGE] = "dLUN 08/06/1981 07h00m59s PM";
+
+
+
+char* set_day_from(uint8_t* rtcmessage) {
+	uint8_t days = rtcmessage[4];
+	uint8_t days_units = days & 0x0F;
+	uint8_t days_tens = days & 0x30;
+	days_tens = days_tens >> 4;
+	date_from_RTC[6] = days_units + 48 ;
+	if (days<10) {date_from_RTC[5] = '0';}
+	else {date_from_RTC[5] = days_tens + 48 ;}
+}
+
+char* set_month_from(uint8_t* rtcmessage) {
+	uint8_t months = rtcmessage[5];
+	uint8_t months_units = months & 0x0F;
+	uint8_t months_tens = months & 0x10;
+	months_tens = months_tens >> 4;
+	date_from_RTC[9] = months_units + 48 ;
+	if (months<10) {date_from_RTC[8] = '0';}
+	else {date_from_RTC[8] = months_tens + 48 ;}
+}
+
+char* set_year_from(uint8_t* rtcmessage) {
+	uint8_t years = rtcmessage[6];
+	uint8_t years_units = years & 0x0F;
+	uint8_t years_tens = years & 0xF0;
+	years_tens = years_tens >> 4;
+	date_from_RTC[14] = years_units + 48 ;
+	if (years<10) {date_from_RTC[13] = '0';}
+	else {date_from_RTC[13] = years_tens + 48 ;}
+}
+
+char* set_DOW_from(uint8_t* rtcmessage) {
+	uint8_t DOW = rtcmessage[3];
+	uint8_t actual_day = DOW % 7;
+	switch(actual_day) {
+	case 0:
+		date_from_RTC[1] = "DIM";
+	case 1:
+		date_from_RTC[1] = "LUN";
+	case 2:
+		date_from_RTC[1] = "MAR";
+	case 3:
+		date_from_RTC[1] = "MER";
+	case 4:
+		date_from_RTC[1] = "JEU";
+	case 5:
+		date_from_RTC[1] = "VEN";
+	case 6:
+		date_from_RTC[1] = "SAM";
+	}
+}
+
+char* set_hours_from(uint8_t* rtcmessage) {
+	uint8_t hours = rtcmessage[2];
+	uint8_t hours_units = hours & 0x0F;
+	uint8_t hours_tens = hours & 0x10;
+	hours_tens = hours >> 4;
+	return "05";
+}
+
+void set_minutes_from(uint8_t* rtcmessage) {
+	uint8_t minutes = rtcmessage[1];
+	uint8_t minutes_units = minutes & 0x0F;
+	uint8_t minutes_tens = minutes & 0x70;
+	minutes_tens = minutes_tens >> 4;
+	date_from_RTC[20] = minutes_units + 48 ;
+	if (minutes<10) {date_from_RTC[19] = '0';}
+	else {date_from_RTC[19] = minutes_tens + 48 ;}
+}
+
+void set_seconds_from(uint8_t* rtcmessage) {
+	uint8_t seconds = rtcmessage[0];
+	uint8_t seconds_units = seconds & 0x0F;
+	uint8_t seconds_tens = seconds & 0x70;
+	seconds_tens = seconds_tens >> 4;
+	date_from_RTC[23] = seconds_units + 48;
+	if (seconds<10) {date_from_RTC[22] = '0';}
+	else {date_from_RTC[22] = seconds_tens + 48 ;}
+}
+/*
+Timestamp build_timestamp(uint8_t* rtcmessage) {
+	Timestamp horodatage = {.Day = get_day_from(&rtcmessage), .Month = get_month_from(&rtcmessage),
+			.Year = get_year_from(&rtcmessage), .DOW = get_DOW_from(&rtcmessage), .Hour = get_hours_from(&rtcmessage),
+			.Minute = get_minutes_from(&rtcmessage), .Second = get_seconds_from(&rtcmessage)
+	};
+	return horodatage;
+}
+
+unsigned char* create_timestamp_string(Timestamp horodatage) {
+	//concat and return string based on struct including 'd'..
+	return ;
+}
+*/
+char* composeRtcMessage(char* rtcmessage) {
+	//make the calls:
+	date_from_RTC[4] = 32;
+	date_from_RTC[11] = 50;
+	date_from_RTC[12] = 48;
+	date_from_RTC[15] = 32;
+	date_from_RTC[25] = 32;
+	date_from_RTC[26] = 32;
+	date_from_RTC[27] = 32;
+	date_from_RTC[28] = '\n';
+
+	set_day_from(rtcmessage);
+	set_month_from(rtcmessage);
+	set_year_from(rtcmessage);
+	set_minutes_from(rtcmessage);
+	set_seconds_from(rtcmessage);
+	//extract and build struct
+	//horodatage = build_timestamp(rtcmessage);
+	//create string
+	//return string  to send
+	return date_from_RTC;
+}

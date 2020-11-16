@@ -7,52 +7,122 @@
 #include "rtc.h"
 
 
-char date_from_RTC[SIZE_OF_MESSAGE] = "dLUN 08/06/1981 07h00m59s PM";
+char date_from_RTC[SIZE_OF_MESSAGE] = "dLUN 08/06/1981 07h00m59s   ";
 
 
 
-char* get_day_from(uint8_t* rtcmessage) {
-	return "01";
+char* set_day_from(uint8_t* rtcmessage) {
+	uint8_t days = rtcmessage[4];
+	uint8_t days_units = days & 0x0F;
+	uint8_t days_tens = days & 0x30;
+	days_tens = days_tens >> 4;
+	date_from_RTC[6] = days_units + 48 ;
+	if (days<10) {date_from_RTC[5] = '0';}
+	else {date_from_RTC[5] = days_tens + 48 ;}
 }
 
-char* get_month_from(uint8_t* rtcmessage) {
-	return "02";
+char* set_month_from(uint8_t* rtcmessage) {
+	uint8_t months = rtcmessage[5];
+	uint8_t months_units = months & 0x0F;
+	uint8_t months_tens = months & 0x10;
+	months_tens = months_tens >> 4;
+	date_from_RTC[9] = months_units + 48 ;
+	if (months<10) {date_from_RTC[8] = '0';}
+	else {date_from_RTC[8] = months_tens + 48 ;}
 }
 
-char* get_year_from(uint8_t* rtcmessage) {
-	return "03";
+char* set_year_from(uint8_t* rtcmessage) {
+	uint8_t years = rtcmessage[6];
+	uint8_t years_units = years & 0x0F;
+	uint8_t years_tens = years & 0xF0;
+	years_tens = years_tens >> 4;
+	date_from_RTC[14] = years_units + 48 ;
+	if (years<10) {date_from_RTC[13] = '0';}
+	else {date_from_RTC[13] = years_tens + 48 ;}
 }
 
-char* get_DOW_from(uint8_t* rtcmessage) {
-	return "04";
+char* set_DOW_from(uint8_t* rtcmessage) {
+	uint8_t DOW = rtcmessage[3];
+	uint8_t actual_day = DOW % 7;
+	switch(actual_day) {
+	case 0:
+		date_from_RTC[1] = 'D';
+		date_from_RTC[2] = 'I';
+		date_from_RTC[3] = 'M';
+	case 1:
+		date_from_RTC[1] = 'L';
+		date_from_RTC[2] = 'U';
+		date_from_RTC[3] = 'N';
+	case 2:
+		date_from_RTC[1] = 'M';
+		date_from_RTC[2] = 'A';
+		date_from_RTC[3] = 'R';
+	case 3:
+		date_from_RTC[1] = 'M';
+		date_from_RTC[2] = 'E';
+		date_from_RTC[3] = 'R';
+	case 4:
+		date_from_RTC[1] = 'J';
+		date_from_RTC[2] = 'E';
+		date_from_RTC[3] = 'U';
+	case 5:
+		date_from_RTC[1] = 'V';
+		date_from_RTC[2] = 'E';
+		date_from_RTC[3] = 'N';
+	case 6:
+		date_from_RTC[1] = 'S';
+		date_from_RTC[2] = 'A';
+		date_from_RTC[3] = 'M';
+/*	default :
+		date_from_RTC[1] = 'W';
+		date_from_RTC[2] = 'T';
+		date_from_RTC[3] = 'F'; */
+	}
 }
 
-char* get_hours_from(uint8_t* rtcmessage) {
+char* set_hours_from(uint8_t* rtcmessage) {
 	uint8_t hours = rtcmessage[2];
-	uint8_t hours_units = hours && 0x0F;
-	uint8_t hours_tens = hours && 0x10;
-	hours_tens = hours >> 4;
-	return "05";
+	uint8_t hours_units = hours & 0x0F;
+	uint8_t hours_tens_1 = hours & 0x10;
+	uint8_t hours_tens_2 = hours & 0x20;
+	uint8_t hours_mode = hours & 0x40;
+	hours_tens_1 = hours >> 4;
+	hours_tens_2 = hours >> 5;
+	hours_mode = hours >> 6;
+	date_from_RTC[17] = hours_units + 48 ;
+	if (hours_tens_1 == 0) {date_from_RTC[16] = '0';}
+	switch(hours_mode) {
+	case 1:
+		date_from_RTC[16] = hours_tens_1 + 48;
+		date_from_RTC[26] = 'M';
+		if(hours_tens_1 == 1 && hours_tens_2 == 0) {
+			date_from_RTC[25] = 'A';
+		} else {
+			date_from_RTC[25] = 'P';
+		}
+	case 0:
+		date_from_RTC[16] = hours_tens_1 + hours_tens_2 + 48;
+	}
 }
 
-void get_minutes_from(uint8_t* rtcmessage) {
+void set_minutes_from(uint8_t* rtcmessage) {
 	uint8_t minutes = rtcmessage[1];
-	uint8_t minutes_units = minutes && 0x0F;
-	uint8_t minutes_tens = minutes && 0x70;
+	uint8_t minutes_units = minutes & 0x0F;
+	uint8_t minutes_tens = minutes & 0x70;
 	minutes_tens = minutes_tens >> 4;
-	date_from_RTC[19] = minutes_units;
-	if (minutes<10) {date_from_RTC[18] = '0';}
-	else {date_from_RTC[18] = minutes_tens;}
+	date_from_RTC[20] = minutes_units + 48 ;
+	if (minutes<10) {date_from_RTC[19] = '0';}
+	else {date_from_RTC[19] = minutes_tens + 48 ;}
 }
 
-void get_seconds_from(uint8_t* rtcmessage) {
+void set_seconds_from(uint8_t* rtcmessage) {
 	uint8_t seconds = rtcmessage[0];
-	uint8_t seconds_units = seconds && 0x0F;
-	uint8_t seconds_tens = seconds && 0x70;
+	uint8_t seconds_units = seconds & 0x0F;
+	uint8_t seconds_tens = seconds & 0x70;
 	seconds_tens = seconds_tens >> 4;
-	date_from_RTC[24] = seconds_units;
-	if (seconds<10) {date_from_RTC[23] = '0';}
-	else {date_from_RTC[23] = seconds_tens;}
+	date_from_RTC[23] = seconds_units + 48;
+	if (seconds<10) {date_from_RTC[22] = '0';}
+	else {date_from_RTC[22] = seconds_tens + 48 ;}
 }
 /*
 Timestamp build_timestamp(uint8_t* rtcmessage) {
@@ -71,14 +141,21 @@ unsigned char* create_timestamp_string(Timestamp horodatage) {
 char* composeRtcMessage(char* rtcmessage) {
 	//make the calls:
 	date_from_RTC[4] = 32;
+	date_from_RTC[11] = 50;
+	date_from_RTC[12] = 48;
 	date_from_RTC[15] = 32;
 	date_from_RTC[25] = 32;
 	date_from_RTC[26] = 32;
 	date_from_RTC[27] = 32;
 	date_from_RTC[28] = '\n';
 
-	get_minutes_from(rtcmessage);
-	get_seconds_from(rtcmessage);
+	set_DOW_from(rtcmessage);
+	set_day_from(rtcmessage);
+	set_month_from(rtcmessage);
+	set_year_from(rtcmessage);
+	set_hours_from(rtcmessage);
+	set_minutes_from(rtcmessage);
+	set_seconds_from(rtcmessage);
 	//extract and build struct
 	//horodatage = build_timestamp(rtcmessage);
 	//create string

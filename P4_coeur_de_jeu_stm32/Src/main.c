@@ -321,8 +321,22 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
-//  char start_bit = 0x00;
-//  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x00,1, &start_bit, 1, 1000);
+/*
+  char bit1 = 0x00;
+  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x00,1, &bit1, 1, 100);
+  char bit2 = 0x07;
+  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x01,1, &bit2, 1, 100);
+  char bit3 = 0x12;
+  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x02,1, &bit3, 1, 100);
+  char bit4 = 0x01;
+  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x03,1, &bit4, 1, 100);
+  char bit5 = 0x16;
+  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x04,1, &bit5, 1, 100);
+  char bit6 = 0x11;
+  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x05,1, &bit6, 1, 100);
+  char bit7 = 0x20;
+  HAL_I2C_Mem_Write(&hi2c1, 0xD0, 0x06,1, &bit7, 1, 100);
+ */
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
