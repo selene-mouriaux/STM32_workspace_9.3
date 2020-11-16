@@ -27,7 +27,7 @@
 #include"debug.h"
 #include"game_p4.h"
 #include"leds_control.h"
-#include"rtc.h"
+//#include"rtc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -671,7 +671,7 @@ void thread_handler_app(void *argument)
 			gp4_init();
 			restart = 0;
 			move.player = 1;
-			osDelay(1000);
+			osDelay(500);
 		}
 		while (1) {
 			//Wait message from reading queue.
@@ -759,7 +759,7 @@ void thread_handler_app(void *argument)
 			tmp_message[7] = victory_infos.victory_line_tokens_coord[3][1];
 			SendMessage(QUEUE_WRITE, tmp_message, WRITE_QUEUE_BUFFER_SIZE);
 		}
-		osDelay(60000);
+		osDelay(1000);
 		//Emptying Grid (turn leds off).
 		tmp_message[0] = CONNECT_4;
 		tmp_message[1] = RESTART;
@@ -770,7 +770,7 @@ void thread_handler_app(void *argument)
 		tmp_message[6] = 0;
 		tmp_message[7] = 0;
 		SendMessage(QUEUE_WRITE, tmp_message, WRITE_QUEUE_BUFFER_SIZE);
-		osDelay(5000);
+		osDelay(500);
 		restart += 1;
 
 		//		osThreadExit();
@@ -867,206 +867,204 @@ void thread_handler_write(void *argument)
 	/* Infinite loop */
 	for(;;)
 	{
-
+		setLedColor(1, 1, colors[GREEN].RValue, colors[GREEN].GValue, colors[GREEN].BValue);
+		while(1) {
 		//Led panel controlling handler and blinking handler. 2 THREADS !.
-		//setLedColor(1, 1, colors[GREEN].RValue, colors[GREEN].GValue,
-		//		colors[GREEN].BValue);
-
 		//if (pthread_self() == write_thread_id_set) {
 		//Wait message from writing queue.
-		if (ReceiveMessage(QUEUE_WRITE, tmp_message_write,
-				WRITE_QUEUE_BUFFER_SIZE) == 0) {
+			if (ReceiveMessage(QUEUE_WRITE, tmp_message_write,
+					WRITE_QUEUE_BUFFER_SIZE) == 0) {
 
-			if (tmp_message_write[0] == CONNECT_4) {
+				if (tmp_message_write[0] == CONNECT_4) {
 
-				if (tmp_message_write[1] == RESET) {
-					for (int row = 2; row < 8; row++) {
-						for (int col = 1; col < 8; col++) {
-							setLedColor(row, col, colors[BLACK].RValue,
-									colors[BLACK].GValue, colors[BLACK].BValue);
+					if (tmp_message_write[1] == RESET) {
+						for (int row = 2; row < 8; row++) {
+							for (int col = 1; col < 8; col++) {
+								setLedColor(row, col, colors[BLACK].RValue,
+										colors[BLACK].GValue, colors[BLACK].BValue);
+							}
 						}
+						break;
 					}
-					break;
-				}
-				receive_count += 1;
-				if (tmp_message_write[1] == PLAY) {
-					//If DOWN button pressed. Validation animation.
-					if (tmp_message_write[2] == DOWN_COMMAND) {
-						receive_count = 0;
-						for (int row = 2;
-								row <= (tmp_message_write[6] + LED_PANEL_OFFSET);
-								row++) {
-							setLedColor(row - 1,
-									(tmp_message_write[7] + LED_PANEL_OFFSET),
+					receive_count += 1;
+					if (tmp_message_write[1] == PLAY) {
+						//If DOWN button pressed. Validation animation.
+						if (tmp_message_write[2] == DOWN_COMMAND) {
+							receive_count = 0;
+							for (int row = 2;
+									row <= (tmp_message_write[6] + LED_PANEL_OFFSET);
+									row++) {
+								setLedColor(row - 1,
+										(tmp_message_write[7] + LED_PANEL_OFFSET),
+										colors[BLACK].RValue, colors[BLACK].GValue,
+										colors[BLACK].BValue);
+								setLedColor(row,
+										(tmp_message_write[7] + LED_PANEL_OFFSET),
+										colors[(int) tmp_message_write[3]].RValue,
+										colors[(int) tmp_message_write[3]].GValue,
+										colors[(int) tmp_message_write[3]].BValue);
+								osDelay(150);
+							}
+							//If LEFT or RIGHT button pressed. Side move animation.
+						} else if (tmp_message_write[2] == LEFT_COMMAND
+								|| tmp_message_write[2] == RIGHT_COMMAND) {
+							setLedColor(1,
+									(tmp_message_write[5] + LED_PANEL_OFFSET),
 									colors[BLACK].RValue, colors[BLACK].GValue,
 									colors[BLACK].BValue);
-							setLedColor(row,
+							setLedColor(1,
 									(tmp_message_write[7] + LED_PANEL_OFFSET),
 									colors[(int) tmp_message_write[3]].RValue,
 									colors[(int) tmp_message_write[3]].GValue,
 									colors[(int) tmp_message_write[3]].BValue);
-							osDelay(150);
+							//Next Player animation, change color and replace play token.
+						} else if (tmp_message_write[2] == NEXT_PLAYER_COMMAND) {
+							setLedColor(1,
+									(tmp_message_write[7] + LED_PANEL_OFFSET),
+									colors[(int) tmp_message_write[3]].RValue,
+									colors[(int) tmp_message_write[3]].GValue,
+									colors[(int) tmp_message_write[3]].BValue);
 						}
-						//If LEFT or RIGHT button pressed. Side move animation.
-					} else if (tmp_message_write[2] == LEFT_COMMAND
-							|| tmp_message_write[2] == RIGHT_COMMAND) {
-						setLedColor(1,
-								(tmp_message_write[5] + LED_PANEL_OFFSET),
-								colors[BLACK].RValue, colors[BLACK].GValue,
-								colors[BLACK].BValue);
-						setLedColor(1,
-								(tmp_message_write[7] + LED_PANEL_OFFSET),
-								colors[(int) tmp_message_write[3]].RValue,
-								colors[(int) tmp_message_write[3]].GValue,
-								colors[(int) tmp_message_write[3]].BValue);
-						//Next Player animation, change color and replace play token.
-					} else if (tmp_message_write[2] == NEXT_PLAYER_COMMAND) {
-						setLedColor(1,
-								(tmp_message_write[7] + LED_PANEL_OFFSET),
-								colors[(int) tmp_message_write[3]].RValue,
-								colors[(int) tmp_message_write[3]].GValue,
-								colors[(int) tmp_message_write[3]].BValue);
-					}
-					//Line victory blink.
-				} else if (tmp_message_write[1] == GAME_END) {
-					if (tmp_message_write[2] == LINE_VICTORY) {
-						receive_count = 0;
-						for (int count = 0; count < 30; count++) {
-							for (int col = (tmp_message_write[5]
+						//Line victory blink.
+					} else if (tmp_message_write[1] == GAME_END) {
+						if (tmp_message_write[2] == LINE_VICTORY) {
+							receive_count = 0;
+							for (int count = 0; count < 5; count++) {
+								for (int col = (tmp_message_write[5]
+																  + LED_PANEL_OFFSET);
+										col
+										<= (tmp_message_write[7]
 															  + LED_PANEL_OFFSET);
-									col
-									<= (tmp_message_write[7]
-														  + LED_PANEL_OFFSET);
-									col++) {
-								setLedColor(
-										tmp_message_write[4] + LED_PANEL_OFFSET
-										+ TOP_ROW_OFFSET, col,
-										colors[BLACK].RValue,
-										colors[BLACK].GValue,
-										colors[BLACK].BValue);
-							}
-							osDelay(1000);
-							for (int col = (tmp_message_write[5]
+										col++) {
+									setLedColor(
+											tmp_message_write[4] + LED_PANEL_OFFSET
+											+ TOP_ROW_OFFSET, col,
+											colors[BLACK].RValue,
+											colors[BLACK].GValue,
+											colors[BLACK].BValue);
+								}
+								osDelay(500);
+								for (int col = (tmp_message_write[5]
+																  + LED_PANEL_OFFSET);
+										col
+										<= (tmp_message_write[7]
 															  + LED_PANEL_OFFSET);
-									col
-									<= (tmp_message_write[7]
-														  + LED_PANEL_OFFSET);
-									col++) {
-								setLedColor(
-										tmp_message_write[4] + LED_PANEL_OFFSET
-										+ TOP_ROW_OFFSET, col,
-										colors[(int) tmp_message_write[3]].RValue,
-										colors[(int) tmp_message_write[3]].GValue,
-										colors[(int) tmp_message_write[3]].BValue);
+										col++) {
+									setLedColor(
+											tmp_message_write[4] + LED_PANEL_OFFSET
+											+ TOP_ROW_OFFSET, col,
+											colors[(int) tmp_message_write[3]].RValue,
+											colors[(int) tmp_message_write[3]].GValue,
+											colors[(int) tmp_message_write[3]].BValue);
+								}
+								osDelay(500);
 							}
-							osDelay(1000);
-						}
-						//Column victory blink.
-					} else if (tmp_message_write[2] == COL_VICTORY) {
-						receive_count = 0;
-						for (int count = 0; count < 30; count++) {
-							for (int row = (tmp_message_write[4]
-															  + LED_PANEL_OFFSET + TOP_ROW_OFFSET);
-									row
-									<= (tmp_message_write[6]
-														  + LED_PANEL_OFFSET
-														  + TOP_ROW_OFFSET); row++) {
-								setLedColor(row,
-										tmp_message_write[5] + LED_PANEL_OFFSET,
-										colors[BLACK].RValue,
-										colors[BLACK].GValue,
-										colors[BLACK].BValue);
+							//Column victory blink.
+						} else if (tmp_message_write[2] == COL_VICTORY) {
+							receive_count = 0;
+							for (int count = 0; count < 5; count++) {
+								for (int row = (tmp_message_write[4]
+																  + LED_PANEL_OFFSET + TOP_ROW_OFFSET);
+										row
+										<= (tmp_message_write[6]
+															  + LED_PANEL_OFFSET
+															  + TOP_ROW_OFFSET); row++) {
+									setLedColor(row,
+											tmp_message_write[5] + LED_PANEL_OFFSET,
+											colors[BLACK].RValue,
+											colors[BLACK].GValue,
+											colors[BLACK].BValue);
+								}
+								osDelay(500);
+								for (int row = (tmp_message_write[4]
+																  + LED_PANEL_OFFSET + TOP_ROW_OFFSET);
+										row
+										<= (tmp_message_write[6]
+															  + LED_PANEL_OFFSET
+															  + TOP_ROW_OFFSET); row++) {
+									setLedColor(row,
+											tmp_message_write[5] + LED_PANEL_OFFSET,
+											colors[(int) tmp_message_write[3]].RValue,
+											colors[(int) tmp_message_write[3]].GValue,
+											colors[(int) tmp_message_write[3]].BValue);
+								}
+								osDelay(500);
 							}
-							osDelay(1000);
-							for (int row = (tmp_message_write[4]
-															  + LED_PANEL_OFFSET + TOP_ROW_OFFSET);
-									row
-									<= (tmp_message_write[6]
-														  + LED_PANEL_OFFSET
-														  + TOP_ROW_OFFSET); row++) {
-								setLedColor(row,
-										tmp_message_write[5] + LED_PANEL_OFFSET,
-										colors[(int) tmp_message_write[3]].RValue,
-										colors[(int) tmp_message_write[3]].GValue,
-										colors[(int) tmp_message_write[3]].BValue);
+							//Right diagonal victory blink.
+						} else if (tmp_message_write[2] == RIGHT_DIAG_VICTORY) {
+							receive_count = 0;
+							int win_row, win_col;
+							for (int count = 0; count < 5; count++) {
+								win_row = tmp_message_write[4] + LED_PANEL_OFFSET
+										+ TOP_ROW_OFFSET;
+								win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
+								for (int tokens = 0; tokens < 4; tokens++) {
+									setLedColor(win_row, win_col,
+											colors[BLACK].RValue,
+											colors[BLACK].GValue,
+											colors[BLACK].BValue);
+									win_row++, win_col++;
+								}
+								osDelay(500);
+								win_row = tmp_message_write[4] + LED_PANEL_OFFSET
+										+ TOP_ROW_OFFSET;
+								win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
+								for (int tokens = 0; tokens < 4; tokens++) {
+									setLedColor(win_row, win_col,
+											colors[(int) tmp_message_write[3]].RValue,
+											colors[(int) tmp_message_write[3]].GValue,
+											colors[(int) tmp_message_write[3]].BValue);
+									win_row++, win_col++;
+								}
+								osDelay(500);
 							}
-							osDelay(1000);
-						}
-						//Right diagonal victory blink.
-					} else if (tmp_message_write[2] == RIGHT_DIAG_VICTORY) {
-						receive_count = 0;
-						int win_row, win_col;
-						for (int count = 0; count < 30; count++) {
-							win_row = tmp_message_write[4] + LED_PANEL_OFFSET
-									+ TOP_ROW_OFFSET;
-							win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
-							for (int tokens = 0; tokens < 4; tokens++) {
-								setLedColor(win_row, win_col,
-										colors[BLACK].RValue,
-										colors[BLACK].GValue,
-										colors[BLACK].BValue);
-								win_row++, win_col++;
+							//Left diagonal victory blink.
+						} else if (tmp_message_write[2] == LEFT_DIAG_VICTORY) {
+							receive_count = 0;
+							int win_row, win_col;
+							for (int count = 0; count < 5; count++) {
+								win_row = tmp_message_write[4] + LED_PANEL_OFFSET
+										+ TOP_ROW_OFFSET;
+								win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
+								for (int tokens = 0; tokens < 4; tokens++) {
+									setLedColor(win_row, win_col,
+											colors[BLACK].RValue,
+											colors[BLACK].GValue,
+											colors[BLACK].BValue);
+									win_row--, win_col++;
+								}
+								osDelay(500);
+								win_row = tmp_message_write[4] + LED_PANEL_OFFSET
+										+ TOP_ROW_OFFSET;
+								win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
+								for (int tokens = 0; tokens < 4; tokens++) {
+									setLedColor(win_row, win_col,
+											colors[(int) tmp_message_write[3]].RValue,
+											colors[(int) tmp_message_write[3]].GValue,
+											colors[(int) tmp_message_write[3]].BValue);
+									win_row--, win_col++;
+								}
+								osDelay(500);
 							}
-							osDelay(1000);
-							win_row = tmp_message_write[4] + LED_PANEL_OFFSET
-									+ TOP_ROW_OFFSET;
-							win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
-							for (int tokens = 0; tokens < 4; tokens++) {
-								setLedColor(win_row, win_col,
-										colors[(int) tmp_message_write[3]].RValue,
-										colors[(int) tmp_message_write[3]].GValue,
-										colors[(int) tmp_message_write[3]].BValue);
-								win_row++, win_col++;
-							}
-							osDelay(1000);
-						}
-						//Left diagonal victory blink.
-					} else if (tmp_message_write[2] == LEFT_DIAG_VICTORY) {
-						receive_count = 0;
-						int win_row, win_col;
-						for (int count = 0; count < 30; count++) {
-							win_row = tmp_message_write[4] + LED_PANEL_OFFSET
-									+ TOP_ROW_OFFSET;
-							win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
-							for (int tokens = 0; tokens < 4; tokens++) {
-								setLedColor(win_row, win_col,
-										colors[BLACK].RValue,
-										colors[BLACK].GValue,
-										colors[BLACK].BValue);
-								win_row--, win_col++;
-							}
-							osDelay(1000);
-							win_row = tmp_message_write[4] + LED_PANEL_OFFSET
-									+ TOP_ROW_OFFSET;
-							win_col = tmp_message_write[5] + LED_PANEL_OFFSET;
-							for (int tokens = 0; tokens < 4; tokens++) {
-								setLedColor(win_row, win_col,
-										colors[(int) tmp_message_write[3]].RValue,
-										colors[(int) tmp_message_write[3]].GValue,
-										colors[(int) tmp_message_write[3]].BValue);
-								win_row--, win_col++;
-							}
-							osDelay(1000);
 						}
 					}
 				}
+				//Play token blinking thread. receive_count is used to sync/stop blinking when necessary.
+			} else {			// if (pthread_self() == write_thread_id_blink) {
+				if (receive_count > 0) {
+					setLedColor(1, (tmp_message_write[7] + LED_PANEL_OFFSET),
+							colors[(int) tmp_message_write[3]].RValue,
+							colors[(int) tmp_message_write[3]].GValue,
+							colors[(int) tmp_message_write[3]].BValue);
+					osDelay(250);
+					setLedColor(1, (tmp_message_write[7] + LED_PANEL_OFFSET),
+							colors[BLACK].RValue, colors[BLACK].GValue,
+							colors[BLACK].BValue);
+					osDelay(250);
+				} else
+					osDelay(500);
 			}
-			//Play token blinking thread. receive_count is used to sync/stop blinking when necessary.
-		} else {			// if (pthread_self() == write_thread_id_blink) {
-			if (receive_count > 0) {
-				setLedColor(1, (tmp_message_write[7] + LED_PANEL_OFFSET),
-						colors[(int) tmp_message_write[3]].RValue,
-						colors[(int) tmp_message_write[3]].GValue,
-						colors[(int) tmp_message_write[3]].BValue);
-				osDelay(250);
-				setLedColor(1, (tmp_message_write[7] + LED_PANEL_OFFSET),
-						colors[BLACK].RValue, colors[BLACK].GValue,
-						colors[BLACK].BValue);
-				osDelay(250);
-			} else
-				osDelay(500);
 		}
-
 		//		osThreadExit();
 
 		osDelay(1);
@@ -1084,10 +1082,12 @@ void thread_handler_write(void *argument)
 void thread_IO_queues(void *argument)
 {
   /* USER CODE BEGIN thread_IO_queues */
+	/*
 	uint8_t rtcmessage[8];
 	uint8_t slaveAddr = 0b1101000;
 	uint8_t pData = 0x00;
 	uint8_t* ptr_date_from_RTC;
+	*/
 	/* Infinite loop */
 	for(;;)
 	{
@@ -1101,6 +1101,7 @@ void thread_IO_queues(void *argument)
 		{
 			osMessageQueuePut(inputs_queueHandle, buffer, 0, osWaitForever);
 		}
+		/*
 		if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13)){
 			osDelay(100);
 			HAL_I2C_Master_Transmit(&hi2c1, slaveAddr<<1, &pData, 1, 100);
@@ -1108,6 +1109,7 @@ void thread_IO_queues(void *argument)
 			ptr_date_from_RTC = composeRtcMessage(rtcmessage);
 			HAL_UART_Transmit(&huart3,(uint8_t *) ptr_date_from_RTC, SIZE_OF_MESSAGE, 10);
 		}
+		*/
 		osDelay(1);
 	}
   /* USER CODE END thread_IO_queues */

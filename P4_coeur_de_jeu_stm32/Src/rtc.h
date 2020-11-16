@@ -13,6 +13,7 @@
 
 #define SIZE_OF_MESSAGE (29)
 
+/*
 typedef struct {
 	uint8_t Day[2];
 	uint8_t Month[2];
@@ -22,6 +23,7 @@ typedef struct {
 	uint8_t Minute[2];
 	uint8_t Second[2];
 }Timestamp;
+*/
 
 char* set_day_from(uint8_t* rtcmessage);
 char* set_month_from(uint8_t* rtcmessage);
@@ -31,7 +33,7 @@ char* set_hours_from(uint8_t* rtcmessage);
 void set_minutes_from(uint8_t* rtcmessage);
 void set_seconds_from(uint8_t* rtcmessage);
 struct Timestamp build_timestamp(uint8_t* rctmessage);
-unsigned char* create_timestamp_string(Timestamp horodatage);
+//unsigned char* create_timestamp_string(Timestamp horodatage);
 char* composeRtcMessage(char* rctmessage);
 
 
