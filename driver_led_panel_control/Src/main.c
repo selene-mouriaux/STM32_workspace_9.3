@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "task.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -44,33 +45,65 @@
 /* Private variables ---------------------------------------------------------*/
 ETH_HandleTypeDef heth;
 
+UART_HandleTypeDef huart7;
 UART_HandleTypeDef huart3;
 
 PCD_HandleTypeDef hpcd_USB_OTG_FS;
 
-/* Definitions for coding */
-osThreadId_t codingHandle;
-const osThreadAttr_t coding_attributes = {
-		.name = "coding",
-		.priority = (osPriority_t) osPriorityNormal,
-		.stack_size = 128 * 4
+/* Definitions for trame_coding_ */
+osThreadId_t trame_coding_Handle;
+const osThreadAttr_t trame_coding__attributes = {
+  .name = "trame_coding_",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 128 * 4
 };
-/* Definitions for illuminating */
-osThreadId_t illuminatingHandle;
-const osThreadAttr_t illuminating_attributes = {
-		.name = "illuminating",
-		.priority = (osPriority_t) osPriorityNormal,
-		.stack_size = 128 * 4
+/* Definitions for lighting_leds_ */
+osThreadId_t lighting_leds_Handle;
+const osThreadAttr_t lighting_leds__attributes = {
+  .name = "lighting_leds_",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 128 * 4
 };
-/* Definitions for inputs_queue */
-osMessageQueueId_t inputs_queueHandle;
-const osMessageQueueAttr_t inputs_queue_attributes = {
-		.name = "inputs_queue"
+/* Definitions for idle_animation_ */
+osThreadId_t idle_animation_Handle;
+const osThreadAttr_t idle_animation__attributes = {
+  .name = "idle_animation_",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 128 * 4
+};
+/* Definitions for IO_queue_ */
+osThreadId_t IO_queue_Handle;
+const osThreadAttr_t IO_queue__attributes = {
+  .name = "IO_queue_",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 128 * 4
+};
+/* Definitions for interruptions_ */
+osThreadId_t interruptions_Handle;
+const osThreadAttr_t interruptions__attributes = {
+  .name = "interruptions_",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 128 * 4
+};
+/* Definitions for inputs_queue_ */
+osMessageQueueId_t inputs_queue_Handle;
+const osMessageQueueAttr_t inputs_queue__attributes = {
+  .name = "inputs_queue_"
+};
+/* Definitions for outputs_queue_ */
+osMessageQueueId_t outputs_queue_Handle;
+const osMessageQueueAttr_t outputs_queue__attributes = {
+  .name = "outputs_queue_"
 };
 /* USER CODE BEGIN PV */
-int btn_flag = 0;
-int send_trame = 1;
-int trame[1536];
+uint8_t btn_flag;
+uint8_t send_trame;
+uint8_t trame[1536];
+uint8_t it_flag_UP;
+uint8_t it_flag_DOWN;
+uint8_t it_flag_LEFT;
+uint8_t it_flag_RIGHT;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -79,8 +112,12 @@ static void MX_GPIO_Init(void);
 static void MX_ETH_Init(void);
 static void MX_USART3_UART_Init(void);
 static void MX_USB_OTG_FS_PCD_Init(void);
-void coding_trame(void *argument);
-void illuminating_led_panel(void *argument);
+static void MX_UART7_Init(void);
+void thread_trame_coding(void *argument);
+void thread_illuminating_led_panel(void *argument);
+void thread_animations_when_idle(void *argument);
+void thread_IO_queue(void *argument);
+void thread_dealing_with_interruptions_(void *argument);
 
 /* USER CODE BEGIN PFP */
 
@@ -92,293 +129,367 @@ void illuminating_led_panel(void *argument);
 /* USER CODE END 0 */
 
 /**
- * @brief  The application entry point.
- * @retval int
- */
+  * @brief  The application entry point.
+  * @retval int
+  */
 int main(void)
 {
-	/* USER CODE BEGIN 1 */
+  /* USER CODE BEGIN 1 */
 
-	/* USER CODE END 1 */
+  /* USER CODE END 1 */
 
-	/* MCU Configuration--------------------------------------------------------*/
+  /* MCU Configuration--------------------------------------------------------*/
 
-	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
 
-	/* USER CODE BEGIN Init */
+  /* USER CODE BEGIN Init */
+  btn_flag = 0;
+  send_trame = 0;
+  it_flag_UP = 0;
+  it_flag_DOWN = 0;
+  it_flag_LEFT = 0;
+  it_flag_RIGHT = 0;
+  /* USER CODE END Init */
 
-	/* USER CODE END Init */
+  /* Configure the system clock */
+  SystemClock_Config();
 
-	/* Configure the system clock */
-	SystemClock_Config();
+  /* USER CODE BEGIN SysInit */
 
-	/* USER CODE BEGIN SysInit */
+  /* USER CODE END SysInit */
 
-	/* USER CODE END SysInit */
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_ETH_Init();
+  MX_USART3_UART_Init();
+  MX_USB_OTG_FS_PCD_Init();
+  MX_UART7_Init();
+  /* USER CODE BEGIN 2 */
 
-	/* Initialize all configured peripherals */
-	MX_GPIO_Init();
-	MX_ETH_Init();
-	MX_USART3_UART_Init();
-	MX_USB_OTG_FS_PCD_Init();
-	/* USER CODE BEGIN 2 */
+  /* USER CODE END 2 */
 
-	/* USER CODE END 2 */
+  /* Init scheduler */
+  osKernelInitialize();
 
-	/* Init scheduler */
-	osKernelInitialize();
-
-	/* USER CODE BEGIN RTOS_MUTEX */
+  /* USER CODE BEGIN RTOS_MUTEX */
 	/* add mutexes, ... */
-	/* USER CODE END RTOS_MUTEX */
+  /* USER CODE END RTOS_MUTEX */
 
-	/* USER CODE BEGIN RTOS_SEMAPHORES */
+  /* USER CODE BEGIN RTOS_SEMAPHORES */
 	/* add semaphores, ... */
-	/* USER CODE END RTOS_SEMAPHORES */
+  /* USER CODE END RTOS_SEMAPHORES */
 
-	/* USER CODE BEGIN RTOS_TIMERS */
+  /* USER CODE BEGIN RTOS_TIMERS */
 	/* start timers, add new ones, ... */
-	/* USER CODE END RTOS_TIMERS */
+  /* USER CODE END RTOS_TIMERS */
 
-	/* Create the queue(s) */
-	/* creation of inputs_queue */
-	inputs_queueHandle = osMessageQueueNew (16, sizeof(uint16_t), &inputs_queue_attributes);
+  /* Create the queue(s) */
+  /* creation of inputs_queue_ */
+  inputs_queue_Handle = osMessageQueueNew (16, 10, &inputs_queue__attributes);
 
-	/* USER CODE BEGIN RTOS_QUEUES */
+  /* creation of outputs_queue_ */
+  outputs_queue_Handle = osMessageQueueNew (16, 5, &outputs_queue__attributes);
+
+  /* USER CODE BEGIN RTOS_QUEUES */
 	/* add queues, ... */
-	/* USER CODE END RTOS_QUEUES */
+  /* USER CODE END RTOS_QUEUES */
 
-	/* Create the thread(s) */
-	/* creation of coding */
-	codingHandle = osThreadNew(coding_trame, NULL, &coding_attributes);
+  /* Create the thread(s) */
+  /* creation of trame_coding_ */
+  trame_coding_Handle = osThreadNew(thread_trame_coding, NULL, &trame_coding__attributes);
 
-	/* creation of illuminating */
-	illuminatingHandle = osThreadNew(illuminating_led_panel, NULL, &illuminating_attributes);
+  /* creation of lighting_leds_ */
+  lighting_leds_Handle = osThreadNew(thread_illuminating_led_panel, NULL, &lighting_leds__attributes);
 
-	/* USER CODE BEGIN RTOS_THREADS */
+  /* creation of idle_animation_ */
+  idle_animation_Handle = osThreadNew(thread_animations_when_idle, NULL, &idle_animation__attributes);
+
+  /* creation of IO_queue_ */
+  IO_queue_Handle = osThreadNew(thread_IO_queue, NULL, &IO_queue__attributes);
+
+  /* creation of interruptions_ */
+  interruptions_Handle = osThreadNew(thread_dealing_with_interruptions_, NULL, &interruptions__attributes);
+
+  /* USER CODE BEGIN RTOS_THREADS */
 	/* add threads, ... */
-	/* USER CODE END RTOS_THREADS */
+  /* USER CODE END RTOS_THREADS */
 
-	/* Start scheduler */
-	osKernelStart();
-
-	/* We should never get here as control is now taken by the scheduler */
-	/* Infinite loop */
-	/* USER CODE BEGIN WHILE */
+  /* Start scheduler */
+  osKernelStart();
+ 
+  /* We should never get here as control is now taken by the scheduler */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-		/* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 	}
-	/* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
- * @brief System Clock Configuration
- * @retval None
- */
+  * @brief System Clock Configuration
+  * @retval None
+  */
 void SystemClock_Config(void)
 {
-	RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-	RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-	/** Configure the main internal regulator output voltage
-	 */
-	__HAL_RCC_PWR_CLK_ENABLE();
-	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-	/** Initializes the CPU, AHB and APB busses clocks
-	 */
-	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-	RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
-	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-	RCC_OscInitStruct.PLL.PLLM = 4;
-	RCC_OscInitStruct.PLL.PLLN = 168;
-	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-	RCC_OscInitStruct.PLL.PLLQ = 7;
-	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	/** Initializes the CPU, AHB and APB busses clocks
-	 */
-	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-			|RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
+  /** Configure the main internal regulator output voltage 
+  */
+  __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+  /** Initializes the CPU, AHB and APB busses clocks 
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLM = 4;
+  RCC_OscInitStruct.PLL.PLLN = 168;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLQ = 7;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Initializes the CPU, AHB and APB busses clocks 
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
 
-	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
-	{
-		Error_Handler();
-	}
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /**
- * @brief ETH Initialization Function
- * @param None
- * @retval None
- */
+  * @brief ETH Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_ETH_Init(void)
 {
 
-	/* USER CODE BEGIN ETH_Init 0 */
+  /* USER CODE BEGIN ETH_Init 0 */
 
-	/* USER CODE END ETH_Init 0 */
+  /* USER CODE END ETH_Init 0 */
 
-	/* USER CODE BEGIN ETH_Init 1 */
+  /* USER CODE BEGIN ETH_Init 1 */
 
-	/* USER CODE END ETH_Init 1 */
-	heth.Instance = ETH;
-	heth.Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;
-	heth.Init.PhyAddress = LAN8742A_PHY_ADDRESS;
-	heth.Init.MACAddr[0] =   0x00;
-	heth.Init.MACAddr[1] =   0x80;
-	heth.Init.MACAddr[2] =   0xE1;
-	heth.Init.MACAddr[3] =   0x00;
-	heth.Init.MACAddr[4] =   0x00;
-	heth.Init.MACAddr[5] =   0x00;
-	heth.Init.RxMode = ETH_RXPOLLING_MODE;
-	heth.Init.ChecksumMode = ETH_CHECKSUM_BY_HARDWARE;
-	heth.Init.MediaInterface = ETH_MEDIA_INTERFACE_RMII;
+  /* USER CODE END ETH_Init 1 */
+  heth.Instance = ETH;
+  heth.Init.AutoNegotiation = ETH_AUTONEGOTIATION_ENABLE;
+  heth.Init.PhyAddress = LAN8742A_PHY_ADDRESS;
+  heth.Init.MACAddr[0] =   0x00;
+  heth.Init.MACAddr[1] =   0x80;
+  heth.Init.MACAddr[2] =   0xE1;
+  heth.Init.MACAddr[3] =   0x00;
+  heth.Init.MACAddr[4] =   0x00;
+  heth.Init.MACAddr[5] =   0x00;
+  heth.Init.RxMode = ETH_RXPOLLING_MODE;
+  heth.Init.ChecksumMode = ETH_CHECKSUM_BY_HARDWARE;
+  heth.Init.MediaInterface = ETH_MEDIA_INTERFACE_RMII;
 
-	/* USER CODE BEGIN MACADDRESS */
+  /* USER CODE BEGIN MACADDRESS */
 
-	/* USER CODE END MACADDRESS */
+  /* USER CODE END MACADDRESS */
 
-	if (HAL_ETH_Init(&heth) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	/* USER CODE BEGIN ETH_Init 2 */
+  if (HAL_ETH_Init(&heth) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN ETH_Init 2 */
 
-	/* USER CODE END ETH_Init 2 */
+  /* USER CODE END ETH_Init 2 */
 
 }
 
 /**
- * @brief USART3 Initialization Function
- * @param None
- * @retval None
- */
+  * @brief UART7 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_UART7_Init(void)
+{
+
+  /* USER CODE BEGIN UART7_Init 0 */
+
+  /* USER CODE END UART7_Init 0 */
+
+  /* USER CODE BEGIN UART7_Init 1 */
+
+  /* USER CODE END UART7_Init 1 */
+  huart7.Instance = UART7;
+  huart7.Init.BaudRate = 115200;
+  huart7.Init.WordLength = UART_WORDLENGTH_8B;
+  huart7.Init.StopBits = UART_STOPBITS_1;
+  huart7.Init.Parity = UART_PARITY_NONE;
+  huart7.Init.Mode = UART_MODE_TX_RX;
+  huart7.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart7.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart7) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN UART7_Init 2 */
+
+  /* USER CODE END UART7_Init 2 */
+
+}
+
+/**
+  * @brief USART3 Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_USART3_UART_Init(void)
 {
 
-	/* USER CODE BEGIN USART3_Init 0 */
+  /* USER CODE BEGIN USART3_Init 0 */
 
-	/* USER CODE END USART3_Init 0 */
+  /* USER CODE END USART3_Init 0 */
 
-	/* USER CODE BEGIN USART3_Init 1 */
+  /* USER CODE BEGIN USART3_Init 1 */
 
-	/* USER CODE END USART3_Init 1 */
-	huart3.Instance = USART3;
-	huart3.Init.BaudRate = 115200;
-	huart3.Init.WordLength = UART_WORDLENGTH_8B;
-	huart3.Init.StopBits = UART_STOPBITS_1;
-	huart3.Init.Parity = UART_PARITY_NONE;
-	huart3.Init.Mode = UART_MODE_TX_RX;
-	huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-	huart3.Init.OverSampling = UART_OVERSAMPLING_16;
-	if (HAL_UART_Init(&huart3) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	/* USER CODE BEGIN USART3_Init 2 */
+  /* USER CODE END USART3_Init 1 */
+  huart3.Instance = USART3;
+  huart3.Init.BaudRate = 115200;
+  huart3.Init.WordLength = UART_WORDLENGTH_8B;
+  huart3.Init.StopBits = UART_STOPBITS_1;
+  huart3.Init.Parity = UART_PARITY_NONE;
+  huart3.Init.Mode = UART_MODE_TX_RX;
+  huart3.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart3.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART3_Init 2 */
 
-	/* USER CODE END USART3_Init 2 */
+  /* USER CODE END USART3_Init 2 */
 
 }
 
 /**
- * @brief USB_OTG_FS Initialization Function
- * @param None
- * @retval None
- */
+  * @brief USB_OTG_FS Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_USB_OTG_FS_PCD_Init(void)
 {
 
-	/* USER CODE BEGIN USB_OTG_FS_Init 0 */
+  /* USER CODE BEGIN USB_OTG_FS_Init 0 */
 
-	/* USER CODE END USB_OTG_FS_Init 0 */
+  /* USER CODE END USB_OTG_FS_Init 0 */
 
-	/* USER CODE BEGIN USB_OTG_FS_Init 1 */
+  /* USER CODE BEGIN USB_OTG_FS_Init 1 */
 
-	/* USER CODE END USB_OTG_FS_Init 1 */
-	hpcd_USB_OTG_FS.Instance = USB_OTG_FS;
-	hpcd_USB_OTG_FS.Init.dev_endpoints = 4;
-	hpcd_USB_OTG_FS.Init.speed = PCD_SPEED_FULL;
-	hpcd_USB_OTG_FS.Init.dma_enable = DISABLE;
-	hpcd_USB_OTG_FS.Init.phy_itface = PCD_PHY_EMBEDDED;
-	hpcd_USB_OTG_FS.Init.Sof_enable = ENABLE;
-	hpcd_USB_OTG_FS.Init.low_power_enable = DISABLE;
-	hpcd_USB_OTG_FS.Init.lpm_enable = DISABLE;
-	hpcd_USB_OTG_FS.Init.vbus_sensing_enable = ENABLE;
-	hpcd_USB_OTG_FS.Init.use_dedicated_ep1 = DISABLE;
-	if (HAL_PCD_Init(&hpcd_USB_OTG_FS) != HAL_OK)
-	{
-		Error_Handler();
-	}
-	/* USER CODE BEGIN USB_OTG_FS_Init 2 */
+  /* USER CODE END USB_OTG_FS_Init 1 */
+  hpcd_USB_OTG_FS.Instance = USB_OTG_FS;
+  hpcd_USB_OTG_FS.Init.dev_endpoints = 4;
+  hpcd_USB_OTG_FS.Init.speed = PCD_SPEED_FULL;
+  hpcd_USB_OTG_FS.Init.dma_enable = DISABLE;
+  hpcd_USB_OTG_FS.Init.phy_itface = PCD_PHY_EMBEDDED;
+  hpcd_USB_OTG_FS.Init.Sof_enable = ENABLE;
+  hpcd_USB_OTG_FS.Init.low_power_enable = DISABLE;
+  hpcd_USB_OTG_FS.Init.lpm_enable = DISABLE;
+  hpcd_USB_OTG_FS.Init.vbus_sensing_enable = ENABLE;
+  hpcd_USB_OTG_FS.Init.use_dedicated_ep1 = DISABLE;
+  if (HAL_PCD_Init(&hpcd_USB_OTG_FS) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USB_OTG_FS_Init 2 */
 
-	/* USER CODE END USB_OTG_FS_Init 2 */
+  /* USER CODE END USB_OTG_FS_Init 2 */
 
 }
 
 /**
- * @brief GPIO Initialization Function
- * @param None
- * @retval None
- */
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
 static void MX_GPIO_Init(void)
 {
-	GPIO_InitTypeDef GPIO_InitStruct = {0};
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
-	/* GPIO Ports Clock Enable */
-	__HAL_RCC_GPIOC_CLK_ENABLE();
-	__HAL_RCC_GPIOH_CLK_ENABLE();
-	__HAL_RCC_GPIOA_CLK_ENABLE();
-	__HAL_RCC_GPIOB_CLK_ENABLE();
-	__HAL_RCC_GPIOD_CLK_ENABLE();
-	__HAL_RCC_GPIOG_CLK_ENABLE();
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOH_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOE_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOG_CLK_ENABLE();
 
-	/*Configure GPIO pin Output Level */
-	HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 
-	/*Configure GPIO pin Output Level */
-	HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, LD1_Pin|LD3_Pin|LD2_Pin, GPIO_PIN_RESET);
 
-	/*Configure GPIO pin : PC13 */
-	GPIO_InitStruct.Pin = GPIO_PIN_13;
-	GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(USB_PowerSwitchOn_GPIO_Port, USB_PowerSwitchOn_Pin, GPIO_PIN_RESET);
 
-	/*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
-	GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+  /*Configure GPIO pin : PC13 */
+  GPIO_InitStruct.Pin = GPIO_PIN_13;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-	/*Configure GPIO pin : USB_PowerSwitchOn_Pin */
-	GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(USB_PowerSwitchOn_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pin : PA5 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-	/*Configure GPIO pin : USB_OverCurrent_Pin */
-	GPIO_InitStruct.Pin = USB_OverCurrent_Pin;
-	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-	GPIO_InitStruct.Pull = GPIO_NOPULL;
-	HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pins : LD1_Pin LD3_Pin LD2_Pin */
+  GPIO_InitStruct.Pin = LD1_Pin|LD3_Pin|LD2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-	/* EXTI interrupt init*/
-	HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
-	HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+  /*Configure GPIO pin : USB_PowerSwitchOn_Pin */
+  GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(USB_PowerSwitchOn_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : USB_OverCurrent_Pin */
+  GPIO_InitStruct.Pin = USB_OverCurrent_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(USB_OverCurrent_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : btn_left_Pin btn_down_Pin btn_up_Pin btn_right_Pin */
+  GPIO_InitStruct.Pin = btn_left_Pin|btn_down_Pin|btn_up_Pin|btn_right_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI4_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI4_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 5, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
@@ -387,32 +498,46 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	if (GPIO_Pin == GPIO_PIN_13){
 		btn_flag = 1;
 	}
+	if (GPIO_Pin == btn_left_Pin){
+		it_flag_LEFT = 1;
+	}
+	if (GPIO_Pin == btn_down_Pin){
+		it_flag_DOWN = 1;
+	}
+	if (GPIO_Pin == btn_up_Pin){
+		it_flag_UP = 1;
+	}
+	if (GPIO_Pin == btn_right_Pin){
+		it_flag_RIGHT = 1;
+	}
 }
 /* USER CODE END 4 */
 
-/* USER CODE BEGIN Header_coding_trame */
+/* USER CODE BEGIN Header_thread_trame_coding */
 /**
- * @brief  Function implementing the coding thread.
- * @param  argument: Not used
- * @retval None
- */
-/* USER CODE END Header_coding_trame */
-void coding_trame(void *argument)
+  * @brief  Function implementing the trame_coding thread.
+  * @param  argument: Not used 
+  * @retval None
+  */
+/* USER CODE END Header_thread_trame_coding */
+void thread_trame_coding(void *argument)
 {
-	/* USER CODE BEGIN 5 */
+  /* USER CODE BEGIN 5 */
+	/*
 	int i = 0, j = 0;
 	int intensity = 255;
 	int dec_to_bin = 256;
 	int trame_rgb[1536];
+	*/
 	/* Infinite loop */
 	for(;;)
 	{
+		/*
 		if(btn_flag == 1){
 			intensity -= 50;
 			if(intensity <= 0)
 				intensity = 255;
 			send_trame = 1;
-			btn_flag = 0;
 			for(i = 0; i < 1536; i ++){
 				trame_rgb[i] = intensity;
 				if(i % 8 == 0){
@@ -426,99 +551,188 @@ void coding_trame(void *argument)
 					}
 				}
 			}
+			btn_flag = 0;
 		}
+		*/
 		osDelay(1);
 	}
-	/* USER CODE END 5 */
+  /* USER CODE END 5 */ 
 }
 
-/* USER CODE BEGIN Header_illuminating_led_panel */
+/* USER CODE BEGIN Header_thread_illuminating_led_panel */
 /**
- * @brief Function implementing the illuminating thread.
- * @param argument: Not used
- * @retval None
- */
-/* USER CODE END Header_illuminating_led_panel */
-void illuminating_led_panel(void *argument)
+* @brief Function implementing the illuminating_le thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_thread_illuminating_led_panel */
+void thread_illuminating_led_panel(void *argument)
 {
-	/* USER CODE BEGIN illuminating_led_panel */
-	int k = 0;
-	/* Infinite loop */
-	for(;;)
-	{
-		if(send_trame == 1){
-			for(k = 0; k < 1536; k++){
-				int TOH = 3, TOL = 8, TIH = 7, TIL = 4;
+  /* USER CODE BEGIN thread_illuminating_led_panel */
+	uint8_t k;
+  /* Infinite loop */
+  for(;;)
+  {
+	if(send_trame == 1){
+		taskENTER_CRITICAL();
+		for(k = 0; k < 1536; k++){
+			int TOH = 2, TOL = 8, TIH = 8, TIL = 5;
 
-//				if(k % 24 == 0){
-//					HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_SET);
-//					HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_RESET);
-				if(trame[k] == 0){
-					HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_SET);
-					while(TOH --){}
-					HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_RESET);
-					while(TOL --){}
-				} else {
-					HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_SET);
-					while(TIH --){}
-					HAL_GPIO_WritePin(GPIOB, LD1_Pin, GPIO_PIN_RESET);
-					while(TIL --){}
+			if(trame[k] == 0){
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+				while(TOH --){}
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+				while(TOL --){}
+			} else {
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+				while(TIH --){}
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+				while(TIL --){}
+			}
+		} HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+		taskEXIT_CRITICAL();
+		osDelay(1);
+		send_trame = 0;
+	}
+
+	  osDelay(1);
+  }
+  /* USER CODE END thread_illuminating_led_panel */
+}
+
+/* USER CODE BEGIN Header_thread_animations_when_idle */
+/**
+* @brief Function implementing the idle_animations thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_thread_animations_when_idle */
+void thread_animations_when_idle(void *argument)
+{
+  /* USER CODE BEGIN thread_animations_when_idle */
+	uint8_t i, j;
+  /* Infinite loop */
+  for(;;)
+  {
+		if(btn_flag == 1){
+			for(i = 0; i < 64; i ++){
+				for(j = 0; j < 24; j++){
+					trame[24*i+j] = 1;
 				}
 			}
-			send_trame = 0;
+			send_trame = 1;
 		}
-		osDelay(1);
-	}
-	/* USER CODE END illuminating_led_panel */
+    osDelay(1);
+  }
+  /* USER CODE END thread_animations_when_idle */
 }
 
+/* USER CODE BEGIN Header_thread_IO_queue */
 /**
- * @brief  Period elapsed callback in non blocking mode
- * @note   This function is called  when TIM1 interrupt took place, inside
- * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
- * a global variable "uwTick" used as application time base.
- * @param  htim : TIM handle
- * @retval None
- */
+* @brief Function implementing the IO_queue_ thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_thread_IO_queue */
+void thread_IO_queue(void *argument)
+{
+  /* USER CODE BEGIN thread_IO_queue */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END thread_IO_queue */
+}
+
+/* USER CODE BEGIN Header_thread_dealing_with_interruptions_ */
+/**
+* @brief Function implementing the interruptions_ thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_thread_dealing_with_interruptions_ */
+void thread_dealing_with_interruptions_(void *argument)
+{
+  /* USER CODE BEGIN thread_dealing_with_interruptions_ */
+
+  /* Infinite loop */
+  for(;;)
+  {
+		if(it_flag_LEFT == 1){
+
+			it_flag_LEFT = 0;
+			osDelay(200);
+		}
+
+		if(it_flag_DOWN == 1){
+
+			it_flag_DOWN = 0;
+			osDelay(200);
+		}
+		if(it_flag_UP == 1){
+
+			it_flag_UP = 0;
+			osDelay(200);
+		}
+		if(it_flag_RIGHT == 1){
+
+			it_flag_RIGHT = 0;
+			osDelay(200);
+		}
+    osDelay(1);
+  }
+  /* USER CODE END thread_dealing_with_interruptions_ */
+}
+
+ /**
+  * @brief  Period elapsed callback in non blocking mode
+  * @note   This function is called  when TIM1 interrupt took place, inside
+  * HAL_TIM_IRQHandler(). It makes a direct call to HAL_IncTick() to increment
+  * a global variable "uwTick" used as application time base.
+  * @param  htim : TIM handle
+  * @retval None
+  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-	/* USER CODE BEGIN Callback 0 */
+  /* USER CODE BEGIN Callback 0 */
 
-	/* USER CODE END Callback 0 */
-	if (htim->Instance == TIM1) {
-		HAL_IncTick();
-	}
-	/* USER CODE BEGIN Callback 1 */
+  /* USER CODE END Callback 0 */
+  if (htim->Instance == TIM1) {
+    HAL_IncTick();
+  }
+  /* USER CODE BEGIN Callback 1 */
 
-	/* USER CODE END Callback 1 */
+  /* USER CODE END Callback 1 */
 }
 
 /**
- * @brief  This function is executed in case of error occurrence.
- * @retval None
- */
+  * @brief  This function is executed in case of error occurrence.
+  * @retval None
+  */
 void Error_Handler(void)
 {
-	/* USER CODE BEGIN Error_Handler_Debug */
+  /* USER CODE BEGIN Error_Handler_Debug */
 	/* User can add his own implementation to report the HAL error return state */
 
-	/* USER CODE END Error_Handler_Debug */
+  /* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef  USE_FULL_ASSERT
 /**
- * @brief  Reports the name of the source file and the source line number
- *         where the assert_param error has occurred.
- * @param  file: pointer to the source file name
- * @param  line: assert_param error line source number
- * @retval None
- */
+  * @brief  Reports the name of the source file and the source line number
+  *         where the assert_param error has occurred.
+  * @param  file: pointer to the source file name
+  * @param  line: assert_param error line source number
+  * @retval None
+  */
 void assert_failed(uint8_t *file, uint32_t line)
 { 
-	/* USER CODE BEGIN 6 */
+  /* USER CODE BEGIN 6 */
 	/* User can add his own implementation to report the file name and line number,
      tex: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-	/* USER CODE END 6 */
+  /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
 
