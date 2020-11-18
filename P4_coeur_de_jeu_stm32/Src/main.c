@@ -680,7 +680,7 @@ void thread_handler_app(void *argument)
 			//Process message from reading queue.
 
 			//If DOWN button is pushed.
-			if (tmp_command[0] == DOWN_COMMAND && tmp_command[1] == move.player) {
+			if (tmp_command[0] == DOWN_COMMAND/*&& tmp_command[1] == move.player*/) {
 				move = gp4_play_token();
 				tmp_message[0] = CONNECT_4;
 				tmp_message[1] = PLAY;

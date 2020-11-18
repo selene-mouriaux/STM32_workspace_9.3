@@ -30,11 +30,22 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+typedef struct {
+	uint8_t GValue;
+	uint8_t RValue;
+	uint8_t BValue;
+} led;
 
+typedef struct {
+	int8_t l;
+	int8_t c;
+} point_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
+#define ROWS 8
+#define COLS 8
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -98,11 +109,16 @@ const osMessageQueueAttr_t outputs_queue__attributes = {
 /* USER CODE BEGIN PV */
 uint8_t btn_flag;
 uint8_t send_trame;
-uint8_t trame[1536];
+uint8_t trame[192];
 uint8_t it_flag_UP;
 uint8_t it_flag_DOWN;
 uint8_t it_flag_LEFT;
 uint8_t it_flag_RIGHT;
+char message[5] = "pxud\n";
+led matrix_values[ROWS][COLS];
+led led_color = {.RValue = 0, .GValue = 0, .BValue = 0};
+led led_previous_color;
+point_t led_coords;
 
 /* USER CODE END PV */
 
@@ -511,6 +527,26 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 		it_flag_RIGHT = 1;
 	}
 }
+
+uint8_t ascii_to_uint8(char hexal_units, char hexal_sixtenth) {
+	if (hexal_units < 58) {hexal_units -= 48;} else {hexal_units -= 'A'+10;}
+	if (hexal_sixtenth < 58) {hexal_sixtenth -= 48;} else {hexal_sixtenth -= 'A'+10;}
+	uint8_t code = hexal_sixtenth + (hexal_units << 4);
+	return code;
+}
+
+led extract_GRB_from_RGB_ascii_of(char * buffer) {
+	led GRB = {.GValue = ascii_to_uint8(buffer[5], buffer[6]),
+			.RValue = ascii_to_uint8(buffer[3], buffer[4]),
+			.BValue = ascii_to_uint8(buffer[7], buffer[8])};
+	return GRB;
+}
+
+point_t extract_coords_from(char * buffer) {
+	point_t coords = {.l = buffer[1]-48, .c = buffer[2]-48};
+	return coords;
+}
+
 /* USER CODE END 4 */
 
 /* USER CODE BEGIN Header_thread_trame_coding */
@@ -523,37 +559,25 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 void thread_trame_coding(void *argument)
 {
   /* USER CODE BEGIN 5 */
-	/*
-	int i = 0, j = 0;
-	int intensity = 255;
-	int dec_to_bin = 256;
-	int trame_rgb[1536];
-	*/
+	unsigned char buffer[10] = { 0 };
+	uint8_t col, row;
 	/* Infinite loop */
 	for(;;)
 	{
-		/*
-		if(btn_flag == 1){
-			intensity -= 50;
-			if(intensity <= 0)
-				intensity = 255;
-			send_trame = 1;
-			for(i = 0; i < 1536; i ++){
-				trame_rgb[i] = intensity;
-				if(i % 8 == 0){
-					dec_to_bin = 256;
-					for(j = 0; j < 8; j++){
-						if(trame_rgb[i + j] / (dec_to_bin/2) == 1){
-							trame[i + j] = 1;
-						} else {
-							trame[i + j] = 0;
-						}
-					}
+		if(osMessageQueueGet(inputs_queue_Handle, &buffer, 0, osWaitForever) == osOK) {
+			led_coords = extract_coords_from(buffer);
+			led_previous_color = led_color;
+			led_color = extract_GRB_from_RGB_ascii_of(buffer);
+			matrix_values[led_coords.l][led_coords.c] = led_color;
+			for(row = 0; row < ROWS; row++) {
+				for(col = 0; col < COLS; col++) {
+					trame[(row+col)*3]     = matrix_values[row][col].BValue;
+					trame[(row+col)*3 + 1] = matrix_values[row][col].RValue;
+					trame[(row+col)*3 + 2] = matrix_values[row][col].GValue;
 				}
 			}
-			btn_flag = 0;
+			send_trame = 1;
 		}
-		*/
 		osDelay(1);
 	}
   /* USER CODE END 5 */ 
@@ -569,25 +593,29 @@ void thread_trame_coding(void *argument)
 void thread_illuminating_led_panel(void *argument)
 {
   /* USER CODE BEGIN thread_illuminating_led_panel */
-	uint8_t k;
+	uint8_t bit, hex_mask, led, partial_trame;
   /* Infinite loop */
   for(;;)
   {
 	if(send_trame == 1){
 		taskENTER_CRITICAL();
-		for(k = 0; k < 1536; k++){
+		for(led = 0; led < 64; led++) {
+			hex_mask = 0x1000000;
 			int TOH = 2, TOL = 8, TIH = 8, TIL = 5;
-
-			if(trame[k] == 0){
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-				while(TOH --){}
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-				while(TOL --){}
-			} else {
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-				while(TIH --){}
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-				while(TIL --){}
+			partial_trame = trame[led*3]<<16+trame[led*3+1]<<8+trame[led*3+2];
+			for(bit = 23; bit >= 0; bit--) {
+				if(trame[partial_trame&hex_mask] == 0){
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+					while(TOH --){}
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+					while(TOL --){}
+				} else {
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+					while(TIH --){}
+					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+					while(TIL --){}
+				}
+				hex_mask >>= 1;
 			}
 		} HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
@@ -638,9 +666,20 @@ void thread_animations_when_idle(void *argument)
 void thread_IO_queue(void *argument)
 {
   /* USER CODE BEGIN thread_IO_queue */
+	unsigned char buffer[10] = { 0 };
+
   /* Infinite loop */
   for(;;)
   {
+	if(osMessageQueueGet(outputs_queue_Handle, buffer, 0, 20) == osOK)
+	{
+		HAL_UART_Transmit(&huart7,(uint8_t *) buffer, 5, 10);
+	}
+
+	if(HAL_UART_Receive(&huart7,(uint8_t *) buffer, 10, 10) == HAL_OK)
+	{
+		osMessageQueuePut(inputs_queue_Handle, buffer, 0, osWaitForever);
+	}
     osDelay(1);
   }
   /* USER CODE END thread_IO_queue */
@@ -661,25 +700,29 @@ void thread_dealing_with_interruptions_(void *argument)
   for(;;)
   {
 		if(it_flag_LEFT == 1){
-
+			message[2]= 'l';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
 			it_flag_LEFT = 0;
-			osDelay(200);
+			osDelay(1);
 		}
 
 		if(it_flag_DOWN == 1){
-
+			message[2]= 'd';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
 			it_flag_DOWN = 0;
-			osDelay(200);
+			osDelay(1);
 		}
 		if(it_flag_UP == 1){
-
+			message[2]= 'u';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
 			it_flag_UP = 0;
-			osDelay(200);
+			osDelay(1);
 		}
 		if(it_flag_RIGHT == 1){
-
+			message[2]= 'r';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
 			it_flag_RIGHT = 0;
-			osDelay(200);
+			osDelay(1);
 		}
     osDelay(1);
   }
