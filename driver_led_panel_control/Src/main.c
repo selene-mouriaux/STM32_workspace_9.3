@@ -109,7 +109,7 @@ const osMessageQueueAttr_t outputs_queue__attributes = {
 /* USER CODE BEGIN PV */
 uint8_t btn_flag;
 uint8_t send_trame;
-uint8_t trame[192];
+int trame[64];
 uint8_t it_flag_UP;
 uint8_t it_flag_DOWN;
 uint8_t it_flag_LEFT;
@@ -119,6 +119,7 @@ led matrix_values[ROWS][COLS];
 led led_color = {.RValue = 0, .GValue = 0, .BValue = 0};
 led led_previous_color;
 point_t led_coords;
+int trame_ready;
 
 /* USER CODE END PV */
 
@@ -166,6 +167,15 @@ int main(void)
   it_flag_DOWN = 0;
   it_flag_LEFT = 0;
   it_flag_RIGHT = 0;
+  trame_ready = 0;
+  int row, col;
+  for(row = 0; row < ROWS; row++) {
+	for(col = 0; col < COLS; col++) {
+		matrix_values[row][col].BValue = 0;
+		matrix_values[row][col].RValue = 0;
+		matrix_values[row][col].GValue = 0;
+	}
+  }
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -528,9 +538,15 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
 	}
 }
 
-uint8_t ascii_to_uint8(char hexal_units, char hexal_sixtenth) {
-	if (hexal_units < 58) {hexal_units -= 48;} else {hexal_units -= 'A'+10;}
-	if (hexal_sixtenth < 58) {hexal_sixtenth -= 48;} else {hexal_sixtenth -= 'A'+10;}
+uint8_t ascii_to_uint8(char hexal_sixtenth, char hexal_units) {
+	if (hexal_units < 58 && hexal_units > 47) {hexal_units -= 48;}
+	else if (64 < hexal_units && hexal_units < 71 ) {hexal_units = hexal_units - 'A' + 10;}
+	else if (96 < hexal_units && hexal_units < 103 ) {hexal_units = hexal_units - 'a' + 10;}
+
+	if (hexal_sixtenth < 58 && hexal_sixtenth > 47) {hexal_sixtenth -= 48;}
+	else if (64 < hexal_sixtenth && hexal_sixtenth < 71 ) {hexal_sixtenth = hexal_sixtenth - 'A' + 10;}
+	else if (96 < hexal_sixtenth && hexal_sixtenth < 103 ) {hexal_sixtenth = hexal_sixtenth - 'a' + 10;}
+
 	uint8_t code = hexal_sixtenth + (hexal_units << 4);
 	return code;
 }
@@ -571,11 +587,11 @@ void thread_trame_coding(void *argument)
 			matrix_values[led_coords.l][led_coords.c] = led_color;
 			for(row = 0; row < ROWS; row++) {
 				for(col = 0; col < COLS; col++) {
-					trame[(row+col)*3]     = matrix_values[row][col].BValue;
-					trame[(row+col)*3 + 1] = matrix_values[row][col].RValue;
-					trame[(row+col)*3 + 2] = matrix_values[row][col].GValue;
+					trame[(row+col)] = (matrix_values[row][col].BValue << 16)
+							+ (matrix_values[row][col].RValue << 8) + (matrix_values[row][col].GValue);
 				}
 			}
+			trame_ready = 1;
 			send_trame = 1;
 		}
 		osDelay(1);
@@ -593,18 +609,20 @@ void thread_trame_coding(void *argument)
 void thread_illuminating_led_panel(void *argument)
 {
   /* USER CODE BEGIN thread_illuminating_led_panel */
-	uint8_t bit, hex_mask, led, partial_trame;
+	int bit, hex_mask, led;
   /* Infinite loop */
   for(;;)
   {
-	if(send_trame == 1){
-		taskENTER_CRITICAL();
+	if(send_trame == 1 && trame_ready == 1){
+//		taskENTER_CRITICAL();
+		vTaskSuspendAll();
+		SysTick->CTRL &=~1;
+		TIM1->CR1 &= (uint16_t)~TIM_CR1_CEN;
 		for(led = 0; led < 64; led++) {
 			hex_mask = 0x1000000;
-			int TOH = 2, TOL = 8, TIH = 8, TIL = 5;
-			partial_trame = trame[led*3]<<16+trame[led*3+1]<<8+trame[led*3+2];
 			for(bit = 23; bit >= 0; bit--) {
-				if(trame[partial_trame&hex_mask] == 0){
+				int TOH = 2, TOL = 8, TIH = 10, TIL = 4;
+				if((trame[led] & hex_mask) == 0){
 					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 					while(TOH --){}
 					HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
@@ -619,8 +637,12 @@ void thread_illuminating_led_panel(void *argument)
 			}
 		} HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
-		taskEXIT_CRITICAL();
+		SysTick->CTRL |= 1;
+		TIM1->CR1 &= (uint16_t)TIM_CR1_CEN;
+		xTaskResumeAll();
+//		taskEXIT_CRITICAL();
 		osDelay(1);
+		trame_ready = 0;
 		send_trame = 0;
 	}
 
@@ -640,16 +662,30 @@ void thread_animations_when_idle(void *argument)
 {
   /* USER CODE BEGIN thread_animations_when_idle */
 	uint8_t i, j;
+
+	//char led_test[] = {'R','0','0','F','F','F','F','F','F','\n'};
+	//char test1[] = "R2200FFFF\n";
+	//char test2[] = "R44FF00FF\n";
+	//char test3[] = "R66FFFF00\n";
+
   /* Infinite loop */
   for(;;)
   {
-		if(btn_flag == 1){
-			for(i = 0; i < 64; i ++){
-				for(j = 0; j < 24; j++){
-					trame[24*i+j] = 1;
-				}
+	if(btn_flag == 1){
+
+		//osMessageQueuePut(inputs_queue_Handle, led_test, 0, osWaitForever);
+		//osMessageQueuePut(inputs_queue_Handle, test1, 0, osWaitForever);
+		//osMessageQueuePut(inputs_queue_Handle, test2, 0, osWaitForever);
+		//osMessageQueuePut(inputs_queue_Handle, test3, 0, osWaitForever);
+
+		for(i = 0; i < 64; i ++){
+			for(j = 0; j < 24; j++){
+				trame[24*i+j] = 1;
 			}
-			send_trame = 1;
+		}
+
+		btn_flag = 0;
+		send_trame = 1;
 		}
     osDelay(1);
   }
@@ -695,34 +731,45 @@ void thread_IO_queue(void *argument)
 void thread_dealing_with_interruptions_(void *argument)
 {
   /* USER CODE BEGIN thread_dealing_with_interruptions_ */
-
   /* Infinite loop */
   for(;;)
   {
 		if(it_flag_LEFT == 1){
 			message[2]= 'l';
+			message[1]= '1';
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			message[1]= '2';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(500);
 			it_flag_LEFT = 0;
-			osDelay(1);
 		}
 
 		if(it_flag_DOWN == 1){
 			message[2]= 'd';
+			message[1]= '1';
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			message[1]= '2';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(500);
 			it_flag_DOWN = 0;
-			osDelay(1);
 		}
 		if(it_flag_UP == 1){
 			message[2]= 'u';
+			message[1]= '1';
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			message[1]= '2';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(500);
 			it_flag_UP = 0;
-			osDelay(1);
 		}
 		if(it_flag_RIGHT == 1){
 			message[2]= 'r';
+			message[1]= '1';
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			message[1]= '2';
+			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(500);
 			it_flag_RIGHT = 0;
-			osDelay(1);
 		}
     osDelay(1);
   }
