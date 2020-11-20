@@ -4390,3 +4390,130 @@ Binding(ALT+CTRL+T,
 
 !ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-11-19 08:41:51.980
 !MESSAGE Code Review is up.
+!SESSION 2020-11-20 08:42:17.655 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-11-20 08:42:19.956
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-11-20 08:42:19.967
+!MESSAGE OS info: Linux, 5.0.0-32-generic, amd64
+
+!ENTRY org.eclipse.core.resources 2 10035 2020-11-20 08:42:20.090
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY TrueSTUDIO 1 0 2020-11-20 08:42:21.033
+!MESSAGE Target: STM32, Version: 9.3.0, Build date: 20190212-0734, Installation dir: /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2020-11-20 08:42:21.033
+!MESSAGE Workspace: /home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3
+
+!ENTRY org.eclipse.jface 2 0 2020-11-20 08:42:22.917
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-11-20 08:42:22.918
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@56c6d515,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@702b656a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2020-11-20 08:42:26.495
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-11-20 08:42:26.591
+!MESSAGE Code Review is up.
+
+!ENTRY TrueSTUDIO 4 0 2020-11-20 09:04:03.260
+!MESSAGE ST-LINK GDB server failed to start (exit code = 16)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-11-20 09:04:03.325
+!MESSAGE Error in initializing ST-Link device.
+Reason: (16) Multiple ST-Links detected.
+Please specify the serial number in the debug configuration.
+
+!ENTRY TrueSTUDIO 4 0 2020-11-20 09:21:21.621
+!MESSAGE ST-LINK GDB server failed to start (exit code = 16)
+
+!ENTRY org.eclipse.cdt.dsf.gdb 4 5012 2020-11-20 09:21:21.670
+!MESSAGE Error in initializing ST-Link device.
+Reason: (16) Multiple ST-Links detected.
+Please specify the serial number in the debug configuration.
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-11-20 09:28:33.217
+!MESSAGE Unloading product manager
+!SESSION 2020-11-20 09:28:38.218 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_181
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-11-20 09:28:40.107
+!MESSAGE Loading product manager
+
+!ENTRY com.atollic.truestudio.productmanager 1 0 2020-11-20 09:28:40.113
+!MESSAGE OS info: Linux, 5.0.0-32-generic, amd64
+
+!ENTRY TrueSTUDIO 1 0 2020-11-20 09:28:40.967
+!MESSAGE Target: STM32, Version: 9.3.0, Build date: 20190212-0734, Installation dir: /opt/Atollic_TrueSTUDIO_for_STM32_x86_64_9.3.0/ide/
+
+!ENTRY TrueSTUDIO 1 0 2020-11-20 09:28:40.967
+!MESSAGE Workspace: /home/vincent/Atollic/TrueSTUDIO/STM32_workspace_9.3
+
+!ENTRY org.eclipse.jface 2 0 2020-11-20 09:28:42.260
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-11-20 09:28:42.260
+!MESSAGE A conflict occurred for ALT+CTRL+T:
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.team.svn.ui.command.EditPropertiesCommand,Show Properties,
+		,
+		Category(org.eclipse.team.svn.ui.command.category,SVN,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@113d0f75,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(ALT+CTRL+T,
+	ParameterizedCommand(Command(org.eclipse.tm.terminal.connector.local.command.launch,Open Local Terminal on Selection,
+		,
+		Category(org.eclipse.tm.terminal.view.ui.commands.category,Terminal Commands,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@4e10a320,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY com.atollic.truestudio.integration.processorexpert 0 0 2020-11-20 09:28:45.526
+!MESSAGE Atollic TrueSTUDIO Processor Expert integration is up.
+
+!ENTRY edu.hawaii.ics.csdl.jupiter 1 0 2020-11-20 09:28:45.570
+!MESSAGE Code Review is up.
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2020-11-20 15:45:04.331
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.debug.ui.viewmodel.SteppingController$3@1f6dca53): Status ERROR: org.eclipse.cdt.dsf.gdb code=10004 Failed to execute MI command:
+-exec-finish
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 1.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n java.lang.Exception: Warning:\nCannot insert hardware breakpoint 1.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2020-11-20 15:45:04.331
+!MESSAGE Failed to execute MI command:
+-exec-finish
+Error message from debugger back end:
+Warning:\nCannot insert hardware breakpoint 1.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+!STACK 0
+java.lang.Exception: Warning:\nCannot insert hardware breakpoint 1.\nCould not insert hardware breakpoints:\nYou may have requested too many hardware breakpoints/watchpoints.\n
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.processMIOutput(AbstractMIControl.java:1022)
+	at org.eclipse.cdt.dsf.mi.service.command.AbstractMIControl$RxThread.run(AbstractMIControl.java:851)

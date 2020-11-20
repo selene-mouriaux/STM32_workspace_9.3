@@ -587,7 +587,7 @@ void thread_trame_coding(void *argument)
 			matrix_values[led_coords.l][led_coords.c] = led_color;
 			for(row = 0; row < ROWS; row++) {
 				for(col = 0; col < COLS; col++) {
-					trame[(row+col)] = (matrix_values[row][col].BValue << 16)
+					trame[((row*COLS)+col)] = (matrix_values[row][col].BValue << 16)
 							+ (matrix_values[row][col].RValue << 8) + (matrix_values[row][col].GValue);
 				}
 			}
@@ -638,7 +638,7 @@ void thread_illuminating_led_panel(void *argument)
 		} HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
 		SysTick->CTRL |= 1;
-		TIM1->CR1 &= (uint16_t)TIM_CR1_CEN;
+		TIM1->CR1 |= TIM_CR1_CEN;
 		xTaskResumeAll();
 //		taskEXIT_CRITICAL();
 		osDelay(1);
@@ -663,7 +663,7 @@ void thread_animations_when_idle(void *argument)
   /* USER CODE BEGIN thread_animations_when_idle */
 	uint8_t i, j;
 
-	//char led_test[] = {'R','0','0','F','F','F','F','F','F','\n'};
+	char led_test[] = {'R','7','7','F','F','F','F','F','F','\n'};
 	//char test1[] = "R2200FFFF\n";
 	//char test2[] = "R44FF00FF\n";
 	//char test3[] = "R66FFFF00\n";
@@ -673,17 +673,17 @@ void thread_animations_when_idle(void *argument)
   {
 	if(btn_flag == 1){
 
-		//osMessageQueuePut(inputs_queue_Handle, led_test, 0, osWaitForever);
+		osMessageQueuePut(inputs_queue_Handle, led_test, 0, osWaitForever);
 		//osMessageQueuePut(inputs_queue_Handle, test1, 0, osWaitForever);
 		//osMessageQueuePut(inputs_queue_Handle, test2, 0, osWaitForever);
 		//osMessageQueuePut(inputs_queue_Handle, test3, 0, osWaitForever);
-
+/*
 		for(i = 0; i < 64; i ++){
 			for(j = 0; j < 24; j++){
 				trame[24*i+j] = 1;
 			}
 		}
-
+*/
 		btn_flag = 0;
 		send_trame = 1;
 		}
@@ -709,9 +709,10 @@ void thread_IO_queue(void *argument)
   {
 	if(osMessageQueueGet(outputs_queue_Handle, buffer, 0, 20) == osOK)
 	{
+		osDelay(10);
 		HAL_UART_Transmit(&huart7,(uint8_t *) buffer, 5, 10);
 	}
-
+	osDelay(5);
 	if(HAL_UART_Receive(&huart7,(uint8_t *) buffer, 10, 10) == HAL_OK)
 	{
 		osMessageQueuePut(inputs_queue_Handle, buffer, 0, osWaitForever);
@@ -736,39 +737,42 @@ void thread_dealing_with_interruptions_(void *argument)
   {
 		if(it_flag_LEFT == 1){
 			message[2]= 'l';
-			message[1]= '1';
+//			message[1]= '1';
+			osDelay(5);
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			message[1]= '2';
-			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			osDelay(500);
+//			message[1]= '2';
+//			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(200);
 			it_flag_LEFT = 0;
 		}
 
 		if(it_flag_DOWN == 1){
 			message[2]= 'd';
-			message[1]= '1';
+//			message[1]= '1';
+			osDelay(5);
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			message[1]= '2';
-			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			osDelay(500);
+//			message[1]= '2';
+//			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(200);
 			it_flag_DOWN = 0;
 		}
 		if(it_flag_UP == 1){
 			message[2]= 'u';
-			message[1]= '1';
+//			message[1]= '1';
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			message[1]= '2';
-			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			osDelay(500);
+//			message[1]= '2';
+//			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(200);
 			it_flag_UP = 0;
 		}
 		if(it_flag_RIGHT == 1){
 			message[2]= 'r';
-			message[1]= '1';
+//			message[1]= '1';
+			osDelay(5);
 			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			message[1]= '2';
-			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
-			osDelay(500);
+//			message[1]= '2';
+//			osMessageQueuePut(outputs_queue_Handle, message, 0, osWaitForever);
+			osDelay(200);
 			it_flag_RIGHT = 0;
 		}
     osDelay(1);

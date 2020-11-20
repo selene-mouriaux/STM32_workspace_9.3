@@ -125,7 +125,6 @@ LedControlReturnCode setLedColor(const unsigned int row,
 	if (red > 255 || green > 255 || blue > 255)
 		return LCRC_ERROR_RGB_VALUE;
 
-	osDelay(100);
 	const unsigned int finalRow = row - 1;
 	const unsigned int finalCol = col - 1;
 
